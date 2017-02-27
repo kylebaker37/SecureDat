@@ -2,7 +2,7 @@ import RPi.GPIO as gpio
 import time
 
 mag_pin = 23
-gpio.setup(mag_pin. gpio.IN)
+gpio.setup(mag_pin, gpio.IN)
 
 def is_mag_present():
     if gpio.input(mag_pin) == 1:
