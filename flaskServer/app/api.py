@@ -1,12 +1,13 @@
 from flask import Flask, request, jsonify
 from app import app, models, db
 
-@app.route('/api/get_messages', methods = ['POST'])
-def get_messages():
-    json = request.get_json()
-    if json['user'] == "larry":
-        return jsonify({'messages':['test1', 'test2']})
-    return jsonify({'error':'no user found'})
+#example:
+#@app.route('/api/get_messages', methods = ['POST'])
+#def get_messages():
+#    json = request.get_json()
+#    if json['user'] == "larry":
+#        return jsonify({'messages':['test1', 'test2']})
+#    return jsonify({'error':'no user found'})
 
 @app.route('/api/add_user', methods = ['POST'])
 def add_user():
@@ -19,3 +20,11 @@ def add_user():
 	  db.session.add(u)
 	  db.session.commit()
 	  return jsonify({'updated':'user added!'})
+
+@app.route('/api/door_opened', methods = ['GET'])
+def door_opened():
+	  json = request.get_json()
+	  aid = json['aid']
+	  return jsonify({'success!':'apartment alerted!'})
+	  #...get phone numbers for each of the users in that apartment, and call twilio to alert
+	  #...later could add check to determine if any users are in the apartment before using twilio alerts
