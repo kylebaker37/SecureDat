@@ -1,7 +1,7 @@
 import RPi.GPIO as gpio
 import time
 
-gpio.setmode(GPIO.BCM)
+gpio.setmode(gpio.BCM)
 
 mag_pin = 23
 gpio.setup(mag_pin, gpio.IN)
