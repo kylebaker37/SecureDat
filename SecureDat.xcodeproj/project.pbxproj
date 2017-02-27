@@ -47,6 +47,7 @@
 		2772518F1E63B48B001DE8AE /* SecureDatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SecureDatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		277251931E63B48B001DE8AE /* SecureDatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureDatUITests.swift; sourceTree = "<group>"; };
 		277251951E63B48B001DE8AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4A2172161E63B7160037DF78 /* SecureDat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SecureDat.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +98,7 @@
 		277251721E63B48B001DE8AE /* SecureDat */ = {
 			isa = PBXGroup;
 			children = (
+				4A2172161E63B7160037DF78 /* SecureDat.entitlements */,
 				277251731E63B48B001DE8AE /* AppDelegate.swift */,
 				277251751E63B48B001DE8AE /* ViewController.swift */,
 				277251771E63B48B001DE8AE /* Main.storyboard */,
@@ -195,6 +197,11 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = B6637C7R5S;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					277251831E63B48B001DE8AE = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -415,6 +422,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SecureDat/SecureDat.entitlements;
 				DEVELOPMENT_TEAM = B6637C7R5S;
 				INFOPLIST_FILE = SecureDat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -428,6 +436,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SecureDat/SecureDat.entitlements;
 				DEVELOPMENT_TEAM = B6637C7R5S;
 				INFOPLIST_FILE = SecureDat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -514,6 +523,7 @@
 				2772519A1E63B48B001DE8AE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2772519B1E63B48B001DE8AE /* Build configuration list for PBXNativeTarget "SecureDatTests" */ = {
 			isa = XCConfigurationList;
@@ -522,6 +532,7 @@
 				2772519D1E63B48B001DE8AE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2772519E1E63B48B001DE8AE /* Build configuration list for PBXNativeTarget "SecureDatUITests" */ = {
 			isa = XCConfigurationList;
@@ -530,6 +541,7 @@
 				277251A01E63B48B001DE8AE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
