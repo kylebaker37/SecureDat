@@ -1,8 +1,10 @@
 import RPi.GPIO as gpio
 import time
 
+gpio.setmode(gpio.BCM)
+
 mag_pin = 23
-gpio.setup(mag_pin. gpio.IN)
+gpio.setup(mag_pin, gpio.IN)
 
 def is_mag_present():
     if gpio.input(mag_pin) == 1:
@@ -21,4 +23,4 @@ if __name__ == '__main__':
             time.sleep(0.5)
     except KeyboardInterrupt:
         print "Stopped..."
-        GPIO.cleanup()
+        gpio.cleanup()

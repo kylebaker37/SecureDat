@@ -1,13 +1,10 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, Response
 from app import app, models, db
 
-#example:
-#@app.route('/api/get_messages', methods = ['POST'])
-#def get_messages():
-#    json = request.get_json()
-#    if json['user'] == "larry":
-#        return jsonify({'messages':['test1', 'test2']})
-#    return jsonify({'error':'no user found'})
+@app.route('/health_check', methods = ['GET'])
+def health_check():
+    return Response(response="OK", status=200)
+
 
 @app.route('/api/add_user', methods = ['POST'])
 def add_user():
