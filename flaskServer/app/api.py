@@ -1,5 +1,10 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, Response
 from app import app, models, db
+
+@app.route('/health_check', methods = ['GET'])
+def health_check():
+    return Response(response="OK", status=200)
+
 
 @app.route('/api/get_messages', methods = ['POST'])
 def get_messages():
