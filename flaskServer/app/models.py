@@ -23,6 +23,8 @@ class User(db.Model):
 class Apartment(db.Model):
   id = db.Column(db.Integer, primary_key=True)
   aptname = db.Column(db.String(64), index=True, unique=False)
+  latitude = db.Column(db.String(64), index=False, unique=False)
+  longitude = db.Column(db.String(64), index=False, unique=False)
   users = db.relationship('User', backref='apartment', lazy='select')
 
   def __repr__(self):
