@@ -21,8 +21,10 @@ class MagListener(object):
     def listen(self):
         while True:
             if self._is_mag_present():
-                print "Present"
-                # Do some network request to our endpoint
+                url = 'http://localhost/api/door_opened'
+                payload = {'aid': 1}
+                r = requests.get(url, json=payload)
+                print r.text
             time.sleep(0.05)
 
 if __name__ == '__main__':
