@@ -10,7 +10,7 @@ class MagListener(object):
         gpio.setup(MAG_PIN, gpio.IN)
 
     def __del__(self):
-        gpio.cleanup(MAG_PIN)
+        gpio.cleanup(self.pin)
 
     def _is_mag_present(self):
         if gpio.input(self.pin) == 1:
