@@ -2,25 +2,29 @@ import RPi.GPIO as gpio
 import time
 
 gpio.setmode(gpio.BCM)
+MAG_PIN = 23
 
-mag_pin = 23
-gpio.setup(mag_pin, gpio.IN)
+class MagListener(object):
+    def __init__(self, pin=MAG_PIN):
+        self.pin = pin
+        gpio.setup(MAG_PIN, gpio.IN)
 
-def is_mag_present():
-    if gpio.input(mag_pin) == 1:
-        return False
-    else:
-        return True
+    def __del__(self):
+        gpio.cleanup(MAG_PIN)
 
+    def _is_mag_present(self):
+        if gpio.input(self.pin) == 1:
+            return False
+        else:
+            return True
+
+    def listen(self):
+        while True:
+            if self._is_mag_present():
+                print "Present"
+                # Do some network request to our endpoint
+            time.sleep(0.05)
 
 if __name__ == '__main__':
-    try:
-        while True:
-            if is_mag_present():
-                print "Mag!"
-            else:
-                print "No Mag!"
-            time.sleep(0.5)
-    except KeyboardInterrupt:
-        print "Stopped..."
-        gpio.cleanup()
+    ml = MagListener()
+    ml.listen()
