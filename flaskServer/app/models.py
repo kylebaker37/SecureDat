@@ -14,7 +14,7 @@ class User(db.Model):
         self.phone = phone
         self.email = email
 
-    def add_to_apartment(aid):
+    def add_to_apartment(self, aid):
     	  self.aid = aid
 
     def __repr__(self):
@@ -25,7 +25,7 @@ class Apartment(db.Model):
   aptname = db.Column(db.String(64), index=True, unique=False)
   latitude = db.Column(db.String(64), index=False, unique=False)
   longitude = db.Column(db.String(64), index=False, unique=False)
-  users = db.relationship('User', backref='apartment', lazy='select')
+  users = db.relationship('User', backref='apartment', lazy='select')    
 
   def __repr__(self):
     return '<Apartment %r>' % (self.aptname)
