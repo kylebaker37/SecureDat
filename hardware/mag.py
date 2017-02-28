@@ -19,13 +19,20 @@ class MagListener(object):
             return True
 
     def listen(self):
+        prev = True
+        cur = True
         while True:
             if self._is_mag_present():
+                cur = True
+            else:
+                cur = False
+            if prev == True and cur == False:
                 url = 'http://localhost/api/door_opened'
                 payload = {'aid': 1}
                 r = requests.get(url, json=payload)
                 print r.text
             time.sleep(0.05)
+            prev = cur
 
 if __name__ == '__main__':
     ml = MagListener()
