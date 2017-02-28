@@ -18,6 +18,17 @@ def add_user():
 	  db.session.commit()
 	  return jsonify({'updated':'user added!'})
 
+@app.route('/api/add_apartment', methods = ['POST'])
+def add_apartment():
+	  json = request.get_json()
+	  aptname = json[aptname]
+	  latitude = json[latitude]
+	  longitude = json[longitude]
+	  a = models.Apartment(aptname=aptname, latitude=latitude, longitude=longitude)
+	  db.session.add(a)
+	  db.session.commit()
+	  return jsonify({'success!':'apartment added!'})
+
 @app.route('/api/door_opened', methods = ['GET'])
 def door_opened():
 	  json = request.get_json()
