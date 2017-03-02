@@ -14,6 +14,7 @@
 		2772517E1E63B48B001DE8AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2772517C1E63B48B001DE8AE /* LaunchScreen.storyboard */; };
 		277251891E63B48B001DE8AE /* SecureDatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277251881E63B48B001DE8AE /* SecureDatTests.swift */; };
 		277251941E63B48B001DE8AE /* SecureDatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277251931E63B48B001DE8AE /* SecureDatUITests.swift */; };
+		4A1E601C1E68B96300839CFF /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1E601B1E68B96300839CFF /* LocationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		2772518F1E63B48B001DE8AE /* SecureDatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SecureDatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		277251931E63B48B001DE8AE /* SecureDatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureDatUITests.swift; sourceTree = "<group>"; };
 		277251951E63B48B001DE8AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4A1E601B1E68B96300839CFF /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		4A2172161E63B7160037DF78 /* SecureDat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SecureDat.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -99,9 +101,10 @@
 			isa = PBXGroup;
 			children = (
 				4A2172161E63B7160037DF78 /* SecureDat.entitlements */,
+				277251771E63B48B001DE8AE /* Main.storyboard */,
 				277251731E63B48B001DE8AE /* AppDelegate.swift */,
 				277251751E63B48B001DE8AE /* ViewController.swift */,
-				277251771E63B48B001DE8AE /* Main.storyboard */,
+				4A1E601B1E68B96300839CFF /* LocationViewController.swift */,
 				2772517A1E63B48B001DE8AE /* Assets.xcassets */,
 				2772517C1E63B48B001DE8AE /* LaunchScreen.storyboard */,
 				2772517F1E63B48B001DE8AE /* Info.plist */,
@@ -197,6 +200,9 @@
 						CreatedOnToolsVersion = 8.2.1;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
@@ -268,6 +274,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A1E601C1E68B96300839CFF /* LocationViewController.swift in Sources */,
 				277251761E63B48B001DE8AE /* ViewController.swift in Sources */,
 				277251741E63B48B001DE8AE /* AppDelegate.swift in Sources */,
 			);
