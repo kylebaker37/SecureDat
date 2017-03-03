@@ -8,4 +8,10 @@ venv/
 .venv/
 
 # xcode
+xcuserdata/
 *.xcuserstate
+
+# db
+*.db
+config/db_repository/
+
