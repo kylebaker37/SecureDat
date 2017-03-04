@@ -14,6 +14,7 @@ class User(db.Model):
         self.password = password
         self.phone = phone
         self.email = email
+        self.at_home = False
 
     def add_to_apartment(self, aid):
     	  self.aid = aid

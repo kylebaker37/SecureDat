@@ -15,6 +15,7 @@
 		277251891E63B48B001DE8AE /* SecureDatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277251881E63B48B001DE8AE /* SecureDatTests.swift */; };
 		277251941E63B48B001DE8AE /* SecureDatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277251931E63B48B001DE8AE /* SecureDatUITests.swift */; };
 		4A1E601C1E68B96300839CFF /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1E601B1E68B96300839CFF /* LocationViewController.swift */; };
+		4A1E601E1E6A4EAA00839CFF /* Backend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1E601D1E6A4EAA00839CFF /* Backend.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		277251931E63B48B001DE8AE /* SecureDatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureDatUITests.swift; sourceTree = "<group>"; };
 		277251951E63B48B001DE8AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4A1E601B1E68B96300839CFF /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
+		4A1E601D1E6A4EAA00839CFF /* Backend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Backend.swift; sourceTree = "<group>"; };
 		4A2172161E63B7160037DF78 /* SecureDat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SecureDat.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -108,6 +110,7 @@
 				2772517A1E63B48B001DE8AE /* Assets.xcassets */,
 				2772517C1E63B48B001DE8AE /* LaunchScreen.storyboard */,
 				2772517F1E63B48B001DE8AE /* Info.plist */,
+				4A1E601D1E6A4EAA00839CFF /* Backend.swift */,
 			);
 			path = SecureDat;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A1E601E1E6A4EAA00839CFF /* Backend.swift in Sources */,
 				4A1E601C1E68B96300839CFF /* LocationViewController.swift in Sources */,
 				277251761E63B48B001DE8AE /* ViewController.swift in Sources */,
 				277251741E63B48B001DE8AE /* AppDelegate.swift in Sources */,

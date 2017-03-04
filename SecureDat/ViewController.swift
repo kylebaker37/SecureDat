@@ -12,8 +12,38 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         //TESTING BASIC BACKEND INTERACTION
-        //printMessagesForUser()
-        addUser(username: "markus", password: "password", email: "markusnotti@gmail.com", phone: "9253302530")
+        Backend.add_user(username: "test user", password: "password", email: "testuser@gmail.com", phone: "+19253302530", completionHandler: {
+            uid in
+            Backend.add_user(username: "test user2", password: "password", email: "testuser2@gmail.com", phone: "+19253302530", completionHandler: {
+                uid2 in
+                print("user created: \(uid)")
+                Backend.add_apartment(aptname: "new apartment 5", latitude: 119.999, longitude: 25.8484, completionHandler: {
+                    aid in
+                    print("apartment created: \(aid)")
+                    Backend.apartment_location(aid: aid, completionHandler: {
+                        location in
+                        print("lat: \(location[0]), long: \(location[1])")
+                    })
+                    Backend.add_users_to_apartment(uids: [uid, uid2], aid: aid)
+                    Backend.update_user_location_status(uid: uid, at_home: false)
+                    Backend.update_user_location_status(uid: uid, at_home: true)
+                    Backend.user_location_status(uid: uid, completionHandler: {
+                        at_home in
+                        if at_home {
+                            print("user \(uid) is at home")
+                        }
+                        else {
+                            print("user \(uid) is not at home")
+                        }
+                    })
+
+                })
+            })
+        })
+        
+        
+        
+        
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -22,71 +52,5 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    //TESTING BASIC BACKEND INTERACTION
-    
-    func addUser(username: String, password: String, email: String, phone: String) -> Void{
-        let json = ["username":username, "password":password, "email":email, "phone":phone]
-        do {
-            let jsonData = try JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
-            
-            let url = NSURL(string: "http://127.0.0.1:5000/api/add_user")!
-            let request = NSMutableURLRequest(url: url as URL)
-            request.httpMethod = "POST"
-            
-            request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-            request.httpBody = jsonData
-            
-            let task = URLSession.shared.dataTask(with: request as URLRequest){ data, response, error in
-                if error != nil{
-                    print("Error -> \(error)")
-                    return
-                }
-                do {
-                    let result = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String:AnyObject]
-                    print("Result -> \(result)")
-                    
-                } catch {
-                    print("Error -> \(error)")
-                }
-            }
-            task.resume()
-        } catch {
-            print(error)
-        }
-    }
-    
-    func printMessagesForUser() -> Void {
-        let json = ["user":"larry"]
-        do {
-            let jsonData = try JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
-            
-            let url = NSURL(string: "http://127.0.0.1:5000/api/get_messages")!
-            let request = NSMutableURLRequest(url: url as URL)
-            request.httpMethod = "POST"
-            
-            request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-            request.httpBody = jsonData
-            
-            let task = URLSession.shared.dataTask(with: request as URLRequest){ data, response, error in
-                if error != nil{
-                    print("Error -> \(error)")
-                    return
-                }
-                do {
-                    let result = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String:AnyObject]
-                    print("Result -> \(result)")
-                    
-                } catch {
-                    print("Error -> \(error)")
-                }
-            }
-            
-            task.resume()
-        } catch {
-            print(error)
-        }
-    }
-
-
 }
 
