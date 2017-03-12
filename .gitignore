@@ -15,3 +15,5 @@ xcuserdata/
 *.db
 config/db_repository/
 
+# CocoaPods
+Pods/Pods.xcodeproj/xcuserdata/*
