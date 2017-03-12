@@ -43,7 +43,7 @@
         <!--Login-->
         <scene sceneID="gb7-Wg-ejg">
             <objects>
-                <viewController title="Login" id="11k-9v-WR8" sceneMemberID="viewController">
+                <viewController title="Login" id="11k-9v-WR8" customClass="LoginViewController" customModule="SecureDat" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="VsN-o3-x1W"/>
                         <viewControllerLayoutGuide type="bottom" id="UJS-q7-3Sp"/>
@@ -130,7 +130,7 @@
         <!--Home-->
         <scene sceneID="ruH-rI-LOH">
             <objects>
-                <viewController title="Home" id="RbS-LE-mbe" sceneMemberID="viewController">
+                <viewController title="Home" id="RbS-LE-mbe" customClass="HomeViewController" customModule="SecureDat" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YC9-g1-5xf"/>
                         <viewControllerLayoutGuide type="bottom" id="xvC-pf-X6S"/>
@@ -165,7 +165,7 @@
         <!--Apartment Search-->
         <scene sceneID="0QL-0Z-apd">
             <objects>
-                <viewController title="Apartment Search" id="nmv-Eg-Xd1" sceneMemberID="viewController">
+                <viewController title="Apartment Search" id="nmv-Eg-Xd1" customClass="ApartmentSearchViewController" customModule="SecureDat" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JaH-6D-MzH"/>
                         <viewControllerLayoutGuide type="bottom" id="lYR-40-tfn"/>
@@ -198,7 +198,7 @@
         <!--Join Apartment-->
         <scene sceneID="llN-un-vNt">
             <objects>
-                <viewController title="Join Apartment" id="HVW-Oe-mZe" sceneMemberID="viewController">
+                <viewController title="Join Apartment" id="HVW-Oe-mZe" customClass="JoinApartmentViewController" customModule="SecureDat" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="d2n-xV-kwa"/>
                         <viewControllerLayoutGuide type="bottom" id="jGt-NG-ZzN"/>
@@ -229,7 +229,7 @@
         <!--Apartment Details-->
         <scene sceneID="buS-Pi-9IT">
             <objects>
-                <viewController title="Apartment Details" id="abB-5R-EEx" sceneMemberID="viewController">
+                <viewController title="Apartment Details" id="abB-5R-EEx" customClass="ApartmentDetailsViewController" customModule="SecureDat" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Cgj-wV-giU"/>
                         <viewControllerLayoutGuide type="bottom" id="rCK-RP-fJD"/>
@@ -263,7 +263,7 @@
         <!--Apartment Location-->
         <scene sceneID="SbP-wm-wlP">
             <objects>
-                <viewController title="Apartment Location" id="EUv-ed-CzR" sceneMemberID="viewController">
+                <viewController title="Apartment Location" id="EUv-ed-CzR" customClass="ApartmentLocationViewController" customModule="SecureDat" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ehE-TD-5Wr"/>
                         <viewControllerLayoutGuide type="bottom" id="Tmv-Xv-U2k"/>
@@ -296,7 +296,7 @@
         <!--Add Roommates-->
         <scene sceneID="0S5-jT-LRk">
             <objects>
-                <viewController title="Add Roommates" id="fa2-DU-FCp" sceneMemberID="viewController">
+                <viewController title="Add Roommates" id="fa2-DU-FCp" customClass="AddRoommatesViewController" customModule="SecureDat" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xSM-eT-H3Q"/>
                         <viewControllerLayoutGuide type="bottom" id="U1s-FW-y1O"/>
@@ -326,7 +326,7 @@
         <!--Signup-->
         <scene sceneID="xYs-VR-Gbv">
             <objects>
-                <viewController title="Signup" id="2Dn-ZL-A22" sceneMemberID="viewController">
+                <viewController title="Signup" id="2Dn-ZL-A22" customClass="SignupViewController" customModule="SecureDat" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="I5M-Le-bWR"/>
                         <viewControllerLayoutGuide type="bottom" id="HOa-6K-MvE"/>
