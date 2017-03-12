@@ -52,4 +52,12 @@ class ApartmentLocationViewController: UIViewController, GMSMapViewDelegate, CLL
         })
         
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "apartmentLocationToAddRoommates"){
+            let vc = segue.destination as! AddRoommatesViewController
+            vc.aptId = self.apt.id
+        }
+    }
+
 }
