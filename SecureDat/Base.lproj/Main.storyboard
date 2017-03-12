@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="UzT-Cn-5eo">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="UzT-Cn-5eo">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -177,6 +177,14 @@
                                     <segue destination="EUv-ed-CzR" kind="showDetail" id="AjU-YT-Aw4"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZfC-Sb-X8j">
+                                <rect key="frame" x="142" y="497" width="69" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="TO VIDEO"/>
+                                <connections>
+                                    <segue destination="y54-Oh-gaB" kind="show" id="Ra0-rC-Sh0"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -258,6 +266,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7hA-wz-kut" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="981.60000000000002" y="2235.832083958021"/>
+        </scene>
+        <!--Video View Controller-->
+        <scene sceneID="Xqg-GJ-1YG">
+            <objects>
+                <viewController id="y54-Oh-gaB" customClass="VideoViewController" customModule="SecureDat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="V1s-Z4-tFu"/>
+                        <viewControllerLayoutGuide type="bottom" id="zi1-lk-O4U"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cbS-Ww-YtI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FJJ-WP-fO3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1963" y="2229"/>
         </scene>
         <!--Apartment Details-->
         <scene sceneID="buS-Pi-9IT">
