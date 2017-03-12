@@ -56,8 +56,8 @@ class MagListener(object):
                     print "Connection failed..."
                 print "Starting recording..."
                 now = datetime.now()
-                mp4file = '{:%Y%m%dT%H%M%S}.mp4'.format(now)
-                h264file = '{:%Y%m%dT%H%M%S}.h264'.format(now)
+                mp4file = '../vids/{:%Y%m%dT%H%M%S}.mp4'.format(now)
+                h264file = '../vids/{:%Y%m%dT%H%M%S}.h264'.format(now)
                 self.cam.record(h264file, 10)
                 print "Finished recording..."
                 print "Converting h264 file to mp4"
