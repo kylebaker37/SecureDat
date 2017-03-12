@@ -7,6 +7,8 @@ from datetime import datetime
 
 gpio.setmode(gpio.BCM)
 MAG_PIN = 23
+VID_PATH = '/home/pi/SecureDat/vids/'
+BASE_URL = 'http://localhost:80/'
 
 class Camera(object):
     def __init__(self):
@@ -45,19 +47,19 @@ class MagListener(object):
                 cur = False
             if prev == True and cur == False:
                 print('door open')
-                url = 'http://localhost/api/door_opened'
+                url = BASE_URL + 'api/door_opened'
                 payload = {'aid': 1}
                 try:
                     print "Attempting connection..."
-                    r = requests.get(url, json=payload)
+                    r = requests.post(url, json=payload)
                     print r.text
                     print "Connection complete..."
                 except requests.exceptions.ConnectionError:
                     print "Connection failed..."
                 print "Starting recording..."
                 now = datetime.now()
-                mp4file = '../vids/{:%Y%m%dT%H%M%S}.mp4'.format(now)
-                h264file = '../vids/{:%Y%m%dT%H%M%S}.h264'.format(now)
+                mp4file = VID_PATH + '{:%Y%m%dT%H%M%S}.mp4'.format(now)
+                h264file = VID_PATH + '{:%Y%m%dT%H%M%S}.h264'.format(now)
                 self.cam.record(h264file, 10)
                 print "Finished recording..."
                 print "Converting h264 file to mp4"
@@ -66,6 +68,15 @@ class MagListener(object):
                 p = subprocess.Popen(cmd)
                 p.wait()
                 print "Conversion complete..."
+                try:
+                    print "Attempting to update vid path..."
+                    url = BASE_URL + 'api/update_vid_path'
+                    payload = {'aid': 1, 'path': mp4file}
+                    r = requests.post(url, json=payload)
+                    print r.text
+                    print "Update complete..."
+                except requests.exceptions.ConnectionError:
+                    print "Connection to update vid failed..."
             time.sleep(0.05)
             prev = cur
 
