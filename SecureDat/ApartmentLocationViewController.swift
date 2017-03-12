@@ -7,10 +7,23 @@
 //
 
 import UIKit
+import Foundation
+import GoogleMaps
 
-class ApartmentLocationViewController: UIViewController {
+class ApartmentLocationViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDelegate {
+    @IBOutlet var mapView: GMSMapView!
 
+    var map: Map!
+    var locationManager: CLLocationManager!
+    var lat = 37.33233141
+    var long = -122.0312186
+    
     override func viewDidLoad() {
+        map = Map(mapView: mapView)
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.startUpdatingLocation()
+
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
