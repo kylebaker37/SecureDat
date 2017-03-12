@@ -112,7 +112,7 @@ class Backend{
                         completionHandler(nil)
                     }else{
                         print("Successful login -> \(result)")
-                        completionHandler(User(id: result!["id"] as! Int, username: result!["username"] as! String, email: result!["email"] as! String, phone: result!["phone"] as! String, aid: result!["aid"] as! Int))
+                        completionHandler(User(id: result!["id"] as! Int, username: result!["username"] as! String, email: result!["email"] as! String, phone: result!["phone"] as! String, aid: result!["aid"] as? Int))
                     }
                     
                 } catch {

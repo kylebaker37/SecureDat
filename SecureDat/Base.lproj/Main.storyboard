@@ -85,6 +85,9 @@
                                 <state key="normal" title="Login">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="loginButtonDidTouchUpInside:" destination="11k-9v-WR8" eventType="touchUpInside" id="Rca-O0-B4e"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="arw-0S-PzG">
                                 <rect key="frame" x="134" y="258" width="106" height="30"/>
@@ -95,6 +98,9 @@
                                 <state key="normal" title="Signup">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="signupButtonDidTouchUpInside:" destination="11k-9v-WR8" eventType="touchUpInside" id="xfD-Gb-hQs"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -119,6 +125,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="passwordLabel" destination="ttE-O9-44S" id="SJi-FM-GBF"/>
+                        <outlet property="passwordTextField" destination="OGW-D6-po3" id="dAF-Jp-bEn"/>
+                        <outlet property="usernameLabel" destination="t84-L6-ZYY" id="cRj-YX-a8K"/>
+                        <outlet property="usernameTextField" destination="e1W-fg-HVo" id="tKl-wr-MyJ"/>
                         <segue destination="2Dn-ZL-A22" kind="show" identifier="loginToSignup" id="zCn-bN-ow6"/>
                         <segue destination="RbS-LE-mbe" kind="presentation" identifier="loginToHome" id="huf-j2-7e8"/>
                     </connections>

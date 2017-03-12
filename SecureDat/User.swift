@@ -26,7 +26,7 @@ class User{
     }
     
     //from login api call
-    init(id: Int, username: String, email: String, phone: String, aid: Int){
+    init(id: Int, username: String, email: String, phone: String, aid: Int?){
         self.id = id
         self.username = username
         self.email = email

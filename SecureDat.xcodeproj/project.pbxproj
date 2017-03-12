@@ -26,6 +26,7 @@
 		4AD9D9AF1E74C72F001F4F2A /* JoinApartmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD9D9AE1E74C72F001F4F2A /* JoinApartmentViewController.swift */; };
 		4AD9D9B21E74C8C4001F4F2A /* Apartment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD9D9B11E74C8C4001F4F2A /* Apartment.swift */; };
 		4AD9D9B41E74CA97001F4F2A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD9D9B31E74CA97001F4F2A /* User.swift */; };
+		4AD9D9B61E74E266001F4F2A /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD9D9B51E74E266001F4F2A /* Helpers.swift */; };
 		B482416286E291DCA7D4A1C1 /* libPods-SecureDat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 508BBCBEA0A15FF1CC442B8A /* libPods-SecureDat.a */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +74,7 @@
 		4AD9D9AE1E74C72F001F4F2A /* JoinApartmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinApartmentViewController.swift; sourceTree = "<group>"; };
 		4AD9D9B11E74C8C4001F4F2A /* Apartment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Apartment.swift; sourceTree = "<group>"; };
 		4AD9D9B31E74CA97001F4F2A /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		4AD9D9B51E74E266001F4F2A /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		508BBCBEA0A15FF1CC442B8A /* libPods-SecureDat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SecureDat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C105DB58A6938C1A67BEFA76 /* Pods-SecureDat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SecureDat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SecureDat/Pods-SecureDat.debug.xcconfig"; sourceTree = "<group>"; };
 		EC8C31E707AA39BCA5024A0B /* Pods-SecureDat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SecureDat.release.xcconfig"; path = "Pods/Target Support Files/Pods-SecureDat/Pods-SecureDat.release.xcconfig"; sourceTree = "<group>"; };
@@ -139,7 +141,6 @@
 				2772517A1E63B48B001DE8AE /* Assets.xcassets */,
 				2772517C1E63B48B001DE8AE /* LaunchScreen.storyboard */,
 				2772517F1E63B48B001DE8AE /* Info.plist */,
-				4A1E601D1E6A4EAA00839CFF /* Backend.swift */,
 			);
 			path = SecureDat;
 			sourceTree = "<group>";
@@ -182,6 +183,8 @@
 			children = (
 				4AD9D9B11E74C8C4001F4F2A /* Apartment.swift */,
 				4AD9D9B31E74CA97001F4F2A /* User.swift */,
+				4A1E601D1E6A4EAA00839CFF /* Backend.swift */,
+				4AD9D9B51E74E266001F4F2A /* Helpers.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -401,6 +404,7 @@
 				4AD9D9AD1E74C724001F4F2A /* ApartmentSearchViewController.swift in Sources */,
 				4AD9D9AF1E74C72F001F4F2A /* JoinApartmentViewController.swift in Sources */,
 				4AD9D9A71E74C6F7001F4F2A /* ApartmentDetailsViewController.swift in Sources */,
+				4AD9D9B61E74E266001F4F2A /* Helpers.swift in Sources */,
 				4AD9D9A91E74C70A001F4F2A /* ApartmentLocationViewController.swift in Sources */,
 				4AD9D9AB1E74C714001F4F2A /* AddRoommatesViewController.swift in Sources */,
 				4AD9D9A31E74C6D8001F4F2A /* SignupViewController.swift in Sources */,
