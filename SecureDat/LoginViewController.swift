@@ -51,16 +51,20 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func signupButtonDidTouchUpInside(_ sender: Any) {
+        performSegue(withIdentifier: "loginToSignup", sender: self)
     }
+
     
-    /*
+    
     // MARK: - Navigation
+     
+    @IBAction func unwindToLogin(segue: UIStoryboardSegue) {}
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+   /* override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-    }
-    */
+    }*/
+    
 
 }

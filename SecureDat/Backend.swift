@@ -13,7 +13,7 @@ class Backend{
     static let PORT = "5000"
     
     //returns uid if user is successfully created, else returns -1
-    static func add_user(username: String, password: String, email: String, phone: String, completionHandler: @escaping (Int) -> ()){
+    static func add_user(username: String, password: String, email: String, phone: String, completionHandler: @escaping (Dictionary<String, Any>) -> ()){
         let json = ["username":username, "password":password, "email":email, "phone":phone]
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
@@ -21,17 +21,19 @@ class Backend{
             let task = URLSession.shared.dataTask(with: request as URLRequest){ data, response, error in
                 if error != nil{
                     print("Error -> \(error)")
-                    completionHandler(-1)
+                    completionHandler(["result": "error", "message": "Failed in backend", "id":-1])
                 }
                 do {
                     let result = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String:AnyObject]
-                    let uid = result!["id"] as! Int
-                    completionHandler(uid)
+                    let status = result!["result"] as! String
+                    let message = result!["message"] as! String
+                    let id = result!["id"] as! Int
+                    completionHandler(["result": status, "message": message, "id": id])
                     print("Result -> \(result)")
                     
                 } catch {
                     print("Error -> \(error)")
-                    completionHandler(-1)
+                    completionHandler(["result": "error", "message": "Failed in swift catch", "id":-1])
                 }
             }
             task.resume()

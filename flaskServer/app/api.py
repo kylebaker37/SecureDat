@@ -9,15 +9,27 @@ def health_check():
 
 @app.route('/api/add_user', methods = ['POST'])
 def add_user():
-	  json = request.get_json()
-	  username = json['username']
-	  password = json['password']
-	  email = json['email']
-	  phone = json['phone']
-	  u = models.User(username, password, email, phone)
-	  db.session.add(u)
-	  db.session.commit()
-	  return jsonify({'success':'user created', 'id':u.id})
+    result = "error"
+    message = "default failure message"
+    uid = -1
+    json = request.get_json()
+    username = json['username']
+    password = json['password']
+    email = json['email']
+    phone = json['phone']
+
+    if(models.User.query.filter_by(username=username).first() is not None):
+      message = "Username taken"
+    elif(models.User.query.filter_by(email=email).first() is not None):
+      message = "Email taken"
+    else:
+      u = models.User(username, password, email, phone)
+      db.session.add(u)
+      db.session.commit()
+      result = "success"
+      message = "User account successfully created!"
+      uid = u.id
+    return jsonify({'result':result, 'message':message, 'id':uid})
 
 @app.route('/api/login', methods = ['POST'])
 def login():
@@ -36,14 +48,14 @@ def login():
 
 @app.route('/api/add_apartment', methods = ['POST'])
 def add_apartment():
-	  json = request.get_json()
-	  aptname = json['aptname']
-	  latitude = json['latitude']
-	  longitude = json['longitude']
-	  a = models.Apartment(aptname=aptname, latitude=latitude, longitude=longitude)
-	  db.session.add(a)
-	  db.session.commit()
-	  return jsonify({'success':'apartment created!', 'id':a.id})
+  json = request.get_json()
+  aptname = json['aptname']
+  latitude = json['latitude']
+  longitude = json['longitude']
+  a = models.Apartment(aptname=aptname, latitude=latitude, longitude=longitude)
+  db.session.add(a)
+  db.session.commit()
+  return jsonify({'success':'apartment created!', 'id':a.id})
 
 @app.route('/api/add_users_to_apartment', methods = ['POST'])
 def add_users_to_apartment():
