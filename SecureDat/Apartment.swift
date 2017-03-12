@@ -9,9 +9,23 @@
 import Foundation
 
 class Apartment{
-    var latitude: Float = 0.0
-    var longitude: Float = 0.0
-    var name: String = "Default Apartment Name"
-    var password: String = "password"   //currently just password for all until implemented in API
+    var id: Int = -1    //initialized to dummy value
+    var latitude: Float?
+    var longitude: Float?
+    var name: String
+    var password: String
     var users: [Int] = []   //user ids... currently would be adding them using add_users_to_apartment API call
+    
+    init(name: String, password: String){
+        self.name = name
+        self.password = password
+        
+    }
+    
+    init(id: Int){
+        self.id = id
+        //TODO will get values from backend based on id...
+        self.name = "dummy"
+        self.password = "dummy"
+    }
 }
