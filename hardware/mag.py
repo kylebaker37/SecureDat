@@ -2,6 +2,8 @@ import RPi.GPIO as gpio
 import time
 import picamera
 import requests
+import subprocess
+from datetime import datetime
 
 gpio.setmode(gpio.BCM)
 MAG_PIN = 23
@@ -53,8 +55,17 @@ class MagListener(object):
                 except requests.exceptions.ConnectionError:
                     print "Connection failed..."
                 print "Starting recording..."
-                self.cam.record('opendoor.h264', 10)
+                now = datetime.now()
+                mp4file = '{:%Y%m%dT%H%M%S}.mp4'.format(now)
+                h264file = '{:%Y%m%dT%H%M%S}.h264'.format(now)
+                self.cam.record(h264file, 10)
                 print "Finished recording..."
+                print "Converting h264 file to mp4"
+                cmd = ('avconv -i %s -c:v copy -f mp4 %s' % (h264file, mp4file)).split(' ')
+                print cmd
+                p = subprocess.Popen(cmd)
+                p.wait()
+                print "Conversion complete..."
             time.sleep(0.05)
             prev = cur
 
