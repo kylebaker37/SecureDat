@@ -19,6 +19,21 @@ def add_user():
 	  db.session.commit()
 	  return jsonify({'success':'user created', 'id':u.id})
 
+@app.route('/api/login', methods = ['POST'])
+def login():
+  json = request.get_json()
+  username = json['username']
+  password = json['password']
+  user = models.User.query.filter_by(username=username).first()
+  if user is None:
+    return jsonify({'result':'error', 'message':'user does not exist'})
+  elif (user.password != password):
+    return jsonify({'result':'error', 'message':'password is incorrect'})
+  else:
+    return jsonify({'result':'success', 'id':user.id, 'username': user.username, 'aid':user.aid, 'email':user.email, 'phone': user.phone, 'at_home': user.at_home})
+
+
+
 @app.route('/api/add_apartment', methods = ['POST'])
 def add_apartment():
 	  json = request.get_json()

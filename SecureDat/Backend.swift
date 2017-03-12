@@ -92,6 +92,39 @@ class Backend{
         }
         task.resume()
     }
+    
+    static func login(username: String, password: String, completionHandler: @escaping (User?) -> ()){
+        let json = ["username":username, "password":password]
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
+            let request = Backend.prepare_json_request(jsonData: jsonData, method: "POST", endpoint: "/api/login")
+            let task = URLSession.shared.dataTask(with: request as URLRequest){ data, response, error in
+                if error != nil{
+                    print("Error -> \(error)")
+                    completionHandler(nil)
+                }
+                do {
+                    let result = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String:AnyObject]
+                    let result_message = result!["result"] as! String
+                    if (result_message == "error"){
+                        completionHandler(nil)
+                    }else if(result_message != "success"){
+                        completionHandler(nil)
+                    }else{
+                        print("Successful login -> \(result)")
+                        completionHandler(User(id: result!["id"] as! Int, username: result!["username"] as! String, email: result!["email"] as! String, phone: result!["phone"] as! String, aid: result!["aid"] as! Int))
+                    }
+                    
+                } catch {
+                    print("Error -> \(error)")
+                    completionHandler(nil)
+                }
+            }
+            task.resume()
+        } catch {
+            print(error)
+        }
+    }
 
     
     //adds apartment, returns an ID for the new apartment
