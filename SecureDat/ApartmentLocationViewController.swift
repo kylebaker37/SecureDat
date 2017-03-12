@@ -15,8 +15,7 @@ class ApartmentLocationViewController: UIViewController, GMSMapViewDelegate, CLL
 
     var map: Map!
     var locationManager: CLLocationManager!
-    var lat = 37.33233141
-    var long = -122.0312186
+    var apt: Apartment!
     
     override func viewDidLoad() {
         map = Map(mapView: mapView)
@@ -36,16 +35,21 @@ class ApartmentLocationViewController: UIViewController, GMSMapViewDelegate, CLL
     }
     
     func createApartmentAtLocation() {
-        self.performSegue(withIdentifier: "apartmentLocationToAddRoommates", sender: self)
+        apt.latitude = map.lat
+        apt.longitude = map.long
+        Backend.add_apartment(aptname: apt.name, latitude: apt.latitude!, longitude: apt.longitude!, completionHandler: {
+            newAptId in
+            DispatchQueue.main.async {
+                if (newAptId != -1){
+                    self.apt.id = newAptId
+                    self.performSegue(withIdentifier: "apartmentLocationToAddRoommates", sender: self)
+                    print(newAptId)
+                }else{
+                    Helpers.createAlert(title: "Apartment Creation Failed", message: "???", vc: self)
+                }
+                
+            }
+        })
+        
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
