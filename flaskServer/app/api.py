@@ -9,26 +9,53 @@ def health_check():
 
 @app.route('/api/add_user', methods = ['POST'])
 def add_user():
-	  json = request.get_json()
-	  username = json['username']
-	  password = json['password']
-	  email = json['email']
-	  phone = json['phone']
-	  u = models.User(username, password, email, phone)
-	  db.session.add(u)
-	  db.session.commit()
-	  return jsonify({'success':'user created', 'id':u.id})
+    result = "error"
+    message = "default failure message"
+    uid = -1
+    json = request.get_json()
+    username = json['username']
+    password = json['password']
+    email = json['email']
+    phone = json['phone']
+
+    if(models.User.query.filter_by(username=username).first() is not None):
+      message = "Username taken"
+    elif(models.User.query.filter_by(email=email).first() is not None):
+      message = "Email taken"
+    else:
+      u = models.User(username, password, email, phone)
+      db.session.add(u)
+      db.session.commit()
+      result = "success"
+      message = "User account successfully created!"
+      uid = u.id
+    return jsonify({'result':result, 'message':message, 'id':uid})
+
+@app.route('/api/login', methods = ['POST'])
+def login():
+  json = request.get_json()
+  username = json['username']
+  password = json['password']
+  user = models.User.query.filter_by(username=username).first()
+  if user is None:
+    return jsonify({'result':'error', 'message':'user does not exist'})
+  elif (user.password != password):
+    return jsonify({'result':'error', 'message':'password is incorrect'})
+  else:
+    return jsonify({'result':'success', 'id':user.id, 'username': user.username, 'aid':user.aid, 'email':user.email, 'phone': user.phone, 'at_home': user.at_home})
+
+
 
 @app.route('/api/add_apartment', methods = ['POST'])
 def add_apartment():
-	  json = request.get_json()
-	  aptname = json['aptname']
-	  latitude = json['latitude']
-	  longitude = json['longitude']
-	  a = models.Apartment(aptname=aptname, latitude=latitude, longitude=longitude)
-	  db.session.add(a)
-	  db.session.commit()
-	  return jsonify({'success':'apartment created!', 'id':a.id})
+  json = request.get_json()
+  aptname = json['aptname']
+  latitude = json['latitude']
+  longitude = json['longitude']
+  a = models.Apartment(aptname=aptname, latitude=latitude, longitude=longitude)
+  db.session.add(a)
+  db.session.commit()
+  return jsonify({'success':'apartment created!', 'id':a.id})
 
 @app.route('/api/add_users_to_apartment', methods = ['POST'])
 def add_users_to_apartment():

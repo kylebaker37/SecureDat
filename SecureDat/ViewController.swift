@@ -13,10 +13,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         //TESTING BASIC BACKEND INTERACTION
         Backend.add_user(username: "test user", password: "password", email: "testuser@gmail.com", phone: "+19253302530", completionHandler: {
-            uid in
+            result_dict1 in
             Backend.add_user(username: "test user2", password: "password", email: "testuser2@gmail.com", phone: "+19253302530", completionHandler: {
-                uid2 in
-                print("user created: \(uid)")
+                result_dict2 in
                 Backend.add_apartment(aptname: "new apartment 5", latitude: 119.999, longitude: 25.8484, completionHandler: {
                     aid in
                     print("apartment created: \(aid)")
@@ -24,6 +23,8 @@ class ViewController: UIViewController {
                         location in
                         print("lat: \(location[0]), long: \(location[1])")
                     })
+                    let uid = result_dict1["id"] as! Int
+                    let uid2 = result_dict2["id"] as! Int
                     Backend.add_users_to_apartment(uids: [uid, uid2], aid: aid)
                     Backend.update_user_location_status(uid: uid, at_home: false)
                     Backend.update_user_location_status(uid: uid, at_home: true)

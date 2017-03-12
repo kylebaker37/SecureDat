@@ -13,5 +13,7 @@ xcuserdata/
 
 # db
 *.db
-config/db_repository/
+flaskServer/config/db_repository/
 
+# CocoaPods
+Pods/Pods.xcodeproj/xcuserdata/*
