@@ -30,18 +30,29 @@ class AddRoommatesViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:UITableViewCell = self.tableView.dequeueReusableCell(withIdentifier: "usersListCell")! as UITableViewCell
-        
-        cell.textLabel?.text = self.users[indexPath.row]
-        
+        let cell:UsersListCell = self.tableView.dequeueReusableCell(withIdentifier: "usersListCell") as! UsersListCell
+        cell.username.text = self.users[indexPath.row]
+        cell.email.text = self.users[indexPath.row]
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
-        return 100.0;//Choose your custom row height
+        return 75.0;//Choose your custom row height
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+        let userName = self.users[indexPath.row]
+        let confirmAlert = UIAlertController(title: "Confirm", message: "Add User?", preferredStyle: UIAlertControllerStyle.alert)
+        
+        confirmAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+            print("Handle Ok logic here")
+        }))
+        
+        confirmAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+            print("Handle Cancel Logic here")
+        }))
+        
+        present(confirmAlert, animated: true, completion: nil)
         return
     }
     /*
