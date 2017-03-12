@@ -40,6 +40,7 @@ class LoginViewController: UIViewController {
                 user in
                 DispatchQueue.main.async {
                     if (user != nil){
+                        self.performSegue(withIdentifier: "loginToHome", sender: self)
                         print((user?.username)! as String)
                     }else{
                         Helpers.createAlert(title: "Login Failed", message: "Username does not match password", vc: self)
