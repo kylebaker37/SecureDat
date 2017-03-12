@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="11k-9v-WR8">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -37,7 +38,243 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="140" y="22"/>
+            <point key="canvasLocation" x="140" y="20"/>
+        </scene>
+        <!--Login-->
+        <scene sceneID="gb7-Wg-ejg">
+            <objects>
+                <viewController title="Login" id="11k-9v-WR8" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="VsN-o3-x1W"/>
+                        <viewControllerLayoutGuide type="bottom" id="UJS-q7-3Sp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0cH-US-5Mf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="2Dn-ZL-A22" kind="show" identifier="loginToSignup" id="zCn-bN-ow6"/>
+                        <segue destination="RbS-LE-mbe" kind="presentation" identifier="loginToHome" id="huf-j2-7e8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gka-tI-CzG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="140" y="735"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="ruH-rI-LOH">
+            <objects>
+                <viewController title="Home" id="RbS-LE-mbe" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YC9-g1-5xf"/>
+                        <viewControllerLayoutGuide type="bottom" id="xvC-pf-X6S"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Wm7-xV-eAJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shows roomate status... apartment details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SiS-dB-B0A">
+                                <rect key="frame" x="26" y="323" width="323" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="SiS-dB-B0A" firstAttribute="centerX" secondItem="Wm7-xV-eAJ" secondAttribute="centerX" id="DZR-zY-ao0"/>
+                            <constraint firstItem="SiS-dB-B0A" firstAttribute="centerY" secondItem="Wm7-xV-eAJ" secondAttribute="centerY" id="lfg-WB-E3B"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <segue destination="abB-5R-EEx" kind="show" identifier="homeToApartmentDetails" id="HBG-Dk-FCV"/>
+                        <segue destination="nmv-Eg-Xd1" kind="show" identifier="homeToApartmentSearch" id="fl3-ZB-SzX"/>
+                        <segue destination="11k-9v-WR8" kind="presentation" identifier="homeToLogin" id="j2g-f6-4wa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b9o-xM-gpm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="140" y="1458"/>
+        </scene>
+        <!--Apartment Search-->
+        <scene sceneID="0QL-0Z-apd">
+            <objects>
+                <viewController title="Apartment Search" id="nmv-Eg-Xd1" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="JaH-6D-MzH"/>
+                        <viewControllerLayoutGuide type="bottom" id="lYR-40-tfn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8nA-OS-Mi9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search for apartments to join" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pcc-Kc-u0M">
+                                <rect key="frame" x="76" y="323" width="222" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="pcc-Kc-u0M" firstAttribute="centerX" secondItem="8nA-OS-Mi9" secondAttribute="centerX" id="e0k-Gc-gBZ"/>
+                            <constraint firstItem="pcc-Kc-u0M" firstAttribute="centerY" secondItem="8nA-OS-Mi9" secondAttribute="centerY" id="jke-OE-wCN"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <segue destination="HVW-Oe-mZe" kind="show" identifier="apartmentSearchToJoinApartment" id="Yw9-s7-394"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4EL-CC-O3h" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="140" y="2236"/>
+        </scene>
+        <!--Join Apartment-->
+        <scene sceneID="llN-un-vNt">
+            <objects>
+                <viewController title="Join Apartment" id="HVW-Oe-mZe" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="d2n-xV-kwa"/>
+                        <viewControllerLayoutGuide type="bottom" id="jGt-NG-ZzN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5VP-R3-gs6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="join apartment view with password and deets" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CaG-xQ-MDc">
+                                <rect key="frame" x="27" y="323" width="320" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="CaG-xQ-MDc" firstAttribute="centerY" secondItem="5VP-R3-gs6" secondAttribute="centerY" id="WuF-RD-fvk"/>
+                            <constraint firstItem="CaG-xQ-MDc" firstAttribute="leading" secondItem="5VP-R3-gs6" secondAttribute="leadingMargin" constant="11" id="d2P-6r-Noh"/>
+                            <constraint firstItem="CaG-xQ-MDc" firstAttribute="centerX" secondItem="5VP-R3-gs6" secondAttribute="centerX" id="tHq-bs-lPz"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7hA-wz-kut" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="981.60000000000002" y="2235.832083958021"/>
+        </scene>
+        <!--Apartment Details-->
+        <scene sceneID="buS-Pi-9IT">
+            <objects>
+                <viewController title="Apartment Details" id="abB-5R-EEx" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Cgj-wV-giU"/>
+                        <viewControllerLayoutGuide type="bottom" id="rCK-RP-fJD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YX9-hx-Afm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Apartment details... name, password" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JLG-mP-iWt">
+                                <rect key="frame" x="25" y="323" width="324" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="JLG-mP-iWt" firstAttribute="leading" secondItem="YX9-hx-Afm" secondAttribute="leadingMargin" constant="9" id="8vA-MC-fvk"/>
+                            <constraint firstItem="JLG-mP-iWt" firstAttribute="centerY" secondItem="YX9-hx-Afm" secondAttribute="centerY" id="b6n-Kr-Oaw"/>
+                            <constraint firstItem="JLG-mP-iWt" firstAttribute="centerX" secondItem="YX9-hx-Afm" secondAttribute="centerX" id="sed-55-3jk"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <segue destination="EUv-ed-CzR" kind="show" identifier="apartmentDetailsToApartmentLocation" id="yGH-Y5-XZ5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J4c-Dv-Ztr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="981.60000000000002" y="1457.7211394302849"/>
+        </scene>
+        <!--Apartment Location-->
+        <scene sceneID="SbP-wm-wlP">
+            <objects>
+                <viewController title="Apartment Location" id="EUv-ed-CzR" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ehE-TD-5Wr"/>
+                        <viewControllerLayoutGuide type="bottom" id="Tmv-Xv-U2k"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="A5r-le-Tow">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Apartment Location on Map" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZXu-rJ-oRw">
+                                <rect key="frame" x="54" y="323" width="266" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ZXu-rJ-oRw" firstAttribute="centerX" secondItem="A5r-le-Tow" secondAttribute="centerX" id="Cxi-EF-Z2Q"/>
+                            <constraint firstItem="ZXu-rJ-oRw" firstAttribute="centerY" secondItem="A5r-le-Tow" secondAttribute="centerY" id="UOJ-vY-NUr"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <segue destination="fa2-DU-FCp" kind="show" identifier="apartmentLocationToAddRoommates" id="8n3-cs-TCh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BnK-bh-QNG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1896.8" y="1457.7211394302849"/>
+        </scene>
+        <!--Add Roommates-->
+        <scene sceneID="0S5-jT-LRk">
+            <objects>
+                <viewController title="Add Roommates" id="fa2-DU-FCp" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xSM-eT-H3Q"/>
+                        <viewControllerLayoutGuide type="bottom" id="U1s-FW-y1O"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ucx-b7-b0Y">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search for and add roommates" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O2D-8q-e7O">
+                                <rect key="frame" x="69" y="323" width="237" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="O2D-8q-e7O" firstAttribute="centerY" secondItem="Ucx-b7-b0Y" secondAttribute="centerY" id="Loe-zb-36B"/>
+                            <constraint firstItem="O2D-8q-e7O" firstAttribute="centerX" secondItem="Ucx-b7-b0Y" secondAttribute="centerX" id="ogU-QW-4Fg"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Lv-ZI-T97" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2808.8000000000002" y="1457.7211394302849"/>
+        </scene>
+        <!--Signup-->
+        <scene sceneID="xYs-VR-Gbv">
+            <objects>
+                <viewController title="Signup" id="2Dn-ZL-A22" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="I5M-Le-bWR"/>
+                        <viewControllerLayoutGuide type="bottom" id="HOa-6K-MvE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="D5u-On-fWv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ovw-Md-AcK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="982" y="734"/>
         </scene>
         <!--Location-->
         <scene sceneID="HkG-Ji-faq">
@@ -64,7 +301,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="azl-SV-9nj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="982" y="48"/>
+            <point key="canvasLocation" x="982" y="21"/>
         </scene>
     </scenes>
 </document>
