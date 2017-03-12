@@ -24,6 +24,8 @@
 		4AD9D9AB1E74C714001F4F2A /* AddRoommatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD9D9AA1E74C714001F4F2A /* AddRoommatesViewController.swift */; };
 		4AD9D9AD1E74C724001F4F2A /* ApartmentSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD9D9AC1E74C724001F4F2A /* ApartmentSearchViewController.swift */; };
 		4AD9D9AF1E74C72F001F4F2A /* JoinApartmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD9D9AE1E74C72F001F4F2A /* JoinApartmentViewController.swift */; };
+		4AD9D9B21E74C8C4001F4F2A /* Apartment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD9D9B11E74C8C4001F4F2A /* Apartment.swift */; };
+		4AD9D9B41E74CA97001F4F2A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD9D9B31E74CA97001F4F2A /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +70,8 @@
 		4AD9D9AA1E74C714001F4F2A /* AddRoommatesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRoommatesViewController.swift; sourceTree = "<group>"; };
 		4AD9D9AC1E74C724001F4F2A /* ApartmentSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApartmentSearchViewController.swift; sourceTree = "<group>"; };
 		4AD9D9AE1E74C72F001F4F2A /* JoinApartmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinApartmentViewController.swift; sourceTree = "<group>"; };
+		4AD9D9B11E74C8C4001F4F2A /* Apartment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Apartment.swift; sourceTree = "<group>"; };
+		4AD9D9B31E74CA97001F4F2A /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +122,7 @@
 		277251721E63B48B001DE8AE /* SecureDat */ = {
 			isa = PBXGroup;
 			children = (
+				4AD9D9B01E74C8B2001F4F2A /* Classes */,
 				4AD9D99F1E74C6AB001F4F2A /* View Controllers */,
 				4A2172161E63B7160037DF78 /* SecureDat.entitlements */,
 				277251771E63B48B001DE8AE /* Main.storyboard */,
@@ -163,6 +168,15 @@
 				4AD9D9AE1E74C72F001F4F2A /* JoinApartmentViewController.swift */,
 			);
 			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		4AD9D9B01E74C8B2001F4F2A /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				4AD9D9B11E74C8C4001F4F2A /* Apartment.swift */,
+				4AD9D9B31E74CA97001F4F2A /* User.swift */,
+			);
+			name = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -315,11 +329,13 @@
 				4AD9D9A91E74C70A001F4F2A /* ApartmentLocationViewController.swift in Sources */,
 				4AD9D9AB1E74C714001F4F2A /* AddRoommatesViewController.swift in Sources */,
 				4AD9D9A31E74C6D8001F4F2A /* SignupViewController.swift in Sources */,
+				4AD9D9B41E74CA97001F4F2A /* User.swift in Sources */,
 				4A1E601E1E6A4EAA00839CFF /* Backend.swift in Sources */,
 				4A1E601C1E68B96300839CFF /* LocationViewController.swift in Sources */,
 				277251761E63B48B001DE8AE /* ViewController.swift in Sources */,
 				4AD9D9A11E74C6CD001F4F2A /* LoginViewController.swift in Sources */,
 				4AD9D9A51E74C6EC001F4F2A /* HomeViewController.swift in Sources */,
+				4AD9D9B21E74C8C4001F4F2A /* Apartment.swift in Sources */,
 				277251741E63B48B001DE8AE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
