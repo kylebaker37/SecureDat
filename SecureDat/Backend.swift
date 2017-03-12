@@ -219,6 +219,30 @@ class Backend{
         request.httpBody = jsonData
         return request
     }
+    
+    static func get_videos(completionHandler: @escaping ([String]) -> ()) {
+        let url = NSURL(string: HOST + ":" + PORT + "/api/videos")!
+        let request = NSMutableURLRequest(url: url as URL)
+        request.httpMethod = "GET"
+        
+        let task = URLSession.shared.dataTask(with: request as URLRequest){ data, response, error in
+            if error != nil{
+                print("Error -> \(error)")
+                return
+            }
+            do {
+                let result = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String:AnyObject]
+                let videos = result!["videos"] as! [String]
+                completionHandler(videos)
+                print("Result -> \(result)")
+                
+            } catch {
+                print("Error -> \(error)")
+                return
+            }
+        }
+        task.resume()
+    }
 
 
 }

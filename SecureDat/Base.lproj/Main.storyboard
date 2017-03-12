@@ -182,7 +182,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="TO VIDEO"/>
                                 <connections>
-                                    <segue destination="y54-Oh-gaB" kind="show" id="Ra0-rC-Sh0"/>
+                                    <segue destination="mRx-t2-04f" kind="show" id="caC-iz-HaT"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -267,6 +267,49 @@
             </objects>
             <point key="canvasLocation" x="981.60000000000002" y="2235.832083958021"/>
         </scene>
+        <!--Video Table View Controller-->
+        <scene sceneID="Th2-DC-Qnw">
+            <objects>
+                <viewController id="mRx-t2-04f" customClass="VideoTableViewController" customModule="SecureDat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="uIW-dW-c2W"/>
+                        <viewControllerLayoutGuide type="bottom" id="2Xs-3Q-Wbe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jW9-um-aeP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JhI-ma-pyZ">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="vidcell" id="b2X-Io-dIc">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="b2X-Io-dIc" id="tgf-Lt-CYw">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="mRx-t2-04f" id="SDS-wq-XQ8"/>
+                                    <outlet property="delegate" destination="mRx-t2-04f" id="kMG-9O-gBf"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="videosTableView" destination="JhI-ma-pyZ" id="IwE-U9-9Q4"/>
+                        <segue destination="y54-Oh-gaB" kind="show" identifier="videoListToVideo" id="G5u-8g-D8A"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KtW-kO-jro" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1824.8" y="2243.9280359820091"/>
+        </scene>
         <!--Video View Controller-->
         <scene sceneID="Xqg-GJ-1YG">
             <objects>
@@ -283,7 +326,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJJ-WP-fO3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1963" y="2229"/>
+            <point key="canvasLocation" x="2681" y="2236"/>
         </scene>
         <!--Apartment Details-->
         <scene sceneID="buS-Pi-9IT">
