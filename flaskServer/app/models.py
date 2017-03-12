@@ -27,10 +27,19 @@ class Apartment(db.Model):
   aptname = db.Column(db.String(64), index=True, unique=False)
   latitude = db.Column(db.Float(Precision=64), index=False, unique=False)
   longitude = db.Column(db.Float(Precision=64), index=False, unique=False)
-  users = db.relationship('User', backref='apartment', lazy='select')    
+  users = db.relationship('User', backref='apartment', lazy='select')
+  vids = db.relationship('Video', backref='apartment', lazy='dynamic')    
 
   def __repr__(self):
     return '<Apartment %r>' % (self.aptname)
 
 #TODO: later if we get to it... invites to apartments... 
 #class JoinPermission(db.Model):
+
+class Video(db.Model):
+  id = db.Column(db.Integer, primary_key=True)
+  path = db.Column(db.String(128), index=True, unique=True)
+  aid = db.Column(db.Integer, db.ForeignKey('apartment.id'))
+
+  def __repr__(self):
+    return '<Video %r>' % (self.path)
