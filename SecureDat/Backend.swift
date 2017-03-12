@@ -130,7 +130,7 @@ class Backend{
 
     
     //adds apartment, returns an ID for the new apartment
-    static func add_apartment(aptname: String, latitude: Float, longitude: Float, completionHandler: @escaping (Int) -> ()){
+    static func add_apartment(aptname: String, latitude: Double, longitude: Double, completionHandler: @escaping (Int) -> ()){
         let json = ["aptname":aptname, "latitude":latitude, "longitude":longitude] as [String : Any]
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
@@ -218,6 +218,30 @@ class Backend{
         request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
         request.httpBody = jsonData
         return request
+    }
+    
+    static func get_videos(completionHandler: @escaping ([String]) -> ()) {
+        let url = NSURL(string: HOST + ":" + PORT + "/api/videos")!
+        let request = NSMutableURLRequest(url: url as URL)
+        request.httpMethod = "GET"
+        
+        let task = URLSession.shared.dataTask(with: request as URLRequest){ data, response, error in
+            if error != nil{
+                print("Error -> \(error)")
+                return
+            }
+            do {
+                let result = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String:AnyObject]
+                let videos = result!["videos"] as! [String]
+                completionHandler(videos)
+                print("Result -> \(result)")
+                
+            } catch {
+                print("Error -> \(error)")
+                return
+            }
+        }
+        task.resume()
     }
 
 

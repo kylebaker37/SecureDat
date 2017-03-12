@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, Response
+from flask import Flask, request, jsonify, Response, send_from_directory
 from app import app, models, db
 from helpers import Messenger
 
@@ -135,4 +135,17 @@ def update_vid_path():
   db.session.commit()
   return jsonify({'success':'video path updated'})
 
-  
+@app.route('/api/vid/<aid>/<filename>', methods = ['GET'])
+def send_video(aid, filename):
+  return send_from_directory('/Users/kyle/Desktop/', filename)
+  # TODO - Set real file path on ras pi
+  # TODO - Look into 206/Broken Pipe/Weird Errors
+
+@app.route('/api/videos', methods = ['GET'])
+def send_video_list():
+  videos = models.Video.query.all()
+  to_return = {'videos': []}
+  for video in videos:
+    to_return['videos'].append(video.path.split('/')[-1])
+  return jsonify(to_return)
+
