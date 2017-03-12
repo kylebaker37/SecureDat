@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 import GoogleMaps
 
-class ApartmentLocationViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDelegate {
+class ApartmentLocationViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDelegate, MapDelegate {
     @IBOutlet var mapView: GMSMapView!
 
     var map: Map!
@@ -20,6 +20,7 @@ class ApartmentLocationViewController: UIViewController, GMSMapViewDelegate, CLL
     
     override func viewDidLoad() {
         map = Map(mapView: mapView)
+        map.delegate = self
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.startUpdatingLocation()
@@ -34,7 +35,9 @@ class ApartmentLocationViewController: UIViewController, GMSMapViewDelegate, CLL
         // Dispose of any resources that can be recreated.
     }
     
-
+    func createApartmentAtLocation() {
+        self.performSegue(withIdentifier: "apartmentLocationToAddRoommates", sender: self)
+    }
     /*
     // MARK: - Navigation
 
