@@ -59,20 +59,20 @@ def add_apartment():
 
 @app.route('/api/add_users_to_apartment', methods = ['POST'])
 def add_users_to_apartment():
-	json = request.get_json()
-	aid = json['aid']
-	uids = json['uids']
-	apartment = models.Apartment.query.get(aid)
-	if apartment is not None:
-	  for uid in uids:
-		  user = models.User.query.get(uid)
-		  if user is not None:
-			  apartment.users.append(user)
-			  db.session.commit()
-			  print 'user {} added to apartment {}'.format(user.username, aid)
-	  return jsonify({'success':'users added to apartment!'})
-	else:
-	  return jsonify({'error':'apartment does not exist!'})
+  json = request.get_json()
+  aid = json['aid']
+  uids = json['uids']
+  apartment = models.Apartment.query.get(aid)
+  if apartment is not None:
+    for uid in uids:
+      user = models.User.query.get(uid)
+      if user is not None:
+        apartment.users.append(user)
+        db.session.commit()
+        print 'user {} added to apartment {}'.format(user.username, aid)
+    return jsonify({'success':'users added to apartment!'})
+  else:
+    return jsonify({'error':'apartment does not exist!'})
 
 @app.route('/api/apartment_location', methods = ['GET'])
 def apartment_location():
@@ -98,25 +98,41 @@ def user_location_status():
 
 @app.route('/api/door_opened', methods = ['POST'])
 def door_opened():
-	  json = request.get_json()
-	  aid = json['aid']
-	  apartment = models.Apartment.query.get(aid)
-	  if apartment is None:
-	  	return jsonify({'error':'apartment id does not exist!'})
-	  else:
-	    users = apartment.users
-	    users_at_home = []
-	    for user in users:
-	      if user.at_home == True:
-	        users_at_home.append(user.username)
-	    if not users_at_home:
-	      twil = Messenger.Messenger()
-	      for user in users:
-	        message = "Your door is open!!! :O"
-	        twil.sendMessage(user.phone, message)
-	        print 'sent {} to {}'.format(message, user.phone)
-	      return jsonify({'success':'apartment alerted!'})
-	    else:
-	      return jsonify({'users_at_home':users_at_home, 'info': 'no one alerted'})
-	  #...get phone numbers for each of the users in that apartment, and call twilio to alert
-	  #...later could add check to determine if any users are in the apartment before using twilio alerts
+  json = request.get_json()
+  aid = json['aid']
+  apartment = models.Apartment.query.get(aid)
+  if apartment is None:
+    return jsonify({'error':'apartment id does not exist!'})
+  else:
+    users = apartment.users
+    users_at_home = []
+    for user in users:
+      if user.at_home == True:
+        users_at_home.append(user.username)
+    if not users_at_home:
+      twil = Messenger.Messenger()
+      for user in users:
+        message = "Your door is open!!! :O"
+        twil.sendMessage(user.phone, message)
+        print 'sent {} to {}'.format(message, user.phone)
+      return jsonify({'success':'apartment alerted!'})
+    else:
+      return jsonify({'users_at_home':users_at_home, 'info': 'no one alerted'})
+  #...get phone numbers for each of the users in that apartment, and call twilio to alert
+  #...later could add check to determine if any users are in the apartment before using twilio alerts
+
+@app.route('/api/update_vid_path', methods = ['POST'])
+def update_vid_path():
+  json = request.get_json()
+  aid = json['aid']
+  path = json['path']
+  apartment = models.Apartment.query.get(aid)
+  if apartment is None:
+    return jsonify({'error':'apartment id does not exist!'})
+  v = models.Video(path=path)
+  db.session.add(v)
+  apartment.vids.append(v)
+  db.session.commit()
+  return jsonify({'success':'video path updated'})
+
+  
