@@ -20,10 +20,10 @@ class VideoViewController: UIViewController {
         let urlString = "http://jplayer.org/video/m4v/Big_Buck_Bunny_Trailer.m4v"
         if let url = NSURL(string: urlString) {
             let player = AVPlayer(url: url as URL)
-            
             let playerLayer = AVPlayerLayer(player: player)
             let height = self.view.frame.size.width * 9 / 16
             playerLayer.frame = CGRect(x: 0, y: 50, width: self.view.frame.size.width, height: height)
+            playerLayer.backgroundColor = UIColor.black.cgColor
             self.view.layer.addSublayer(playerLayer)
             player.play()
         }
