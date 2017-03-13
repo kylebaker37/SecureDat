@@ -163,45 +163,159 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shows roomate status... apartment details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SiS-dB-B0A">
-                                <rect key="frame" x="26" y="323" width="323" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" User" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9GS-Za-8Me">
+                                <rect key="frame" x="16" y="79" width="343" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ATw-Ar-Auh">
-                                <rect key="frame" x="164" y="143" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="abB-5R-EEx" kind="show" action="showDetailViewController:sender:" id="mrA-aB-NaV"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZfC-Sb-X8j">
-                                <rect key="frame" x="142" y="497" width="69" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="TO VIDEO"/>
-                                <connections>
-                                    <segue destination="mRx-t2-04f" kind="show" id="caC-iz-HaT"/>
-                                </connections>
-                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q1o-xs-1hj">
+                                <rect key="frame" x="0.0" y="110" width="375" height="557"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ATw-Ar-Auh">
+                                        <rect key="frame" x="126" y="74" width="123" height="30"/>
+                                        <state key="normal" title="Create Apartment"/>
+                                        <connections>
+                                            <segue destination="abB-5R-EEx" kind="show" identifier="homeToApartmentDetails" id="90r-j7-4Z5"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You're currently not in an apartment..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qoa-UX-bP2">
+                                        <rect key="frame" x="8" y="38" width="359" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qp3-Ra-fvi">
+                                        <rect key="frame" x="134" y="119" width="106" height="30"/>
+                                        <state key="normal" title="Join Apartment"/>
+                                        <connections>
+                                            <segue destination="nmv-Eg-Xd1" kind="show" identifier="homeToApartmentSearch" id="raX-D5-dpF"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="qoa-UX-bP2" firstAttribute="top" secondItem="q1o-xs-1hj" secondAttribute="topMargin" constant="30" id="2XC-pR-Gq3"/>
+                                    <constraint firstItem="qoa-UX-bP2" firstAttribute="leading" secondItem="q1o-xs-1hj" secondAttribute="leadingMargin" id="2oC-dT-7ai"/>
+                                    <constraint firstItem="ATw-Ar-Auh" firstAttribute="top" secondItem="qoa-UX-bP2" secondAttribute="bottom" constant="15" id="JS1-2s-cCF"/>
+                                    <constraint firstItem="ATw-Ar-Auh" firstAttribute="centerX" secondItem="q1o-xs-1hj" secondAttribute="centerX" id="LtC-uw-xJU"/>
+                                    <constraint firstItem="Qp3-Ra-fvi" firstAttribute="top" secondItem="ATw-Ar-Auh" secondAttribute="bottom" constant="15" id="ZYF-Fd-Ser"/>
+                                    <constraint firstItem="Qp3-Ra-fvi" firstAttribute="top" secondItem="ATw-Ar-Auh" secondAttribute="bottom" constant="15" id="huw-Zl-Xa2"/>
+                                    <constraint firstItem="ATw-Ar-Auh" firstAttribute="top" secondItem="qoa-UX-bP2" secondAttribute="bottom" constant="15" id="sed-rE-cVK"/>
+                                    <constraint firstItem="Qp3-Ra-fvi" firstAttribute="centerX" secondItem="q1o-xs-1hj" secondAttribute="centerX" id="tRn-s5-ik8"/>
+                                    <constraint firstItem="qoa-UX-bP2" firstAttribute="trailing" secondItem="q1o-xs-1hj" secondAttribute="trailingMargin" id="uQ3-25-Gnz"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="85K-qu-uKN">
+                                <rect key="frame" x="0.0" y="110" width="375" height="557"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZfC-Sb-X8j">
+                                        <rect key="frame" x="110" y="477" width="154" height="30"/>
+                                        <state key="normal" title="View Security Footage"/>
+                                        <connections>
+                                            <segue destination="mRx-t2-04f" kind="show" id="caC-iz-HaT"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Apartment Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2DK-Zy-Rci">
+                                        <rect key="frame" x="8" y="23" width="359" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iJ4-tg-NuW">
+                                        <rect key="frame" x="0.0" y="110" width="375" height="250"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="250" id="MJH-RY-2v4"/>
+                                        </constraints>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="roomiesCell" id="Q8F-gQ-5AB" customClass="RoommatesTableViewCell" customModule="SecureDat" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Q8F-gQ-5AB" id="H3h-TI-uCt">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="HOME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QbR-BM-aHC">
+                                                            <rect key="frame" x="317" y="11" width="50" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LW4-yk-HmD">
+                                                            <rect key="frame" x="8" y="11" width="79" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="atHomeLabel" destination="QbR-BM-aHC" id="xZb-8M-Pvk"/>
+                                                    <outlet property="usernameLabel" destination="LW4-yk-HmD" id="6wd-v8-x8C"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="RbS-LE-mbe" id="LfO-wV-is1"/>
+                                            <outlet property="delegate" destination="RbS-LE-mbe" id="TXM-PR-txT"/>
+                                        </connections>
+                                    </tableView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Roomies" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yzF-lf-qc4">
+                                        <rect key="frame" x="8" y="74" width="66" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="iJ4-tg-NuW" secondAttribute="trailing" id="3xY-ts-fcH"/>
+                                    <constraint firstItem="iJ4-tg-NuW" firstAttribute="leading" secondItem="85K-qu-uKN" secondAttribute="leading" id="8lU-hG-wo4"/>
+                                    <constraint firstItem="yzF-lf-qc4" firstAttribute="top" secondItem="2DK-Zy-Rci" secondAttribute="bottom" constant="30" id="PYB-0y-VFV"/>
+                                    <constraint firstItem="yzF-lf-qc4" firstAttribute="leading" secondItem="85K-qu-uKN" secondAttribute="leadingMargin" id="QWf-aw-Sf1"/>
+                                    <constraint firstItem="2DK-Zy-Rci" firstAttribute="top" secondItem="85K-qu-uKN" secondAttribute="topMargin" constant="15" id="a5D-Nb-quf"/>
+                                    <constraint firstItem="ZfC-Sb-X8j" firstAttribute="centerX" secondItem="85K-qu-uKN" secondAttribute="centerX" id="euL-St-RQD"/>
+                                    <constraint firstItem="2DK-Zy-Rci" firstAttribute="leading" secondItem="85K-qu-uKN" secondAttribute="leadingMargin" id="mRo-Sz-lcs"/>
+                                    <constraint firstItem="2DK-Zy-Rci" firstAttribute="centerX" secondItem="85K-qu-uKN" secondAttribute="centerX" id="q5C-td-jhS"/>
+                                    <constraint firstItem="iJ4-tg-NuW" firstAttribute="top" secondItem="yzF-lf-qc4" secondAttribute="bottom" constant="15" id="rmf-Ss-ESD"/>
+                                    <constraint firstAttribute="bottom" secondItem="ZfC-Sb-X8j" secondAttribute="bottom" constant="50" id="yoK-Ei-92l"/>
+                                    <constraint firstItem="2DK-Zy-Rci" firstAttribute="trailing" secondItem="85K-qu-uKN" secondAttribute="trailingMargin" id="zX2-5g-BSU"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="SiS-dB-B0A" firstAttribute="centerX" secondItem="Wm7-xV-eAJ" secondAttribute="centerX" id="DZR-zY-ao0"/>
-                            <constraint firstItem="SiS-dB-B0A" firstAttribute="centerY" secondItem="Wm7-xV-eAJ" secondAttribute="centerY" id="lfg-WB-E3B"/>
+                            <constraint firstAttribute="trailing" secondItem="85K-qu-uKN" secondAttribute="trailing" id="1q0-K8-QjA"/>
+                            <constraint firstItem="xvC-pf-X6S" firstAttribute="top" secondItem="q1o-xs-1hj" secondAttribute="bottom" id="2Ds-wj-nIq"/>
+                            <constraint firstItem="9GS-Za-8Me" firstAttribute="leading" secondItem="Wm7-xV-eAJ" secondAttribute="leadingMargin" id="5C6-UH-ka9"/>
+                            <constraint firstItem="q1o-xs-1hj" firstAttribute="top" secondItem="9GS-Za-8Me" secondAttribute="bottom" constant="10" id="8tm-J0-GTQ"/>
+                            <constraint firstItem="9GS-Za-8Me" firstAttribute="top" secondItem="YC9-g1-5xf" secondAttribute="bottom" constant="15" id="R1F-Aq-nnt"/>
+                            <constraint firstItem="q1o-xs-1hj" firstAttribute="leading" secondItem="Wm7-xV-eAJ" secondAttribute="leading" id="UD8-9a-SJ9"/>
+                            <constraint firstItem="85K-qu-uKN" firstAttribute="top" secondItem="9GS-Za-8Me" secondAttribute="bottom" constant="10" id="W3Z-Z0-083"/>
+                            <constraint firstItem="85K-qu-uKN" firstAttribute="leading" secondItem="Wm7-xV-eAJ" secondAttribute="leading" id="XWT-3F-4Gp"/>
+                            <constraint firstItem="9GS-Za-8Me" firstAttribute="centerX" secondItem="Wm7-xV-eAJ" secondAttribute="centerX" id="YyR-GE-hBZ"/>
+                            <constraint firstItem="xvC-pf-X6S" firstAttribute="top" secondItem="85K-qu-uKN" secondAttribute="bottom" id="jaf-oS-Vf3"/>
+                            <constraint firstItem="9GS-Za-8Me" firstAttribute="trailing" secondItem="Wm7-xV-eAJ" secondAttribute="trailingMargin" id="kia-f0-wk7"/>
+                            <constraint firstAttribute="trailing" secondItem="q1o-xs-1hj" secondAttribute="trailing" id="y4H-EO-yvd"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="B8Y-LZ-TxV"/>
                     <connections>
-                        <segue destination="abB-5R-EEx" kind="show" identifier="homeToApartmentDetails" id="HBG-Dk-FCV"/>
-                        <segue destination="nmv-Eg-Xd1" kind="show" identifier="homeToApartmentSearch" id="fl3-ZB-SzX"/>
+                        <outlet property="apartmentNameLabel" destination="2DK-Zy-Rci" id="d9A-NA-Tsa"/>
+                        <outlet property="apartmentView" destination="85K-qu-uKN" id="PGh-jK-e5P"/>
+                        <outlet property="createApartmentButton" destination="ATw-Ar-Auh" id="HBW-uv-YG7"/>
+                        <outlet property="currentUserLabel" destination="9GS-Za-8Me" id="Jxf-My-pYs"/>
+                        <outlet property="noApartmentView" destination="q1o-xs-1hj" id="45t-9Y-fQq"/>
+                        <outlet property="roommatesTableView" destination="iJ4-tg-NuW" id="XAe-Mf-bha"/>
                         <segue destination="UzT-Cn-5eo" kind="presentation" identifier="homeToLogin" id="j2g-f6-4wa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b9o-xM-gpm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1079.2" y="1480.2098950524739"/>
+            <point key="canvasLocation" x="1277.5999999999999" y="1471.2143928035982"/>
         </scene>
         <!--Apartment Search-->
         <scene sceneID="0QL-0Z-apd">
@@ -371,7 +485,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="veR-qW-daS">
                                 <rect key="frame" x="16" y="200" width="79" height="21"/>
@@ -390,7 +504,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password Confirmation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iEE-id-ojD">
                                 <rect key="frame" x="16" y="267" width="177" height="21"/>
@@ -539,7 +653,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Full Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yCM-LZ-F8p">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yCM-LZ-F8p">
                                                     <rect key="frame" x="8" y="39" width="84" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -556,7 +670,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="name" destination="khv-Sv-Sia" id="xZi-jp-7hQ"/>
+                                            <outlet property="email" destination="khv-Sv-Sia" id="dFI-fy-HwJ"/>
                                             <outlet property="username" destination="Znl-xJ-s5j" id="PRw-rP-iPO"/>
                                         </connections>
                                     </tableViewCell>
@@ -570,6 +684,9 @@
                                 <rect key="frame" x="167" y="460" width="41" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Finish"/>
+                                <connections>
+                                    <segue destination="RbS-LE-mbe" kind="presentation" id="HXp-Jl-rIC"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -758,7 +875,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UzT-Cn-5eo" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="VlN-Qh-JDx">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="VlN-Qh-JDx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -791,6 +908,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="mrA-aB-NaV"/>
+        <segue reference="HXp-Jl-rIC"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -12,6 +12,8 @@ class Backend{
     static let HOST = "http://127.0.0.1"
     static let PORT = "5000"
     
+    
+    //MARK: - user API
     //returns uid if user is successfully created, else returns -1
     static func add_user(username: String, password: String, email: String, phone: String, completionHandler: @escaping (Dictionary<String, Any>) -> ()){
         let json = ["username":username, "password":password, "email":email, "phone":phone]
@@ -70,6 +72,32 @@ class Backend{
 
     }
     
+    static func get_user(id: Int, completionHandler: @escaping(User) -> ()){
+        let url = NSURL(string: HOST + ":" + PORT + "/api/user?uid=" + String(id))!
+        let request = NSMutableURLRequest(url: url as URL)
+        request.httpMethod = "GET"
+        
+        let task = URLSession.shared.dataTask(with: request as URLRequest){ data, response, error in
+            if error != nil{
+                print("Error -> \(error)")
+                return
+            }
+            do {
+                let result = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String:AnyObject]
+                print("Result -> \(result)")
+                let user = User(id: result!["id"] as! Int, username: result!["username"] as! String, email: result!["email"] as! String, phone: result!["phone"] as! String, aid: result!["aid"] as? Int)
+                print("passing user into completion handler for get user")
+                completionHandler(user)
+                
+                
+            } catch {
+                print("Error -> \(error)")
+                return
+            }
+        }
+        task.resume()
+    }
+    
     //returns user location status, true if at home and false if away
     static func user_location_status(uid: Int, completionHandler: @escaping (Bool) -> ()){
         let url = NSURL(string: HOST + ":" + PORT + "/api/user_location_status?uid=" + String(uid))!
@@ -114,7 +142,9 @@ class Backend{
                         completionHandler(nil)
                     }else{
                         print("Successful login -> \(result)")
-                        completionHandler(User(id: result!["id"] as! Int, username: result!["username"] as! String, email: result!["email"] as! String, phone: result!["phone"] as! String, aid: result!["aid"] as? Int))
+                        let u = User(id: result!["id"] as! Int, username: result!["username"] as! String, email: result!["email"] as! String, phone: result!["phone"] as! String, aid: result!["aid"] as? Int)
+                        print("passing logged in user to completion handler")
+                        completionHandler(u)
                     }
                     
                 } catch {
@@ -126,6 +156,55 @@ class Backend{
         } catch {
             print(error)
         }
+    }
+
+    //MARK: - Apartment API
+    static func get_apartment(id: Int, completionHandler: @escaping(Apartment) -> ()){
+        let url = NSURL(string: HOST + ":" + PORT + "/api/apartment?aid=" + String(id))!
+        let request = NSMutableURLRequest(url: url as URL)
+        request.httpMethod = "GET"
+        
+        let task = URLSession.shared.dataTask(with: request as URLRequest){ data, response, error in
+            if error != nil{
+                print("Error -> \(error)")
+                return
+            }
+            do {
+                let result = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String:AnyObject]
+                print("Result -> \(result)")
+                
+                let aptname = result!["aptname"] as! String
+                let latitude = result!["latitude"] as? Double
+                let longitude = result!["longitude"] as? Double
+                let userids = result!["userids"] as? [Int]
+                let usernames = result!["usernames"] as? [String]
+                let users_at_home = result!["users_at_home"] as? [Bool]
+                
+                let apartment = Apartment(id: id)
+                apartment.name = aptname
+                apartment.latitude = latitude
+                apartment.longitude = longitude
+                if (userids != nil){
+                    var users: [User] = []
+                    for (i, userid) in userids!.enumerated(){
+                        let u = User(id: userid)
+                        u.username = usernames![i]
+                        u.at_home = users_at_home![i]
+                        u.aid = id
+                        users.append(u)
+                    }
+                    apartment.users = users
+                }
+                print("passing apartment to completion handler")
+                completionHandler(apartment)
+                
+                
+            } catch {
+                print("Error -> \(error)")
+                return
+            }
+        }
+        task.resume()
     }
 
     
@@ -211,15 +290,7 @@ class Backend{
         task.resume()
     }
     
-    static func prepare_json_request(jsonData: Data, method: String, endpoint: String) -> NSMutableURLRequest{
-        let url = NSURL(string: HOST + ":" + PORT + endpoint)!
-        let request = NSMutableURLRequest(url: url as URL)
-        request.httpMethod = method
-        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-        request.httpBody = jsonData
-        return request
-    }
-    
+    //MARK: - Video API
     static func get_videos(completionHandler: @escaping ([String]) -> ()) {
         let url = NSURL(string: HOST + ":" + PORT + "/api/videos")!
         let request = NSMutableURLRequest(url: url as URL)
@@ -242,6 +313,17 @@ class Backend{
             }
         }
         task.resume()
+    }
+    
+    //MARK: - Helpers
+    
+    static func prepare_json_request(jsonData: Data, method: String, endpoint: String) -> NSMutableURLRequest{
+        let url = NSURL(string: HOST + ":" + PORT + endpoint)!
+        let request = NSMutableURLRequest(url: url as URL)
+        request.httpMethod = method
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        request.httpBody = jsonData
+        return request
     }
 
 

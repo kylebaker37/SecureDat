@@ -9,27 +9,33 @@ def health_check():
 
 @app.route('/api/add_user', methods = ['POST'])
 def add_user():
-    result = "error"
-    message = "default failure message"
-    uid = -1
-    json = request.get_json()
-    username = json['username']
-    password = json['password']
-    email = json['email']
-    phone = json['phone']
+  result = "error"
+  message = "default failure message"
+  uid = -1
+  json = request.get_json()
+  username = json['username']
+  password = json['password']
+  email = json['email']
+  phone = json['phone']
 
-    if(models.User.query.filter_by(username=username).first() is not None):
-      message = "Username taken"
-    elif(models.User.query.filter_by(email=email).first() is not None):
-      message = "Email taken"
-    else:
-      u = models.User(username, password, email, phone)
-      db.session.add(u)
-      db.session.commit()
-      result = "success"
-      message = "User account successfully created!"
-      uid = u.id
-    return jsonify({'result':result, 'message':message, 'id':uid})
+  if(models.User.query.filter_by(username=username).first() is not None):
+    message = "Username taken"
+  elif(models.User.query.filter_by(email=email).first() is not None):
+    message = "Email taken"
+  else:
+    u = models.User(username, password, email, phone)
+    db.session.add(u)
+    db.session.commit()
+    result = "success"
+    message = "User account successfully created!"
+    uid = u.id
+  return jsonify({'result':result, 'message':message, 'id':uid})
+
+@app.route('/api/user', methods = ['GET'])
+def user():
+  uid = request.args.get('uid')
+  user = models.User.query.get(uid)
+  return jsonify({'username':user.username, 'id':user.id, 'at_home': user.at_home, 'email':user.email, 'phone':user.phone, 'aid':user.aid})
 
 @app.route('/api/login', methods = ['POST'])
 def login():
@@ -44,7 +50,18 @@ def login():
   else:
     return jsonify({'result':'success', 'id':user.id, 'username': user.username, 'aid':user.aid, 'email':user.email, 'phone': user.phone, 'at_home': user.at_home})
 
-
+@app.route('/api/apartment', methods= ['GET'])
+def apartment():
+  aid = request.args.get('aid')
+  a = models.Apartment.query.get(aid)
+  userids = []
+  usernames = []
+  users_at_home = []
+  for user in a.users:
+    userids.append(user.id)
+    usernames.append(user.username)
+    users_at_home.append(user.at_home)
+  return jsonify({'aptname':a.aptname, 'aid':a.id, 'latitude': a.latitude, 'longitude':a.longitude, 'userids':userids, 'usernames':usernames, 'users_at_home': users_at_home})
 
 @app.route('/api/add_apartment', methods = ['POST'])
 def add_apartment():
@@ -100,6 +117,10 @@ def user_location_status():
 def door_opened():
   json = request.get_json()
   aid = json['aid']
+  if 'type' in json:
+    tpe = json['type']
+  else:
+    tpe = 'door'
   apartment = models.Apartment.query.get(aid)
   if apartment is None:
     return jsonify({'error':'apartment id does not exist!'})
@@ -112,7 +133,10 @@ def door_opened():
     if not users_at_home:
       twil = Messenger.Messenger()
       for user in users:
-        message = "Your door is open!!! :O"
+        if tpe == door:
+          message = "Your door is open!!! :O"
+        else:
+          message = "Motion detected in your apartment!!! :O"
         twil.sendMessage(user.phone, message)
         print 'sent {} to {}'.format(message, user.phone)
       return jsonify({'success':'apartment alerted!'})
