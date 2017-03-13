@@ -117,6 +117,10 @@ def user_location_status():
 def door_opened():
   json = request.get_json()
   aid = json['aid']
+  if 'type' in json:
+    tpe = json['type']
+  else:
+    tpe = 'door'
   apartment = models.Apartment.query.get(aid)
   if apartment is None:
     return jsonify({'error':'apartment id does not exist!'})
@@ -129,7 +133,10 @@ def door_opened():
     if not users_at_home:
       twil = Messenger.Messenger()
       for user in users:
-        message = "Your door is open!!! :O"
+        if tpe == door:
+          message = "Your door is open!!! :O"
+        else:
+          message = "Motion detected in your apartment!!! :O"
         twil.sendMessage(user.phone, message)
         print 'sent {} to {}'.format(message, user.phone)
       return jsonify({'success':'apartment alerted!'})
