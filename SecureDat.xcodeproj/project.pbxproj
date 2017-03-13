@@ -31,6 +31,7 @@
 		4AD9D9B61E74E266001F4F2A /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD9D9B51E74E266001F4F2A /* Helpers.swift */; };
 		9BA7BCD81E750E16007E8E4D /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA7BCD71E750E16007E8E4D /* Map.swift */; };
 		9BA7BCDB1E75BC57007E8E4D /* SetLocationMarker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BA7BCDA1E75BC57007E8E4D /* SetLocationMarker.xib */; };
+		9BA7BCDD1E761240007E8E4D /* UsersListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA7BCDC1E761240007E8E4D /* UsersListCell.swift */; };
 		B482416286E291DCA7D4A1C1 /* libPods-SecureDat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 508BBCBEA0A15FF1CC442B8A /* libPods-SecureDat.a */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +85,7 @@
 		508BBCBEA0A15FF1CC442B8A /* libPods-SecureDat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SecureDat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BA7BCD71E750E16007E8E4D /* Map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		9BA7BCDA1E75BC57007E8E4D /* SetLocationMarker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetLocationMarker.xib; sourceTree = "<group>"; };
+		9BA7BCDC1E761240007E8E4D /* UsersListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersListCell.swift; sourceTree = "<group>"; };
 		C105DB58A6938C1A67BEFA76 /* Pods-SecureDat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SecureDat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SecureDat/Pods-SecureDat.debug.xcconfig"; sourceTree = "<group>"; };
 		EC8C31E707AA39BCA5024A0B /* Pods-SecureDat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SecureDat.release.xcconfig"; path = "Pods/Target Support Files/Pods-SecureDat/Pods-SecureDat.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -197,6 +199,7 @@
 				4A1E601D1E6A4EAA00839CFF /* Backend.swift */,
 				4AD9D9B51E74E266001F4F2A /* Helpers.swift */,
 				9BA7BCD71E750E16007E8E4D /* Map.swift */,
+				9BA7BCDC1E761240007E8E4D /* UsersListCell.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -421,6 +424,7 @@
 				4AD9D9B61E74E266001F4F2A /* Helpers.swift in Sources */,
 				4AD9D9A91E74C70A001F4F2A /* ApartmentLocationViewController.swift in Sources */,
 				4AD9D9AB1E74C714001F4F2A /* AddRoommatesViewController.swift in Sources */,
+				9BA7BCDD1E761240007E8E4D /* UsersListCell.swift in Sources */,
 				279AE4601E754A7E008CABBA /* VideoTableViewController.swift in Sources */,
 				4AD9D9A31E74C6D8001F4F2A /* SignupViewController.swift in Sources */,
 				279AE45C1E753A10008CABBA /* VideoViewController.swift in Sources */,

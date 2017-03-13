@@ -18,8 +18,8 @@ class HomeViewController: UIViewController {
     }
     
     @IBOutlet weak var noApartmentView: UIView!
-    @IBOutlet weak var createApartmentButton: UIButton!
     @IBOutlet weak var apartmentView: UIView!
+    @IBOutlet weak var createApartmentButton: UIButton!
     @IBOutlet weak var currentUserLabel: UILabel!
     
     override func viewDidLoad() {
@@ -48,12 +48,7 @@ class HomeViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func joinApartmentButtonDidTouchUpInside(_ sender: Any) {
-        self.performSegue(withIdentifier: "homeToApartmentSearch", sender: self)
-    }
-
-    @IBAction func createApartmentDidTouchUpInside(_ sender: Any) {
-    }
+    
     /*
     // MARK: - Navigation
 

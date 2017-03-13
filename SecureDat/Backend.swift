@@ -157,7 +157,7 @@ class Backend{
 
     //MARK: - Apartment API
     //adds apartment, returns an ID for the new apartment
-    static func add_apartment(aptname: String, latitude: Float, longitude: Float, completionHandler: @escaping (Int) -> ()){
+    static func add_apartment(aptname: String, latitude: Double, longitude: Double, completionHandler: @escaping (Int) -> ()){
         let json = ["aptname":aptname, "latitude":latitude, "longitude":longitude] as [String : Any]
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)

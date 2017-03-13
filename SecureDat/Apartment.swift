@@ -10,8 +10,8 @@ import Foundation
 
 class Apartment{
     var id: Int = -1    //initialized to dummy value
-    var latitude: Float?
-    var longitude: Float?
+    var latitude: Double?
+    var longitude: Double?
     var name: String
     var password: String
     var users: [Int] = []   //user ids... currently would be adding them using add_users_to_apartment API call
