@@ -626,6 +626,9 @@
                                 <rect key="frame" x="163" y="110" width="48" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Search"/>
+                                <connections>
+                                    <action selector="searchForRoomate:" destination="fa2-DU-FCp" eventType="touchUpInside" id="00V-YV-ikg"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZoT-Yn-eki">
                                 <rect key="frame" x="0.0" y="148" width="375" height="304"/>
@@ -692,6 +695,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="searchField" destination="dqs-KC-9JY" id="FoA-oU-aqo"/>
                         <outlet property="tableView" destination="ZoT-Yn-eki" id="xmU-tn-avp"/>
                     </connections>
                 </viewController>
@@ -875,7 +879,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UzT-Cn-5eo" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="VlN-Qh-JDx">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="VlN-Qh-JDx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

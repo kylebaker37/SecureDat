@@ -98,6 +98,32 @@ class Backend{
         task.resume()
     }
     
+    static func find_user_by_email(email: String, completionHandler: @escaping(User) -> ()){
+        let url = NSURL(string: HOST + ":" + PORT + "/api/find_user_by_email?email=" + email)!
+        let request = NSMutableURLRequest(url: url as URL)
+        request.httpMethod = "GET"
+        
+        let task = URLSession.shared.dataTask(with: request as URLRequest){ data, response, error in
+            if error != nil{
+                print("Error -> \(error)")
+                return
+            }
+            do {
+                let result = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String:AnyObject]
+                print("Result -> \(result)")
+                let user = User(id: result!["id"] as! Int, username: result!["username"] as! String, email: result!["email"] as! String, phone: result!["phone"] as! String, aid: result!["aid"] as? Int)
+                print("passing user into completion handler for get user")
+                completionHandler(user)
+                
+                
+            } catch {
+                print("Error -> \(error)")
+                return
+            }
+        }
+        task.resume()
+    }
+    
     //returns user location status, true if at home and false if away
     static func user_location_status(uid: Int, completionHandler: @escaping (Bool) -> ()){
         let url = NSURL(string: HOST + ":" + PORT + "/api/user_location_status?uid=" + String(uid))!

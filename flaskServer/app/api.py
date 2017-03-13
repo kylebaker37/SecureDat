@@ -31,6 +31,15 @@ def add_user():
     uid = u.id
   return jsonify({'result':result, 'message':message, 'id':uid})
 
+@app.route('/api/find_user_by_email', methods = ['GET'])
+def find_user_by_email():
+  email = request.args.get('email')
+  user = models.User.query.filter_by(email=email).first()
+  if user is not None: 
+    return jsonify({'username':user.username, 'id':user.id, 'at_home': user.at_home, 'email':user.email, 'phone':user.phone, 'aid':user.aid})
+  else:
+     return jsonify({'username':'', 'id':'', 'at_home':'', 'email':'', 'phone':'', 'aid':''})
+
 @app.route('/api/user', methods = ['GET'])
 def user():
   uid = request.args.get('uid')
