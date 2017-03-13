@@ -42,7 +42,8 @@ class AddRoommatesViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         let userName = self.users[indexPath.row]
-        let confirmAlert = UIAlertController(title: "Confirm", message: "Add User?", preferredStyle: UIAlertControllerStyle.alert)
+        let addUserMsg = "Add " + userName + " to this apartment?"
+        let confirmAlert = UIAlertController(title: "Confirm", message: addUserMsg, preferredStyle: UIAlertControllerStyle.alert)
         
         confirmAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
             print("Handle Ok logic here")
@@ -53,6 +54,7 @@ class AddRoommatesViewController: UIViewController, UITableViewDelegate, UITable
         }))
         
         present(confirmAlert, animated: true, completion: nil)
+        tableView.deselectRow(at: indexPath, animated: true)
         return
     }
     /*
