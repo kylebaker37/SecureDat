@@ -232,6 +232,32 @@ class Backend{
         }
         task.resume()
     }
+    
+    static func find_apartment(aptname: String, completionHandler: @escaping(Apartment) -> ()){
+        let url = NSURL(string: HOST + ":" + PORT + "/api/find_apartment?aptname=" + aptname)!
+        let request = NSMutableURLRequest(url: url as URL)
+        request.httpMethod = "GET"
+        
+        let task = URLSession.shared.dataTask(with: request as URLRequest){ data, response, error in
+            if error != nil{
+                print("Error -> \(error)")
+                return
+            }
+            do {
+                let result = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String:AnyObject]
+                print("Result -> \(result)")
+                let apt = Apartment(id: result!["aid"] as! Int, name: result!["aptname"] as! String, latitude: result!["latitude"] as! Double, longitude: result!["longitude"] as! Double)
+                print("passing user into completion handler for get user")
+                completionHandler(apt)
+                
+                
+            } catch {
+                print("Error -> \(error)")
+                return
+            }
+        }
+        task.resume()
+    }
 
     
     //adds apartment, returns an ID for the new apartment
@@ -263,7 +289,7 @@ class Backend{
 
     }
     
-    static func add_users_to_apartment(uids: [Int], aid: Int){
+    static func add_users_to_apartment(uids: [Int], aid: Int, completionHandler: @escaping (Int) -> ()){
         let json = ["aid":aid, "uids":uids] as [String : Any]
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
@@ -271,16 +297,21 @@ class Backend{
             let task = URLSession.shared.dataTask(with: request as URLRequest){ data, response, error in
                 if error != nil{
                     print("Error -> \(error)")
-                    return
+                    completionHandler(-1)
                 }
                 do {
                     let result = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String:AnyObject]
+                    if ((result?["success"]) != nil) {
+                        completionHandler(1)
+                    }
+                    else {
+                        completionHandler(-1)
+                    }
                     print("Result -> \(result)")
-                    return
 
                 } catch {
                     print("Error -> \(error)")
-                    return
+                    completionHandler(-1)
                 }
             }
             task.resume()
