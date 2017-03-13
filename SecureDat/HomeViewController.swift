@@ -9,10 +9,37 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-
+    var current_user: User?{
+        willSet(current_user) {}
+        didSet {
+            self.currentUserLabel.text = self.current_user?.username
+            self.currentUserLabel.isHidden = false
+        }
+    }
+    
+    @IBOutlet weak var noApartmentView: UIView!
+    @IBOutlet weak var createApartmentButton: UIButton!
+    @IBOutlet weak var apartmentView: UIView!
+    @IBOutlet weak var currentUserLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.currentUserLabel.isHidden = true
+        self.apartmentView.isHidden = true
+        self.noApartmentView.isHidden = true
+        
+        let current_uid = UserDefaults.standard.value(forKey: "uid")! as! Int
+        Backend.get_user(id: current_uid, completionHandler: {
+            current_user in
+            self.current_user = current_user
+            if(self.current_user?.aid == nil){
+                self.apartmentView.isHidden = true
+                self.noApartmentView.isHidden = false
+            }else{
+                self.apartmentView.isHidden = false
+                self.noApartmentView.isHidden = true
+            }
+        })
         // Do any additional setup after loading the view.
     }
 
@@ -21,7 +48,12 @@ class HomeViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func joinApartmentButtonDidTouchUpInside(_ sender: Any) {
+        self.performSegue(withIdentifier: "homeToApartmentSearch", sender: self)
+    }
 
+    @IBAction func createApartmentDidTouchUpInside(_ sender: Any) {
+    }
     /*
     // MARK: - Navigation
 

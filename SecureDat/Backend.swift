@@ -12,6 +12,8 @@ class Backend{
     static let HOST = "http://127.0.0.1"
     static let PORT = "5000"
     
+    
+    //MARK: - user API
     //returns uid if user is successfully created, else returns -1
     static func add_user(username: String, password: String, email: String, phone: String, completionHandler: @escaping (Dictionary<String, Any>) -> ()){
         let json = ["username":username, "password":password, "email":email, "phone":phone]
@@ -68,6 +70,31 @@ class Backend{
             print(error)
         }
 
+    }
+    
+    static func get_user(id: Int, completionHandler: @escaping(User) -> ()){
+        let url = NSURL(string: HOST + ":" + PORT + "/api/user?uid=" + String(id))!
+        let request = NSMutableURLRequest(url: url as URL)
+        request.httpMethod = "GET"
+        
+        let task = URLSession.shared.dataTask(with: request as URLRequest){ data, response, error in
+            if error != nil{
+                print("Error -> \(error)")
+                return
+            }
+            do {
+                let result = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String:AnyObject]
+                print("Result -> \(result)")
+                let user = User(id: result!["id"] as! Int, username: result!["username"] as! String, email: result!["email"] as! String, phone: result!["phone"] as! String, aid: result!["aid"] as? Int)
+                completionHandler(user)
+                
+                
+            } catch {
+                print("Error -> \(error)")
+                return
+            }
+        }
+        task.resume()
     }
     
     //returns user location status, true if at home and false if away
@@ -128,7 +155,7 @@ class Backend{
         }
     }
 
-    
+    //MARK: - Apartment API
     //adds apartment, returns an ID for the new apartment
     static func add_apartment(aptname: String, latitude: Float, longitude: Float, completionHandler: @escaping (Int) -> ()){
         let json = ["aptname":aptname, "latitude":latitude, "longitude":longitude] as [String : Any]
@@ -211,15 +238,7 @@ class Backend{
         task.resume()
     }
     
-    static func prepare_json_request(jsonData: Data, method: String, endpoint: String) -> NSMutableURLRequest{
-        let url = NSURL(string: HOST + ":" + PORT + endpoint)!
-        let request = NSMutableURLRequest(url: url as URL)
-        request.httpMethod = method
-        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-        request.httpBody = jsonData
-        return request
-    }
-    
+    //MARK: - Video API
     static func get_videos(completionHandler: @escaping ([String]) -> ()) {
         let url = NSURL(string: HOST + ":" + PORT + "/api/videos")!
         let request = NSMutableURLRequest(url: url as URL)
@@ -242,6 +261,17 @@ class Backend{
             }
         }
         task.resume()
+    }
+    
+    //MARK: - Helpers
+    
+    static func prepare_json_request(jsonData: Data, method: String, endpoint: String) -> NSMutableURLRequest{
+        let url = NSURL(string: HOST + ":" + PORT + endpoint)!
+        let request = NSMutableURLRequest(url: url as URL)
+        request.httpMethod = method
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        request.httpBody = jsonData
+        return request
     }
 
 

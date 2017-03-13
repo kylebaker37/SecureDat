@@ -9,27 +9,33 @@ def health_check():
 
 @app.route('/api/add_user', methods = ['POST'])
 def add_user():
-    result = "error"
-    message = "default failure message"
-    uid = -1
-    json = request.get_json()
-    username = json['username']
-    password = json['password']
-    email = json['email']
-    phone = json['phone']
+  result = "error"
+  message = "default failure message"
+  uid = -1
+  json = request.get_json()
+  username = json['username']
+  password = json['password']
+  email = json['email']
+  phone = json['phone']
 
-    if(models.User.query.filter_by(username=username).first() is not None):
-      message = "Username taken"
-    elif(models.User.query.filter_by(email=email).first() is not None):
-      message = "Email taken"
-    else:
-      u = models.User(username, password, email, phone)
-      db.session.add(u)
-      db.session.commit()
-      result = "success"
-      message = "User account successfully created!"
-      uid = u.id
-    return jsonify({'result':result, 'message':message, 'id':uid})
+  if(models.User.query.filter_by(username=username).first() is not None):
+    message = "Username taken"
+  elif(models.User.query.filter_by(email=email).first() is not None):
+    message = "Email taken"
+  else:
+    u = models.User(username, password, email, phone)
+    db.session.add(u)
+    db.session.commit()
+    result = "success"
+    message = "User account successfully created!"
+    uid = u.id
+  return jsonify({'result':result, 'message':message, 'id':uid})
+
+@app.route('/api/user', methods = ['GET'])
+def user():
+  uid = request.args.get('uid')
+  user = models.User.query.get(uid)
+  return jsonify({'username':user.username, 'id':user.id, 'at_home': user.at_home, 'email':user.email, 'phone':user.phone, 'aid':user.aid})
 
 @app.route('/api/login', methods = ['POST'])
 def login():
