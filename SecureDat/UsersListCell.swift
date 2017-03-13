@@ -12,5 +12,5 @@ import UIKit
 class UsersListCell: UITableViewCell {
     @IBOutlet var username: UILabel!
     @IBOutlet var email: UILabel!
-    
+       
 }
