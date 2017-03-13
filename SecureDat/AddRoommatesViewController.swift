@@ -66,5 +66,9 @@ class AddRoommatesViewController: UIViewController, UITableViewDelegate, UITable
         // Pass the selected object to the new view controller.
     }
     */
+    @IBAction func finish(_ sender: Any) {
+        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+        self.navigationController?.pushViewController(secondViewController, animated: true)
+    }
 
 }

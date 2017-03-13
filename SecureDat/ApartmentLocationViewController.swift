@@ -42,6 +42,8 @@ class ApartmentLocationViewController: UIViewController, GMSMapViewDelegate, CLL
             DispatchQueue.main.async {
                 if (newAptId != -1){
                     self.apt.id = newAptId
+                    let current_uid = UserDefaults.standard.value(forKey: "uid")! as! Int
+                    Backend.add_users_to_apartment(uids: [current_uid], aid: newAptId)
                     self.performSegue(withIdentifier: "apartmentLocationToAddRoommates", sender: self)
                     print(newAptId)
                 }else{

@@ -44,7 +44,7 @@
         <scene sceneID="c6g-nq-z39">
             <objects>
                 <navigationController id="Sc9-Zr-HwE" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="VKU-dd-ahH">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="VKU-dd-ahH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -485,7 +485,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="veR-qW-daS">
                                 <rect key="frame" x="16" y="200" width="79" height="21"/>
@@ -504,7 +504,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password Confirmation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iEE-id-ojD">
                                 <rect key="frame" x="16" y="267" width="177" height="21"/>
@@ -684,6 +684,9 @@
                                 <rect key="frame" x="167" y="460" width="41" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Finish"/>
+                                <connections>
+                                    <segue destination="RbS-LE-mbe" kind="presentation" id="HXp-Jl-rIC"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -890,7 +893,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MVg-pG-VoS" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="CE8-9h-gcw">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="CE8-9h-gcw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -904,4 +907,7 @@
             <point key="canvasLocation" x="140" y="1480"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="HXp-Jl-rIC"/>
+    </inferredMetricsTieBreakers>
 </document>
