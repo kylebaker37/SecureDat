@@ -26,7 +26,7 @@ class VideoViewController: UIViewController {
         let image = UIImage(named: "pause")
         button.setImage(image, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.tintColor = .white
+        button.tintColor = UIColor(white: 1, alpha: 0)
         button.isHidden = true
         
         button.addTarget(self, action: #selector(handlePlayToggle), for: .touchUpInside)
@@ -38,11 +38,11 @@ class VideoViewController: UIViewController {
     func handlePlayToggle() {
         if isPlaying {
             self.player?.pause()
-            togglePlayButton.setImage(UIImage(named: "play"), for: .normal)
+//            togglePlayButton.setImage(UIImage(named: "play"), for: .normal)
         }
         else {
             self.player?.play()
-            togglePlayButton.setImage(UIImage(named: "pause"), for: .normal)
+//            togglePlayButton.setImage(UIImage(named: "pause"), for: .normal)
         }
         isPlaying = !isPlaying
     }
