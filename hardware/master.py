@@ -5,6 +5,7 @@ import subprocess
 from datetime import datetime
 from mag import MagListener
 from camera import Camera
+from sonar import SonarListener
 
 VID_PATH = '/home/pi/SecureDat/vids/'
 BASE_URL = 'http://localhost:80/'
@@ -13,9 +14,14 @@ BASE_URL = 'http://localhost:80/'
 def main():
     cam = Camera()
     mag = MagListener()
+    sonar = SonarListener()
+    avg_distance = boot_sonar(sonar)
     cur = True
     prev = False
     while True:
+        if check_motion(sonar, avg_distance):
+            print "MOTION!!!"
+            handle_motion_detected()
         if mag.is_mag_present():
             cur = True
         else:
@@ -25,6 +31,35 @@ def main():
         time.sleep(0.05)
         prev = cur
 
+def handle_motion_detected():
+    url = BASE_URL + 'api/door_opened'
+    payload = {'aid': 1, 'type': 'motion'}
+    try:
+        print "Attempting to notify about motion..."
+        r = requests.post(url, json=payload)
+        print "Connection complete"
+    except requests.exceptions.ConnectionError:
+        print "Connection failed"
+        
+def boot_sonar(sonar):
+    print "Doing initial sonar boot..."
+    avg = 0
+    for _ in range(10):
+        avg += sonar.get_distance()
+        time.sleep(0.05)
+    avg = avg / 10
+    return avg
+
+def check_motion(sonar, average_distance):
+    avg = 0
+    for _ in range(5):
+        avg += sonar.get_distance()
+        time.sleep(0.05)
+    avg = avg / 5
+    if avg < average_distance*0.90:
+        return True
+    return False
+    
 def handle_door_opened(cam):
     notify_door_opened()
     mp4file, h264file = record_video(cam)
