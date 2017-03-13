@@ -16,7 +16,6 @@
 		277251941E63B48B001DE8AE /* SecureDatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277251931E63B48B001DE8AE /* SecureDatUITests.swift */; };
 		279AE45C1E753A10008CABBA /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279AE45B1E753A10008CABBA /* VideoViewController.swift */; };
 		279AE4601E754A7E008CABBA /* VideoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279AE45F1E754A7E008CABBA /* VideoTableViewController.swift */; };
-		4A1E601C1E68B96300839CFF /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1E601B1E68B96300839CFF /* LocationViewController.swift */; };
 		4A1E601E1E6A4EAA00839CFF /* Backend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1E601D1E6A4EAA00839CFF /* Backend.swift */; };
 		4AD460CC1E762DCE00FE6813 /* RoommatesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD460CB1E762DCE00FE6813 /* RoommatesTableViewCell.swift */; };
 		4AD9D9A11E74C6CD001F4F2A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD9D9A01E74C6CD001F4F2A /* LoginViewController.swift */; };
@@ -70,7 +69,6 @@
 		277251951E63B48B001DE8AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		279AE45B1E753A10008CABBA /* VideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		279AE45F1E754A7E008CABBA /* VideoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoTableViewController.swift; sourceTree = "<group>"; };
-		4A1E601B1E68B96300839CFF /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		4A1E601D1E6A4EAA00839CFF /* Backend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Backend.swift; sourceTree = "<group>"; };
 		4A2172161E63B7160037DF78 /* SecureDat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SecureDat.entitlements; sourceTree = "<group>"; };
 		4AD460CB1E762DCE00FE6813 /* RoommatesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoommatesTableViewCell.swift; sourceTree = "<group>"; };
@@ -151,7 +149,6 @@
 				277251771E63B48B001DE8AE /* Main.storyboard */,
 				277251731E63B48B001DE8AE /* AppDelegate.swift */,
 				277251751E63B48B001DE8AE /* ViewController.swift */,
-				4A1E601B1E68B96300839CFF /* LocationViewController.swift */,
 				2772517A1E63B48B001DE8AE /* Assets.xcassets */,
 				2772517C1E63B48B001DE8AE /* LaunchScreen.storyboard */,
 				2772517F1E63B48B001DE8AE /* Info.plist */,
@@ -437,7 +434,6 @@
 				279AE45C1E753A10008CABBA /* VideoViewController.swift in Sources */,
 				4AD9D9B41E74CA97001F4F2A /* User.swift in Sources */,
 				4A1E601E1E6A4EAA00839CFF /* Backend.swift in Sources */,
-				4A1E601C1E68B96300839CFF /* LocationViewController.swift in Sources */,
 				277251761E63B48B001DE8AE /* ViewController.swift in Sources */,
 				4AD9D9A11E74C6CD001F4F2A /* LoginViewController.swift in Sources */,
 				4AD9D9A51E74C6EC001F4F2A /* HomeViewController.swift in Sources */,

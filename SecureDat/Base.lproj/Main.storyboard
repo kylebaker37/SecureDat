@@ -44,7 +44,7 @@
         <scene sceneID="c6g-nq-z39">
             <objects>
                 <navigationController id="Sc9-Zr-HwE" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="VKU-dd-ahH">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="VKU-dd-ahH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -907,33 +907,6 @@
             </objects>
             <point key="canvasLocation" x="1921" y="718"/>
         </scene>
-        <!--Location-->
-        <scene sceneID="HkG-Ji-faq">
-            <objects>
-                <viewController title="Location" id="dZw-Mf-ACY" customClass="LocationViewController" customModule="SecureDat" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jSS-xa-iik"/>
-                        <viewControllerLayoutGuide type="bottom" id="nu7-Mb-gDn"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="SKP-A0-g2U">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EF4-56-xCL">
-                                <rect key="frame" x="163" y="318" width="51" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <action selector="locationEnabledChanged:" destination="dZw-Mf-ACY" eventType="valueChanged" id="3oT-TW-lE6"/>
-                                </connections>
-                            </switch>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="azl-SV-9nj" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="982" y="21"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="BfW-4H-Qly">
             <objects>
@@ -957,7 +930,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MVg-pG-VoS" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="CE8-9h-gcw">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="CE8-9h-gcw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
