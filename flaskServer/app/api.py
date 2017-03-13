@@ -133,7 +133,7 @@ def door_opened():
     if not users_at_home:
       twil = Messenger.Messenger()
       for user in users:
-        if tpe == door:
+        if tpe == 'door':
           message = "Your door is open!!! :O"
         else:
           message = "Motion detected in your apartment!!! :O"
