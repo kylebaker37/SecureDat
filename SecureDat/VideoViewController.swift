@@ -23,7 +23,11 @@ class VideoViewController: UIViewController {
         
         player = AVPlayer(url: url as URL)
         let avPlayerLayer:AVPlayerLayer = AVPlayerLayer(player: player)
-        avPlayerLayer.frame = CGRect(x: 50, y: 50, width: 100, height: 100)
+        
+        let screenSize = UIScreen.main.bounds
+        let screenWidth = screenSize.width
+        
+        avPlayerLayer.frame = CGRect(x: 25, y: 25, width: screenWidth-50, height: screenWidth-50)
         self.view.layer.addSublayer(avPlayerLayer)
         player.play()
 
