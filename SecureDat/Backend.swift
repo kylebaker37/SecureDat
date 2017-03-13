@@ -86,6 +86,7 @@ class Backend{
                 let result = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String:AnyObject]
                 print("Result -> \(result)")
                 let user = User(id: result!["id"] as! Int, username: result!["username"] as! String, email: result!["email"] as! String, phone: result!["phone"] as! String, aid: result!["aid"] as? Int)
+                user.at_home = result!["at_home"] as! Bool
                 print("passing user into completion handler for get user")
                 completionHandler(user)
                 
