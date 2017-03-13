@@ -18,6 +18,7 @@
 		279AE4601E754A7E008CABBA /* VideoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279AE45F1E754A7E008CABBA /* VideoTableViewController.swift */; };
 		4A1E601C1E68B96300839CFF /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1E601B1E68B96300839CFF /* LocationViewController.swift */; };
 		4A1E601E1E6A4EAA00839CFF /* Backend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1E601D1E6A4EAA00839CFF /* Backend.swift */; };
+		4AD460CC1E762DCE00FE6813 /* RoommatesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD460CB1E762DCE00FE6813 /* RoommatesTableViewCell.swift */; };
 		4AD9D9A11E74C6CD001F4F2A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD9D9A01E74C6CD001F4F2A /* LoginViewController.swift */; };
 		4AD9D9A31E74C6D8001F4F2A /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD9D9A21E74C6D8001F4F2A /* SignupViewController.swift */; };
 		4AD9D9A51E74C6EC001F4F2A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD9D9A41E74C6EC001F4F2A /* HomeViewController.swift */; };
@@ -71,6 +72,7 @@
 		4A1E601B1E68B96300839CFF /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		4A1E601D1E6A4EAA00839CFF /* Backend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Backend.swift; sourceTree = "<group>"; };
 		4A2172161E63B7160037DF78 /* SecureDat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SecureDat.entitlements; sourceTree = "<group>"; };
+		4AD460CB1E762DCE00FE6813 /* RoommatesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoommatesTableViewCell.swift; sourceTree = "<group>"; };
 		4AD9D9A01E74C6CD001F4F2A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4AD9D9A21E74C6D8001F4F2A /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		4AD9D9A41E74C6EC001F4F2A /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 				4AD9D9B51E74E266001F4F2A /* Helpers.swift */,
 				9BA7BCD71E750E16007E8E4D /* Map.swift */,
 				9BA7BCDC1E761240007E8E4D /* UsersListCell.swift */,
+				4AD460CB1E762DCE00FE6813 /* RoommatesTableViewCell.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -434,6 +437,7 @@
 				277251761E63B48B001DE8AE /* ViewController.swift in Sources */,
 				4AD9D9A11E74C6CD001F4F2A /* LoginViewController.swift in Sources */,
 				4AD9D9A51E74C6EC001F4F2A /* HomeViewController.swift in Sources */,
+				4AD460CC1E762DCE00FE6813 /* RoommatesTableViewCell.swift in Sources */,
 				4AD9D9B21E74C8C4001F4F2A /* Apartment.swift in Sources */,
 				277251741E63B48B001DE8AE /* AppDelegate.swift in Sources */,
 			);

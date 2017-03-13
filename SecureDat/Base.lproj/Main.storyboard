@@ -222,13 +222,65 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iJ4-tg-NuW">
+                                        <rect key="frame" x="0.0" y="110" width="375" height="250"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="250" id="MJH-RY-2v4"/>
+                                        </constraints>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="roomiesCell" id="Q8F-gQ-5AB" customClass="RoommatesTableViewCell" customModule="SecureDat" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Q8F-gQ-5AB" id="H3h-TI-uCt">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="HOME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QbR-BM-aHC">
+                                                            <rect key="frame" x="317" y="11" width="50" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LW4-yk-HmD">
+                                                            <rect key="frame" x="8" y="11" width="79" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="atHomeLabel" destination="QbR-BM-aHC" id="xZb-8M-Pvk"/>
+                                                    <outlet property="usernameLabel" destination="LW4-yk-HmD" id="6wd-v8-x8C"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="RbS-LE-mbe" id="LfO-wV-is1"/>
+                                            <outlet property="delegate" destination="RbS-LE-mbe" id="TXM-PR-txT"/>
+                                        </connections>
+                                    </tableView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Roomies" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yzF-lf-qc4">
+                                        <rect key="frame" x="8" y="74" width="66" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="iJ4-tg-NuW" secondAttribute="trailing" id="3xY-ts-fcH"/>
+                                    <constraint firstItem="iJ4-tg-NuW" firstAttribute="leading" secondItem="85K-qu-uKN" secondAttribute="leading" id="8lU-hG-wo4"/>
+                                    <constraint firstItem="yzF-lf-qc4" firstAttribute="top" secondItem="2DK-Zy-Rci" secondAttribute="bottom" constant="30" id="PYB-0y-VFV"/>
+                                    <constraint firstItem="yzF-lf-qc4" firstAttribute="leading" secondItem="85K-qu-uKN" secondAttribute="leadingMargin" id="QWf-aw-Sf1"/>
                                     <constraint firstItem="2DK-Zy-Rci" firstAttribute="top" secondItem="85K-qu-uKN" secondAttribute="topMargin" constant="15" id="a5D-Nb-quf"/>
                                     <constraint firstItem="ZfC-Sb-X8j" firstAttribute="centerX" secondItem="85K-qu-uKN" secondAttribute="centerX" id="euL-St-RQD"/>
                                     <constraint firstItem="2DK-Zy-Rci" firstAttribute="leading" secondItem="85K-qu-uKN" secondAttribute="leadingMargin" id="mRo-Sz-lcs"/>
                                     <constraint firstItem="2DK-Zy-Rci" firstAttribute="centerX" secondItem="85K-qu-uKN" secondAttribute="centerX" id="q5C-td-jhS"/>
+                                    <constraint firstItem="iJ4-tg-NuW" firstAttribute="top" secondItem="yzF-lf-qc4" secondAttribute="bottom" constant="15" id="rmf-Ss-ESD"/>
                                     <constraint firstAttribute="bottom" secondItem="ZfC-Sb-X8j" secondAttribute="bottom" constant="50" id="yoK-Ei-92l"/>
                                     <constraint firstItem="2DK-Zy-Rci" firstAttribute="trailing" secondItem="85K-qu-uKN" secondAttribute="trailingMargin" id="zX2-5g-BSU"/>
                                 </constraints>
@@ -257,12 +309,13 @@
                         <outlet property="createApartmentButton" destination="ATw-Ar-Auh" id="HBW-uv-YG7"/>
                         <outlet property="currentUserLabel" destination="9GS-Za-8Me" id="Jxf-My-pYs"/>
                         <outlet property="noApartmentView" destination="q1o-xs-1hj" id="45t-9Y-fQq"/>
+                        <outlet property="roommatesTableView" destination="iJ4-tg-NuW" id="XAe-Mf-bha"/>
                         <segue destination="UzT-Cn-5eo" kind="presentation" identifier="homeToLogin" id="j2g-f6-4wa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b9o-xM-gpm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1278" y="1472"/>
+            <point key="canvasLocation" x="1277.5999999999999" y="1471.2143928035982"/>
         </scene>
         <!--Apartment Search-->
         <scene sceneID="0QL-0Z-apd">

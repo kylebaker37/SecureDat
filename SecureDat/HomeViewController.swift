@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var current_user: User?
     var apartment: Apartment?
@@ -20,6 +20,7 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var apartmentNameLabel: UILabel!
     
+    @IBOutlet weak var roommatesTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +45,7 @@ class HomeViewController: UIViewController {
                     self.apartmentNameLabel.text = "Apartment: " + apartment.name
                     self.apartmentView.isHidden = false
                     self.noApartmentView.isHidden = true
+                    self.roommatesTableView.reloadData()
                 })
             }
         })
@@ -55,6 +57,32 @@ class HomeViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    //MARK: - Table View
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if (self.apartment == nil){
+            return 0
+        }else{
+            return (self.apartment?.users.count)! // your number of cell here
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "roomiesCell", for: indexPath) as! RoommatesTableViewCell
+        cell.usernameLabel.text = self.apartment?.users[indexPath.row].username
+        if(self.apartment?.users[indexPath.row].at_home == true){
+            cell.atHomeLabel.text = "HOME"
+        }else{
+            cell.atHomeLabel.text = "AWAY"
+        }
+        
+        return cell
+    }
+    
+    /*
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.selectedFile = self.files[indexPath.row]
+        performSegue(withIdentifier: "videoListToVideo", sender: self)
+    }*/
     
     /*
     // MARK: - Navigation
