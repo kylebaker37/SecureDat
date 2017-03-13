@@ -14,22 +14,57 @@ class VideoViewController: UIViewController {
     var player:AVPlayer!
     var videoFile: String!
     
+    
+    let activityIndicatorView: UIActivityIndicatorView = {
+        let aiv = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+        aiv.translatesAutoresizingMaskIntoConstraints = false
+        aiv.startAnimating()
+        return aiv
+    }()
+    
+    let controlsContainerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(white: 0, alpha: 1)
+        return view
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let height = self.view.frame.size.width * 9 / 16
+        let frame = CGRect(x: 0, y: 50, width: self.view.frame.size.width, height: height)
+        
+        setupPlayerView(frame: frame)
+        
+        controlsContainerView.frame = frame
+        self.view.addSubview(controlsContainerView)
+        
+        controlsContainerView.addSubview(activityIndicatorView)
+        activityIndicatorView.centerXAnchor.constraint(equalTo: controlsContainerView.centerXAnchor).isActive = true
+        activityIndicatorView.centerYAnchor.constraint(equalTo: controlsContainerView.centerYAnchor).isActive = true
+    }
+    
+    private func setupPlayerView(frame: CGRect) {
         let urlString = "http://jplayer.org/video/m4v/Big_Buck_Bunny_Trailer.m4v"
         if let url = NSURL(string: urlString) {
             let player = AVPlayer(url: url as URL)
             let playerLayer = AVPlayerLayer(player: player)
-            let height = self.view.frame.size.width * 9 / 16
-            playerLayer.frame = CGRect(x: 0, y: 50, width: self.view.frame.size.width, height: height)
+            playerLayer.frame = frame
             playerLayer.backgroundColor = UIColor.black.cgColor
             self.view.layer.addSublayer(playerLayer)
             player.play()
+            
+            player.addObserver(self, forKeyPath: "currentItem.loadedTimeRanges", options: .new, context: nil)
         }
-//        let url:NSURL = NSURL(string: "http://jplayer.org/video/m4v/Big_Buck_Bunny_Trailer.m4v")!
-//        let url:NSURL = NSURL(string: "http://localhost:5000/api/vid/1/" + videoFile)!
-        // Do any additional setup after loading the view.
+        //        let url:NSURL = NSURL(string: "http://jplayer.org/video/m4v/Big_Buck_Bunny_Trailer.m4v")!
+        //        let url:NSURL = NSURL(string: "http://localhost:5000/api/vid/1/" + videoFile)!
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "currentItem.loadedTimeRanges" {
+            activityIndicatorView.stopAnimating()
+            controlsContainerView.backgroundColor = .clear
+        }
     }
 
     override func didReceiveMemoryWarning() {
