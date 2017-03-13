@@ -25,7 +25,10 @@ class ViewController: UIViewController {
                     })
                     let uid = result_dict1["id"] as! Int
                     let uid2 = result_dict2["id"] as! Int
-                    Backend.add_users_to_apartment(uids: [uid, uid2], aid: aid)
+                    Backend.add_users_to_apartment(uids: [uid, uid2], aid: aid, completionHandler: {
+                        status in
+                        return
+                    })
                     Backend.update_user_location_status(uid: uid, at_home: false)
                     Backend.update_user_location_status(uid: uid, at_home: true)
                     Backend.user_location_status(uid: uid, completionHandler: {

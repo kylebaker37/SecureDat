@@ -65,7 +65,10 @@ class AddRoommatesViewController: UIViewController, UITableViewDelegate, UITable
             user in
             DispatchQueue.main.async {
                 if (user.id != -1){
-                    Backend.add_users_to_apartment(uids: [user.id], aid: self.aptId)
+                    Backend.add_users_to_apartment(uids: [user.id], aid: self.aptId, completionHandler: {
+                        status in
+                        return
+                    })
                     Helpers.createAlert(title: "Success!", message: "Successfully added user to the apartment", vc: self)
                 }else{
                     Helpers.createAlert(title: "Search Error", message: "Could not find user with that email", vc: self)

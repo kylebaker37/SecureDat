@@ -72,6 +72,15 @@ def apartment():
     users_at_home.append(user.at_home)
   return jsonify({'aptname':a.aptname, 'aid':a.id, 'latitude': a.latitude, 'longitude':a.longitude, 'userids':userids, 'usernames':usernames, 'users_at_home': users_at_home})
 
+@app.route('/api/find_apartment', methods= ['GET'])
+def find_apartment():
+  aptname = request.args.get('aptname')
+  apt = models.Apartment.query.filter_by(aptname=aptname).first()
+  if apt is not None: 
+    return jsonify({'aptname':apt.aptname, 'latitude':apt.latitude, 'longitude':apt.longitude, 'aid':apt.id})
+  else:
+     return jsonify({'aptname':'', 'latitude':0.0, 'longitude':0.0, 'aid':-1})
+
 @app.route('/api/add_apartment', methods = ['POST'])
 def add_apartment():
   json = request.get_json()
