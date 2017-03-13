@@ -31,22 +31,26 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let current_uid = UserDefaults.standard.value(forKey: "uid")! as! Int
         Backend.get_user(id: current_uid, completionHandler: {
             current_user in
-            self.current_user = current_user
-            self.currentUserLabel.text = "Logged in as " + current_user.username
-            self.currentUserLabel.isHidden = false
-            
-            if(self.current_user?.aid == nil){
-                self.apartmentView.isHidden = true
-                self.noApartmentView.isHidden = false
-            }else{
-                Backend.get_apartment(id: (self.current_user?.aid)!, completionHandler: {
-                    apartment in
-                    self.apartment = apartment
-                    self.apartmentNameLabel.text = "Apartment: " + apartment.name
-                    self.apartmentView.isHidden = false
-                    self.noApartmentView.isHidden = true
-                    self.roommatesTableView.reloadData()
-                })
+            DispatchQueue.main.async {
+                self.current_user = current_user
+                self.currentUserLabel.text = "Logged in as " + current_user.username
+                self.currentUserLabel.isHidden = false
+                
+                if(self.current_user?.aid == nil){
+                    self.apartmentView.isHidden = true
+                    self.noApartmentView.isHidden = false
+                }else{
+                    Backend.get_apartment(id: (self.current_user?.aid)!, completionHandler: {
+                        apartment in
+                        DispatchQueue.main.async{
+                        self.apartment = apartment
+                        self.apartmentNameLabel.text = "Apartment: " + apartment.name
+                        self.apartmentView.isHidden = false
+                        self.noApartmentView.isHidden = true
+                        self.roommatesTableView.reloadData()
+                        }
+                    })
+                }
             }
         })
         // Do any additional setup after loading the view.

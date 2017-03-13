@@ -86,6 +86,7 @@ class Backend{
                 let result = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String:AnyObject]
                 print("Result -> \(result)")
                 let user = User(id: result!["id"] as! Int, username: result!["username"] as! String, email: result!["email"] as! String, phone: result!["phone"] as! String, aid: result!["aid"] as? Int)
+                print("passing user into completion handler for get user")
                 completionHandler(user)
                 
                 
@@ -141,7 +142,9 @@ class Backend{
                         completionHandler(nil)
                     }else{
                         print("Successful login -> \(result)")
-                        completionHandler(User(id: result!["id"] as! Int, username: result!["username"] as! String, email: result!["email"] as! String, phone: result!["phone"] as! String, aid: result!["aid"] as? Int))
+                        let u = User(id: result!["id"] as! Int, username: result!["username"] as! String, email: result!["email"] as! String, phone: result!["phone"] as! String, aid: result!["aid"] as? Int)
+                        print("passing logged in user to completion handler")
+                        completionHandler(u)
                     }
                     
                 } catch {
@@ -192,6 +195,7 @@ class Backend{
                     }
                     apartment.users = users
                 }
+                print("passing apartment to completion handler")
                 completionHandler(apartment)
                 
                 
