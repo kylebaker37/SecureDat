@@ -21,6 +21,7 @@ def main():
     while True:
         if check_motion(sonar, avg_distance):
             print "MOTION!!!"
+            handle_motion_detected()
         if mag.is_mag_present():
             cur = True
         else:
@@ -30,6 +31,16 @@ def main():
         time.sleep(0.05)
         prev = cur
 
+def handle_motion_detected():
+    url = BASE_URL + 'api/door_opened'
+    payload = {'aid': 1, 'type': 'motion'}
+    try:
+        print "Attempting to notify about motion..."
+        r = requests.post(url, json=payload)
+        print "Connection complete"
+    except requests.exceptions.ConnectionError:
+        print "Connection failed"
+        
 def boot_sonar(sonar):
     print "Doing initial sonar boot..."
     avg = 0
