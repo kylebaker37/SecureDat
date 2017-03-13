@@ -156,6 +156,54 @@ class Backend{
     }
 
     //MARK: - Apartment API
+    static func get_apartment(id: Int, completionHandler: @escaping(Apartment) -> ()){
+        let url = NSURL(string: HOST + ":" + PORT + "/api/apartment?aid=" + String(id))!
+        let request = NSMutableURLRequest(url: url as URL)
+        request.httpMethod = "GET"
+        
+        let task = URLSession.shared.dataTask(with: request as URLRequest){ data, response, error in
+            if error != nil{
+                print("Error -> \(error)")
+                return
+            }
+            do {
+                let result = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String:AnyObject]
+                print("Result -> \(result)")
+                
+                let aptname = result!["aptname"] as! String
+                let latitude = result!["latitude"] as? Double
+                let longitude = result!["longitude"] as? Double
+                let userids = result!["userids"] as? [Int]
+                let usernames = result!["usernames"] as? [String]
+                let users_at_home = result!["users_at_home"] as? [Bool]
+                
+                let apartment = Apartment(id: id)
+                apartment.name = aptname
+                apartment.latitude = latitude
+                apartment.longitude = longitude
+                if (userids != nil){
+                    var users: [User] = []
+                    for (i, userid) in userids!.enumerated(){
+                        let u = User(id: userid)
+                        u.username = usernames![i]
+                        u.at_home = users_at_home![i]
+                        u.aid = id
+                        users.append(u)
+                    }
+                    apartment.users = users
+                }
+                completionHandler(apartment)
+                
+                
+            } catch {
+                print("Error -> \(error)")
+                return
+            }
+        }
+        task.resume()
+    }
+
+    
     //adds apartment, returns an ID for the new apartment
     static func add_apartment(aptname: String, latitude: Double, longitude: Double, completionHandler: @escaping (Int) -> ()){
         let json = ["aptname":aptname, "latitude":latitude, "longitude":longitude] as [String : Any]

@@ -14,7 +14,7 @@ class Apartment{
     var longitude: Double?
     var name: String
     var password: String
-    var users: [Int] = []   //user ids... currently would be adding them using add_users_to_apartment API call
+    var users: [User] = []   //user ids... currently would be adding them using add_users_to_apartment API call
     
     init(name: String, password: String){
         self.name = name

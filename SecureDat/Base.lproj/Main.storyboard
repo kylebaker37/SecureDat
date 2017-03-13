@@ -169,6 +169,43 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q1o-xs-1hj">
+                                <rect key="frame" x="0.0" y="110" width="375" height="557"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ATw-Ar-Auh">
+                                        <rect key="frame" x="126" y="74" width="123" height="30"/>
+                                        <state key="normal" title="Create Apartment"/>
+                                        <connections>
+                                            <segue destination="abB-5R-EEx" kind="show" identifier="homeToApartmentDetails" id="90r-j7-4Z5"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You're currently not in an apartment..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qoa-UX-bP2">
+                                        <rect key="frame" x="8" y="38" width="359" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qp3-Ra-fvi">
+                                        <rect key="frame" x="134" y="119" width="106" height="30"/>
+                                        <state key="normal" title="Join Apartment"/>
+                                        <connections>
+                                            <segue destination="nmv-Eg-Xd1" kind="show" identifier="homeToApartmentSearch" id="raX-D5-dpF"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="qoa-UX-bP2" firstAttribute="top" secondItem="q1o-xs-1hj" secondAttribute="topMargin" constant="30" id="2XC-pR-Gq3"/>
+                                    <constraint firstItem="qoa-UX-bP2" firstAttribute="leading" secondItem="q1o-xs-1hj" secondAttribute="leadingMargin" id="2oC-dT-7ai"/>
+                                    <constraint firstItem="ATw-Ar-Auh" firstAttribute="top" secondItem="qoa-UX-bP2" secondAttribute="bottom" constant="15" id="JS1-2s-cCF"/>
+                                    <constraint firstItem="ATw-Ar-Auh" firstAttribute="centerX" secondItem="q1o-xs-1hj" secondAttribute="centerX" id="LtC-uw-xJU"/>
+                                    <constraint firstItem="Qp3-Ra-fvi" firstAttribute="top" secondItem="ATw-Ar-Auh" secondAttribute="bottom" constant="15" id="ZYF-Fd-Ser"/>
+                                    <constraint firstItem="Qp3-Ra-fvi" firstAttribute="top" secondItem="ATw-Ar-Auh" secondAttribute="bottom" constant="15" id="huw-Zl-Xa2"/>
+                                    <constraint firstItem="ATw-Ar-Auh" firstAttribute="top" secondItem="qoa-UX-bP2" secondAttribute="bottom" constant="15" id="sed-rE-cVK"/>
+                                    <constraint firstItem="Qp3-Ra-fvi" firstAttribute="centerX" secondItem="q1o-xs-1hj" secondAttribute="centerX" id="tRn-s5-ik8"/>
+                                    <constraint firstItem="qoa-UX-bP2" firstAttribute="trailing" secondItem="q1o-xs-1hj" secondAttribute="trailingMargin" id="uQ3-25-Gnz"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="85K-qu-uKN">
                                 <rect key="frame" x="0.0" y="110" width="375" height="557"/>
                                 <subviews>
@@ -179,47 +216,21 @@
                                             <segue destination="mRx-t2-04f" kind="show" id="caC-iz-HaT"/>
                                         </connections>
                                     </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="ZfC-Sb-X8j" firstAttribute="centerX" secondItem="85K-qu-uKN" secondAttribute="centerX" id="euL-St-RQD"/>
-                                    <constraint firstAttribute="bottom" secondItem="ZfC-Sb-X8j" secondAttribute="bottom" constant="50" id="yoK-Ei-92l"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q1o-xs-1hj">
-                                <rect key="frame" x="0.0" y="110" width="375" height="557"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ATw-Ar-Auh">
-                                        <rect key="frame" x="125.5" y="263.5" width="123" height="30"/>
-                                        <state key="normal" title="Create Apartment"/>
-                                        <connections>
-                                            <segue destination="abB-5R-EEx" kind="show" identifier="homeToApartmentDetails" id="90r-j7-4Z5"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You're currently not in an apartment..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qoa-UX-bP2">
-                                        <rect key="frame" x="8" y="227.5" width="359" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Apartment Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2DK-Zy-Rci">
+                                        <rect key="frame" x="8" y="23" width="359" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qp3-Ra-fvi">
-                                        <rect key="frame" x="134" y="308.5" width="106" height="30"/>
-                                        <state key="normal" title="Join Apartment"/>
-                                        <connections>
-                                            <segue destination="nmv-Eg-Xd1" kind="show" identifier="homeToApartmentSearch" id="raX-D5-dpF"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="qoa-UX-bP2" firstAttribute="leading" secondItem="q1o-xs-1hj" secondAttribute="leadingMargin" id="6hK-cF-J4s"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="qoa-UX-bP2" secondAttribute="trailing" id="Abv-Df-pUR"/>
-                                    <constraint firstItem="ATw-Ar-Auh" firstAttribute="centerY" secondItem="q1o-xs-1hj" secondAttribute="centerY" id="KJY-jh-xTO"/>
-                                    <constraint firstItem="ATw-Ar-Auh" firstAttribute="centerX" secondItem="q1o-xs-1hj" secondAttribute="centerX" id="Ndo-aj-K1d"/>
-                                    <constraint firstItem="ATw-Ar-Auh" firstAttribute="top" secondItem="qoa-UX-bP2" secondAttribute="bottom" constant="15" id="Nvf-i6-25M"/>
-                                    <constraint firstItem="Qp3-Ra-fvi" firstAttribute="centerX" secondItem="q1o-xs-1hj" secondAttribute="centerX" id="SWf-6a-yg6"/>
-                                    <constraint firstItem="Qp3-Ra-fvi" firstAttribute="top" secondItem="ATw-Ar-Auh" secondAttribute="bottom" constant="15" id="dan-k2-L4f"/>
-                                    <constraint firstItem="qoa-UX-bP2" firstAttribute="centerX" secondItem="q1o-xs-1hj" secondAttribute="centerX" id="qJb-JF-OoE"/>
+                                    <constraint firstItem="2DK-Zy-Rci" firstAttribute="top" secondItem="85K-qu-uKN" secondAttribute="topMargin" constant="15" id="a5D-Nb-quf"/>
+                                    <constraint firstItem="ZfC-Sb-X8j" firstAttribute="centerX" secondItem="85K-qu-uKN" secondAttribute="centerX" id="euL-St-RQD"/>
+                                    <constraint firstItem="2DK-Zy-Rci" firstAttribute="leading" secondItem="85K-qu-uKN" secondAttribute="leadingMargin" id="mRo-Sz-lcs"/>
+                                    <constraint firstItem="2DK-Zy-Rci" firstAttribute="centerX" secondItem="85K-qu-uKN" secondAttribute="centerX" id="q5C-td-jhS"/>
+                                    <constraint firstAttribute="bottom" secondItem="ZfC-Sb-X8j" secondAttribute="bottom" constant="50" id="yoK-Ei-92l"/>
+                                    <constraint firstItem="2DK-Zy-Rci" firstAttribute="trailing" secondItem="85K-qu-uKN" secondAttribute="trailingMargin" id="zX2-5g-BSU"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -241,6 +252,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="B8Y-LZ-TxV"/>
                     <connections>
+                        <outlet property="apartmentNameLabel" destination="2DK-Zy-Rci" id="d9A-NA-Tsa"/>
                         <outlet property="apartmentView" destination="85K-qu-uKN" id="PGh-jK-e5P"/>
                         <outlet property="createApartmentButton" destination="ATw-Ar-Auh" id="HBW-uv-YG7"/>
                         <outlet property="currentUserLabel" destination="9GS-Za-8Me" id="Jxf-My-pYs"/>
@@ -250,7 +262,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b9o-xM-gpm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1079.2" y="1480.2098950524739"/>
+            <point key="canvasLocation" x="1278" y="1472"/>
         </scene>
         <!--Apartment Search-->
         <scene sceneID="0QL-0Z-apd">

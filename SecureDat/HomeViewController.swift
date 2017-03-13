@@ -9,18 +9,17 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-    var current_user: User?{
-        willSet(current_user) {}
-        didSet {
-            self.currentUserLabel.text = self.current_user?.username
-            self.currentUserLabel.isHidden = false
-        }
-    }
+    
+    var current_user: User?
+    var apartment: Apartment?
     
     @IBOutlet weak var noApartmentView: UIView!
     @IBOutlet weak var apartmentView: UIView!
     @IBOutlet weak var createApartmentButton: UIButton!
     @IBOutlet weak var currentUserLabel: UILabel!
+    
+    @IBOutlet weak var apartmentNameLabel: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,12 +31,20 @@ class HomeViewController: UIViewController {
         Backend.get_user(id: current_uid, completionHandler: {
             current_user in
             self.current_user = current_user
+            self.currentUserLabel.text = "Logged in as " + current_user.username
+            self.currentUserLabel.isHidden = false
+            
             if(self.current_user?.aid == nil){
                 self.apartmentView.isHidden = true
                 self.noApartmentView.isHidden = false
             }else{
-                self.apartmentView.isHidden = false
-                self.noApartmentView.isHidden = true
+                Backend.get_apartment(id: (self.current_user?.aid)!, completionHandler: {
+                    apartment in
+                    self.apartment = apartment
+                    self.apartmentNameLabel.text = "Apartment: " + apartment.name
+                    self.apartmentView.isHidden = false
+                    self.noApartmentView.isHidden = true
+                })
             }
         })
         // Do any additional setup after loading the view.

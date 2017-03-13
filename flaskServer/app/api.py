@@ -50,7 +50,18 @@ def login():
   else:
     return jsonify({'result':'success', 'id':user.id, 'username': user.username, 'aid':user.aid, 'email':user.email, 'phone': user.phone, 'at_home': user.at_home})
 
-
+@app.route('/api/apartment', methods= ['GET'])
+def apartment():
+  aid = request.args.get('aid')
+  a = models.Apartment.query.get(aid)
+  userids = []
+  usernames = []
+  users_at_home = []
+  for user in a.users:
+    userids.append(user.id)
+    usernames.append(user.username)
+    users_at_home.append(user.at_home)
+  return jsonify({'aptname':a.aptname, 'aid':a.id, 'latitude': a.latitude, 'longitude':a.longitude, 'userids':userids, 'usernames':usernames, 'users_at_home': users_at_home})
 
 @app.route('/api/add_apartment', methods = ['POST'])
 def add_apartment():

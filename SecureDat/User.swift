@@ -16,6 +16,7 @@ class User{
     var email: String
     var phone: String
     var aid: Int?
+    var at_home: Bool = false
     
     init(username: String, password: String, email: String, phone: String){
         self.id = -1;   //stays -1 until given id by backend
