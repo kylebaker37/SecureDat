@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -18,7 +18,8 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        usernameTextField.delegate = self
+        passwordTextField.delegate = self
         // Do any additional setup after loading the view.
     }
 
@@ -54,6 +55,11 @@ class LoginViewController: UIViewController {
 
     @IBAction func signupButtonDidTouchUpInside(_ sender: Any) {
         performSegue(withIdentifier: "loginToSignup", sender: self)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 
     
