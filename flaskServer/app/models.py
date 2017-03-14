@@ -39,6 +39,7 @@ class Apartment(db.Model):
 class Video(db.Model):
   id = db.Column(db.Integer, primary_key=True)
   path = db.Column(db.String(128), index=True, unique=True)
+  event = db.Column(db.String(16), index=True, unique=False)
   aid = db.Column(db.Integer, db.ForeignKey('apartment.id'))
 
   def __repr__(self):

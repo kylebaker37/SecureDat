@@ -38,7 +38,7 @@ def find_user_by_email():
   if user is not None: 
     return jsonify({'username':user.username, 'id':user.id, 'at_home': user.at_home, 'email':user.email, 'phone':user.phone, 'aid':user.aid})
   else:
-     return jsonify({'username':'', 'id':'', 'at_home':'', 'email':'', 'phone':'', 'aid':''})
+     return jsonify({'username':'', 'id':-1, 'at_home':'', 'email':'', 'phone':'', 'aid':-1})
 
 @app.route('/api/user', methods = ['GET'])
 def user():
@@ -135,10 +135,7 @@ def user_location_status():
 def door_opened():
   json = request.get_json()
   aid = json['aid']
-  if 'type' in json:
-    tpe = json['type']
-  else:
-    tpe = 'door'
+  tpe = json['type']
   apartment = models.Apartment.query.get(aid)
   if apartment is None:
     return jsonify({'error':'apartment id does not exist!'})
@@ -153,9 +150,17 @@ def door_opened():
       for user in users:
         if tpe == 'door':
           message = "Your door is open!!! :O"
-        else:
+        elif tpe == 'long':
+            message = "Your door has been open for a while!!! :O"
+        elif tpe == 'motion':
           message = "Motion detected in your apartment!!! :O"
-        twil.sendMessage(user.phone, message)
+        else:
+            message = "Someone is trying to telll you something, not sure what tho!!! :O"
+        try:
+            twil.sendMessage(user.phone, message)
+        except:
+            # TODO: Handle invalid phone numbers
+            pass
         print 'sent {} to {}'.format(message, user.phone)
       return jsonify({'success':'apartment alerted!'})
     else:
@@ -168,10 +173,11 @@ def update_vid_path():
   json = request.get_json()
   aid = json['aid']
   path = json['path']
+  event = json['event']
   apartment = models.Apartment.query.get(aid)
   if apartment is None:
     return jsonify({'error':'apartment id does not exist!'})
-  v = models.Video(path=path)
+  v = models.Video(path=path, event=event)
   db.session.add(v)
   apartment.vids.append(v)
   db.session.commit()
