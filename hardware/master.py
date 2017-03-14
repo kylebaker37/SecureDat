@@ -24,9 +24,11 @@ def main():
             print "MOTION!!!"
             if handle_event('motion'):
                 handle_vid_capture(cam, 'motion')
+                continue
         if mag.is_mag_present():
             cur = True
             door_open_time = time.time()
+            continue
         else:
             cur = False
             if time.time() - door_open_time > MAX_DOOR_OPEN_TIME:
@@ -34,6 +36,7 @@ def main():
                 if handle_event('long'):
                     handle_vid_capture(cam, 'long')
                 door_open_time = time.time()
+                continue
         if prev == True and cur == False:
             handle_door_opened(cam)
             door_open_time = time.time()

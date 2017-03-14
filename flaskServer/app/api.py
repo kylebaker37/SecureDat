@@ -148,6 +148,8 @@ def door_opened():
     if not users_at_home:
       twil = Messenger.Messenger()
       for user in users:
+        print "Trying to send to: "
+        print user
         if tpe == 'door':
           message = "Your door is open!!! :O"
         elif tpe == 'long':
@@ -158,10 +160,11 @@ def door_opened():
             message = "Someone is trying to telll you something, not sure what tho!!! :O"
         try:
             twil.sendMessage(user.phone, message)
-        except:
+            print 'sent {} to {}'.format(message, user.phone)
+        except Exception as e:
             # TODO: Handle invalid phone numbers
-            pass
-        print 'sent {} to {}'.format(message, user.phone)
+            print "Exception"
+            print e
       return jsonify({'success':'apartment alerted!'})
     else:
       return jsonify({'users_at_home':users_at_home, 'info': 'no one alerted'})
@@ -185,7 +188,8 @@ def update_vid_path():
 
 @app.route('/api/vid/<aid>/<filename>', methods = ['GET'])
 def send_video(aid, filename):
-  return send_from_directory('/Users/kyle/Desktop/', filename)
+  print "VIDS ENDPOINT HIT"
+  return send_from_directory('/home/pi/SecureDat/vids/', filename)
   # TODO - Set real file path on ras pi
   # TODO - Look into 206/Broken Pipe/Weird Errors
 
