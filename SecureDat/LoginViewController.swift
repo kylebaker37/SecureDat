@@ -16,10 +16,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var passwordLabel: UILabel!
     
+    var usernameLabelAnimation: TextFieldLabelAnimation!
+    var passwordLabelAnimation: TextFieldLabelAnimation!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         usernameTextField.delegate = self
         passwordTextField.delegate = self
+        
+        usernameLabelAnimation = TextFieldLabelAnimation(field: self.usernameTextField, label: self.usernameLabel)
+        passwordLabelAnimation = TextFieldLabelAnimation(field: self.passwordTextField, label: self.passwordLabel)
         // Do any additional setup after loading the view.
     }
 
@@ -62,6 +68,22 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return true
     }
 
+    @IBAction func usernameTextFieldEditingDidBegin(_ sender: Any) {
+        self.usernameLabelAnimation.animateLabelAppear()
+    }
+    
+    @IBAction func usernameTextFieldEditingDidEnd(_ sender: Any) {
+        self.usernameLabelAnimation.animateLabelDisappear()
+    }
+    @IBAction func passwordTextFieldEditingDidBegin(_ sender: Any) {
+        self.passwordLabelAnimation.animateLabelAppear()
+    }
+    
+    @IBAction func passwordTextFieldEditingDidEnd(_ sender: Any) {
+        self.passwordLabelAnimation.animateLabelDisappear()
+        
+    }
+    
     
     
     // MARK: - Navigation
