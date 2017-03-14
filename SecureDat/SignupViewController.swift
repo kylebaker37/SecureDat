@@ -23,6 +23,14 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     
+    //animations
+    var usernameLabelAnimation: TextFieldLabelAnimation!
+    var passwordLabelAnimation: TextFieldLabelAnimation!
+    var passwordConfirmationLabelAnimation: TextFieldLabelAnimation!
+    var emailLabelAnimation: TextFieldLabelAnimation!
+    var phoneLabelAnimation: TextFieldLabelAnimation!
+
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +39,12 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         passwordConfirmationTextField.delegate = self
         phoneTextField.delegate = self
         emailTextField.delegate = self
+        
+        usernameLabelAnimation = TextFieldLabelAnimation(field: self.usernameTextField, label: self.usernameLabel)
+        passwordLabelAnimation = TextFieldLabelAnimation(field: self.passwordTextField, label: self.passwordLabel)
+        passwordConfirmationLabelAnimation = TextFieldLabelAnimation(field: self.passwordConfirmationTextField, label: self.passwordConfirmationLabel)
+        emailLabelAnimation = TextFieldLabelAnimation(field: self.emailTextField, label: self.emailLabel)
+        phoneLabelAnimation = TextFieldLabelAnimation(field: self.phoneTextField, label: self.phoneLabel)
         // Do any additional setup after loading the view.
     }
 
@@ -42,10 +56,70 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        UIView.animate(withDuration: 0.5,
+                       animations:{
+                        self.view.frame.origin.y = 0
+        })
         return true
     }
 
     // MARK: - IBActions
+    
+    
+    @IBAction func usernameEditingDidBegin(_ sender: Any) {
+        self.usernameLabelAnimation.animateLabelAppear()
+    }
+    @IBAction func usernameEditingDidEnd(_ sender: Any) {
+        self.usernameLabelAnimation.animateLabelDisappear()
+        
+    }
+    @IBAction func passwordEditingDidBegin(_ sender: Any) {
+        self.passwordLabelAnimation.animateLabelAppear()
+    }
+    @IBAction func passwordConfirmationEditingDidBegin(_ sender: Any) {
+        self.passwordConfirmationLabelAnimation.animateLabelAppear()
+    }
+    @IBAction func passwordConfirmationEditingDidEnd(_ sender: Any) {
+        self.passwordConfirmationLabelAnimation.animateLabelDisappear()
+    }
+    
+    @IBAction func passwordEditingDidEnd(_ sender: Any) {
+        self.passwordLabelAnimation.animateLabelDisappear()
+    }
+
+    @IBAction func emailTextfieldEditingDidBegin(_ sender: Any) {
+        
+        UIView.animate(withDuration: 0.5,
+                       animations:{
+                        self.view.frame.origin.y = -100
+        })
+        self.emailLabelAnimation.animateLabelAppear()
+    }
+    
+    @IBAction func emailTextFieldEditingDidEnd(_ sender: Any) {
+        
+        UIView.animate(withDuration: 0.5,
+                       animations:{
+                        self.view.frame.origin.y = 0
+        })
+        self.emailLabelAnimation.animateLabelDisappear()
+    }
+    
+    @IBAction func phoneTextFieldEditingDidBegin(_ sender: Any) {
+        UIView.animate(withDuration: 0.5,
+                       animations:{
+                        self.view.frame.origin.y = -200
+        })
+        self.phoneLabelAnimation.animateLabelAppear()
+    }
+    
+    @IBAction func phoneTextFieldEditingDidEnd(_ sender: Any) {
+        UIView.animate(withDuration: 0.5,
+                       animations:{
+                        self.view.frame.origin.y = 0
+        })
+        self.phoneLabelAnimation.animateLabelDisappear()
+    }
     
     @IBAction func createAccountButtonDidTouchUpInside(_ sender: Any) {
         let username = usernameTextField.text!
