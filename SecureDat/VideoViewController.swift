@@ -11,51 +11,91 @@ import MediaPlayer
 
 class VideoViewController: UIViewController {
 
+    @IBOutlet weak var theProgressBar: UISlider!
+    @IBOutlet weak var currentTimeLabel: UILabel!
+    
+    @IBOutlet weak var pausePlayButton: UIButton!
+    
     var player:AVPlayer!
     var videoFile: String!
+    var updater : CADisplayLink! = nil
+
+    @IBOutlet weak var videoView: PlayerView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        let url:NSURL = NSURL(string: "http://jplayer.org/video/m4v/Big_Buck_Bunny_Trailer.m4v")!
+        let url:NSURL = NSURL(string: "http://jplayer.org/video/m4v/Big_Buck_Bunny_Trailer.m4v")!
 //        let url:NSURL = NSURL(string: "http://localhost:5000/api/vid")!
-        let url:NSURL = NSURL(string: "http://localhost:5000/api/vid/1/" + videoFile)!
+        //let url:NSURL = NSURL(string: "http://localhost:5000/api/vid/1/" + videoFile)!
         
         player = AVPlayer(url: url as URL)
-        let avPlayerLayer:AVPlayerLayer = AVPlayerLayer(player: player)
         
-        let screenSize = UIScreen.main.bounds
-        let screenWidth = screenSize.width
+        self.videoView.player = player
         
-        avPlayerLayer.frame = CGRect(x: 25, y: 25, width: screenWidth-50, height: screenWidth-50)
-        self.view.layer.addSublayer(avPlayerLayer)
+        //playing video
+        theProgressBar.addTarget(self, action: #selector(VideoViewController.userReleasedSlider), for: UIControlEvents.touchUpInside)
+        
+        theProgressBar.addTarget(self, action: #selector(VideoViewController.userBeganTouchingSlider), for: UIControlEvents.touchDown)
+        
+        updater = CADisplayLink(target: self, selector: #selector(VideoViewController.trackVideo))
+        updater.preferredFramesPerSecond = 10
+        updater.add(to: RunLoop.current, forMode: RunLoopMode.commonModes)
+        
+        theProgressBar.minimumValue = 0
+        theProgressBar.maximumValue = 100 // 
         player.play()
-        
-        let pause = UIButton()
-        pause.frame = (frame: CGRect(x: self.view.frame.size.width - 60, y: self.view.frame.size.width - 60, width: 50, height: 50))
-        pause.backgroundColor = UIColor.red
-        pause.setTitle("Pause", for: .normal)
-        pause.addTarget(self, action: #selector(pause_func), for: .touchUpInside)
-        self.view.addSubview(pause)
-        
-        let play = UIButton()
-        play.frame = (frame: CGRect(x: self.view.frame.size.width - 120, y: self.view.frame.size.width - 60, width: 50, height: 50))
-        play.backgroundColor = UIColor.blue
-        play.setTitle("Play", for: .normal)
-        play.addTarget(self, action: #selector(play_func), for: .touchUpInside)
-        self.view.addSubview(play)
+        ////////
+        /////////
 
         // Do any additional setup after loading the view.
     }
     
-    func pause_func(sender: UIButton!) {
+    override func viewWillDisappear(_ animated: Bool) {
         self.player.pause()
-    }
-    
-    func play_func(sender: UIButton!) {
-        self.player.play()
+        self.updater.invalidate()
+        self.updater = nil
+        self.player = nil
     }
 
+    func trackVideo(){
+        if (player != nil){
+            if(player.rate != 0){
+                let normalizedTime = Float(player.currentTime().seconds * 100.0 / (self.player.currentItem?.asset.duration.seconds)!)
+                theProgressBar.value = normalizedTime
+                
+            }
+            let time = (Double(theProgressBar.value)/100.0) * (self.player.currentItem?.asset.duration.seconds)!
+            self.currentTimeLabel.text = "\(time.roundTo(places:1))"
+        }
+        
+    }
+    
+    func userReleasedSlider() {
+        print("editing slider ended")
+        self.player.seek(to: CMTime(seconds: (Double(self.theProgressBar.value / 100.0) * (self.player.currentItem?.asset.duration.seconds)!), preferredTimescale: 1))
+    }
+    
+    func userBeganTouchingSlider(){
+        print("paused from editing slider")
+        self.player.pause()
+        self.pausePlayButton.setImage(UIImage(named: "play")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        self.pausePlayButton.setImage(UIImage(named: "playHover")?.withRenderingMode(.alwaysOriginal), for: .highlighted)
+    }
+    
+    @IBAction func pausePlayButtonDidTouchUpInside(_ sender: Any) {
+        if (self.player.rate == 0){
+            self.player.play()
+            self.pausePlayButton.setImage(UIImage(named: "pause")?.withRenderingMode(.alwaysOriginal), for: .normal)
+            self.pausePlayButton.setImage(UIImage(named: "pauseHover")?.withRenderingMode(.alwaysOriginal), for: .highlighted)
+        }else{
+            self.player.pause()
+            self.pausePlayButton.setImage(UIImage(named: "play")?.withRenderingMode(.alwaysOriginal), for: .normal)
+            self.pausePlayButton.setImage(UIImage(named: "playHover")?.withRenderingMode(.alwaysOriginal), for: .highlighted)
+        }
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -73,3 +113,4 @@ class VideoViewController: UIViewController {
     */
 
 }
+
