@@ -12,7 +12,7 @@ class Backend{
     //static let HOST = "http://172.91.91.149"
     //static let PORT = "80"
     static let HOST = "http://127.0.0.1"
-    static let PORT = "80"
+    static let PORT = "5000"
     
     
     //MARK: - user API
