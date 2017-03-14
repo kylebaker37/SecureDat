@@ -25,9 +25,9 @@ class VideoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let url:NSURL = NSURL(string: "http://jplayer.org/video/m4v/Big_Buck_Bunny_Trailer.m4v")!
-//        let url:NSURL = NSURL(string: "http://localhost:5000/api/vid")!
-        //let url:NSURL = NSURL(string: "http://localhost:5000/api/vid/1/" + videoFile)!
+//        let url:NSURL = NSURL(string: "http://jplayer.org/video/m4v/Big_Buck_Bunny_Trailer.m4v")!
+//        let url:NSURL = NSURL(string: "http://localhost:80/api/vid/1/input.mp4")!
+        let url:NSURL = NSURL(string: Backend.HOST + ":" + Backend.PORT + "/api/vid/1/" + videoFile)!
         
         player = AVPlayer(url: url as URL)
         

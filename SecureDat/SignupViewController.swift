@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SignupViewController: UIViewController {
+class SignupViewController: UIViewController, UITextFieldDelegate {
     //Labels
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!
@@ -26,13 +26,23 @@ class SignupViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        usernameTextField.delegate = self
+        passwordTextField.delegate = self
+        passwordConfirmationTextField.delegate = self
+        phoneTextField.delegate = self
+        emailTextField.delegate = self
         // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 
     // MARK: - IBActions
