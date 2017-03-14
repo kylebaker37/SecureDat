@@ -110,7 +110,7 @@ def record_video(cam):
 
 def convert_video(mp4file, h264file):
     print "Converting h264 file to mp4..."
-    cmd = ('avconv -i %s -c:v copy -f mp4 %s' % (h264file, mp4file)).split(' ')
+    cmd = ('MP4Box -add %s %s' % (h264file, mp4file)).split(' ')
     p = subprocess.Popen(cmd)
     p.wait()
     print "Conversion complete"
