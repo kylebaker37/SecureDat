@@ -70,13 +70,17 @@ class AddRoommatesViewController: UIViewController, UITableViewDelegate, UITable
 
     @IBAction func searchForRoomate(_ sender: Any) {
         let email = self.searchField.text
+        self.users = []
         Backend.find_user_by_email(email: email!, completionHandler: {
-            user in
+            resultUsers in
             DispatchQueue.main.async {
-                if (user.id != -1){
-                    self.users = [user]
+                if (!resultUsers.isEmpty){
+                    for user in resultUsers {
+                        self.users.append(user)
+                    }
                     self.tableView.reloadData()
                 }else{
+                    self.tableView.reloadData()
                     Helpers.createAlert(title: "Search Error", message: "Could not find user with that email", vc: self)
                 }
                 

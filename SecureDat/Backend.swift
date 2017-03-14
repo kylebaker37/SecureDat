@@ -9,10 +9,8 @@
 import Foundation
 
 class Backend{
-    //static let HOST = "http://172.91.91.149"
-    //static let PORT = "80"
     static let HOST = "http://127.0.0.1"
-    static let PORT = "80"
+    static let PORT = "5000"
     
     
     //MARK: - user API
@@ -101,7 +99,7 @@ class Backend{
         task.resume()
     }
     
-    static func find_user_by_email(email: String, completionHandler: @escaping(User) -> ()){
+    static func find_user_by_email(email: String, completionHandler: @escaping([User]) -> ()){
         let url = NSURL(string: HOST + ":" + PORT + "/api/find_user_by_email?email=" + email)!
         let request = NSMutableURLRequest(url: url as URL)
         request.httpMethod = "GET"
@@ -112,11 +110,16 @@ class Backend{
                 return
             }
             do {
-                let result = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String:AnyObject]
+                let result = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [[String:AnyObject]]
                 print("Result -> \(result)")
-                let user = User(id: result!["id"] as! Int, username: result!["username"] as! String, email: result!["email"] as! String, phone: result!["phone"] as! String, aid: result!["aid"] as? Int)
-                print("passing user into completion handler for get user")
-                completionHandler(user)
+                var users: [User] = []
+                for userObj in result!
+                {
+                    let user = User(id: userObj["id"] as! Int, username: userObj["username"] as! String, email: userObj["email"] as! String, phone: userObj["phone"] as! String, aid: userObj["aid"] as? Int)
+                    users.append(user)
+                }
+
+                completionHandler(users)
                 
                 
             } catch {
@@ -236,7 +239,7 @@ class Backend{
         task.resume()
     }
     
-    static func find_apartment(aptname: String, completionHandler: @escaping(Apartment) -> ()){
+    static func find_apartment(aptname: String, completionHandler: @escaping([Apartment]) -> ()){
         let url = NSURL(string: HOST + ":" + PORT + "/api/find_apartment?aptname=" + aptname)!
         let request = NSMutableURLRequest(url: url as URL)
         request.httpMethod = "GET"
@@ -247,11 +250,16 @@ class Backend{
                 return
             }
             do {
-                let result = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String:AnyObject]
+                let result = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [[String:AnyObject]]
                 print("Result -> \(result)")
-                let apt = Apartment(id: result!["aid"] as! Int, name: result!["aptname"] as! String, latitude: result!["latitude"] as! Double, longitude: result!["longitude"] as! Double)
-                print("passing user into completion handler for get user")
-                completionHandler(apt)
+                var apts: [Apartment] = []
+                for aptObj in result!
+                {
+                    let apt = Apartment(id: aptObj["aid"] as! Int, name: aptObj["aptname"] as! String, latitude: aptObj["latitude"] as! Double, longitude: aptObj["longitude"] as! Double)
+                    apts.append(apt)
+                }
+
+                completionHandler(apts)
                 
                 
             } catch {
