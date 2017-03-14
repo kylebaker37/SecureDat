@@ -53,6 +53,24 @@ class VideoViewController: UIViewController {
         return view
     }()
     
+    let videoLengthLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "00:00"
+        label.textColor = .white
+        label.font = UIFont.boldSystemFont(ofSize: 14)
+        label.textAlignment = .right
+        return label
+    }()
+    
+    let videoSlider: UISlider = {
+        let slider = UISlider()
+        slider.translatesAutoresizingMaskIntoConstraints = false
+        slider.minimumTrackTintColor = .red
+        slider.isUserInteractionEnabled = true
+        return slider
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -60,6 +78,8 @@ class VideoViewController: UIViewController {
         let frame = CGRect(x: 0, y: 50, width: self.view.frame.size.width, height: height)
         
         setupPlayerView(frame: frame)
+        
+        view.isUserInteractionEnabled = false
         
         controlsContainerView.frame = frame
         self.view.addSubview(controlsContainerView)
@@ -73,6 +93,21 @@ class VideoViewController: UIViewController {
         togglePlayButton.centerYAnchor.constraint(equalTo: controlsContainerView.centerYAnchor).isActive = true
         togglePlayButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
         togglePlayButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        controlsContainerView.addSubview(videoLengthLabel)
+        videoLengthLabel.rightAnchor.constraint(equalTo: controlsContainerView.rightAnchor, constant: -8).isActive = true
+        videoLengthLabel.bottomAnchor.constraint(equalTo: controlsContainerView.bottomAnchor).isActive = true
+        videoLengthLabel.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        videoLengthLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        
+        controlsContainerView.isUserInteractionEnabled = false
+        
+        controlsContainerView.addSubview(videoSlider)
+        videoSlider.rightAnchor.constraint(equalTo: videoLengthLabel.leftAnchor).isActive = true
+        videoSlider.bottomAnchor.constraint(equalTo: controlsContainerView.bottomAnchor).isActive = true
+        videoSlider.leftAnchor.constraint(equalTo: controlsContainerView.leftAnchor).isActive = true
+        videoSlider.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        
     }
     
     var player:AVPlayer?

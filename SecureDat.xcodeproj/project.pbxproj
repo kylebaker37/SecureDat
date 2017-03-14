@@ -183,12 +183,12 @@
 				4AD9D9A21E74C6D8001F4F2A /* SignupViewController.swift */,
 				4AD9D9A41E74C6EC001F4F2A /* HomeViewController.swift */,
 				4AD9D9A61E74C6F7001F4F2A /* ApartmentDetailsViewController.swift */,
-				4AD9D9A81E74C70A001F4F2A /* ApartmentLocationViewController.swift */,
 				4AD9D9AA1E74C714001F4F2A /* AddRoommatesViewController.swift */,
 				4AD9D9AC1E74C724001F4F2A /* ApartmentSearchViewController.swift */,
 				4AD9D9AE1E74C72F001F4F2A /* JoinApartmentViewController.swift */,
-				279AE45B1E753A10008CABBA /* VideoViewController.swift */,
+				4AD9D9A81E74C70A001F4F2A /* ApartmentLocationViewController.swift */,
 				279AE45F1E754A7E008CABBA /* VideoTableViewController.swift */,
+				279AE45B1E753A10008CABBA /* VideoViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
