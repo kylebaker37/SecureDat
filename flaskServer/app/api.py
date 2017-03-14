@@ -36,6 +36,8 @@ def find_user_by_email():
   email = request.args.get('email')
   users = models.User.query.filter(models.User.email.contains(email))
   usersList = []
+  if email == "":
+    return jsonify(usersList)
   for user in users:
     usersList.append({'username':user.username, 'id':user.id, 'at_home': user.at_home, 'email':user.email, 'phone':user.phone, 'aid':user.aid})
   return jsonify(usersList)
@@ -77,6 +79,8 @@ def find_apartment():
   aptname = request.args.get('aptname')
   apts = models.Apartment.query.filter(models.Apartment.aptname.contains(aptname))
   aptList = []
+  if aptname == "":
+    return jsonify(aptList)
   for apt in apts:
     aptList.append({'aptname':apt.aptname, 'latitude':apt.latitude, 'longitude':apt.longitude, 'aid':apt.id})
   return jsonify(aptList)
