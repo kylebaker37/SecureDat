@@ -193,7 +193,7 @@ def update_vid_path():
 @app.route('/api/vid/<aid>/<filename>', methods = ['GET'])
 def send_video(aid, filename):
   print "VIDS ENDPOINT HIT"
-  return send_from_directory('/home/pi/SecureDat/vids/', filename)
+  return send_from_directory('/home/saucinpi/SecureDat/vids/', filename)
   # TODO - Set real file path on ras pi
   # TODO - Look into 206/Broken Pipe/Weird Errors
 
