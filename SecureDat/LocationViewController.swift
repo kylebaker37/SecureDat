@@ -35,7 +35,6 @@ extension LocationViewController: CLLocationManagerDelegate {
             return
         }
         
-        // Add another annotation to the map.
         let annotation = MKPointAnnotation()
         annotation.coordinate = mostRecentLocation.coordinate
         

@@ -22,6 +22,14 @@ class Apartment{
         
     }
     
+    init(id: Int, name: String, latitude: Double, longitude: Double){
+        self.id = id
+        self.name = name
+        self.latitude = latitude
+        self.longitude = longitude
+        self.password = "dummy"
+    }
+    
     init(id: Int){
         self.id = id
         //TODO will get values from backend based on id...

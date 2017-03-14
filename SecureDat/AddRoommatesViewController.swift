@@ -10,6 +10,7 @@ import UIKit
 
 class AddRoommatesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var searchField: UITextField!
     
     var aptId: Int!
     var users = ["Bob", "Joe", "MarkusIsABitch"]
@@ -57,18 +58,25 @@ class AddRoommatesViewController: UIViewController, UITableViewDelegate, UITable
         tableView.deselectRow(at: indexPath, animated: true)
         return
     }
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    @IBAction func finish(_ sender: Any) {
-        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
-        self.navigationController?.pushViewController(secondViewController, animated: true)
+    @IBAction func searchForRoomate(_ sender: Any) {
+        let email = self.searchField.text
+        Backend.find_user_by_email(email: email!, completionHandler: {
+            user in
+            DispatchQueue.main.async {
+                if (user.id != -1){
+                    Backend.add_users_to_apartment(uids: [user.id], aid: self.aptId, completionHandler: {
+                        status in
+                        return
+                    })
+                    Helpers.createAlert(title: "Success!", message: "Successfully added user to the apartment", vc: self)
+                }else{
+                    Helpers.createAlert(title: "Search Error", message: "Could not find user with that email", vc: self)
+                }
+                
+            }
+        })
+
     }
 
 }

@@ -16,7 +16,6 @@
 		277251941E63B48B001DE8AE /* SecureDatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277251931E63B48B001DE8AE /* SecureDatUITests.swift */; };
 		279AE45C1E753A10008CABBA /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279AE45B1E753A10008CABBA /* VideoViewController.swift */; };
 		279AE4601E754A7E008CABBA /* VideoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279AE45F1E754A7E008CABBA /* VideoTableViewController.swift */; };
-		4A1E601C1E68B96300839CFF /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1E601B1E68B96300839CFF /* LocationViewController.swift */; };
 		4A1E601E1E6A4EAA00839CFF /* Backend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1E601D1E6A4EAA00839CFF /* Backend.swift */; };
 		4AD460CC1E762DCE00FE6813 /* RoommatesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD460CB1E762DCE00FE6813 /* RoommatesTableViewCell.swift */; };
 		4AD9D9A11E74C6CD001F4F2A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD9D9A01E74C6CD001F4F2A /* LoginViewController.swift */; };
@@ -33,6 +32,7 @@
 		9BA7BCD81E750E16007E8E4D /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA7BCD71E750E16007E8E4D /* Map.swift */; };
 		9BA7BCDB1E75BC57007E8E4D /* SetLocationMarker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BA7BCDA1E75BC57007E8E4D /* SetLocationMarker.xib */; };
 		9BA7BCDD1E761240007E8E4D /* UsersListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA7BCDC1E761240007E8E4D /* UsersListCell.swift */; };
+		9BA7BCDF1E7711C3007E8E4D /* ApartmentListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA7BCDE1E7711C3007E8E4D /* ApartmentListCell.swift */; };
 		B482416286E291DCA7D4A1C1 /* libPods-SecureDat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 508BBCBEA0A15FF1CC442B8A /* libPods-SecureDat.a */; };
 /* End PBXBuildFile section */
 
@@ -69,7 +69,6 @@
 		277251951E63B48B001DE8AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		279AE45B1E753A10008CABBA /* VideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		279AE45F1E754A7E008CABBA /* VideoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoTableViewController.swift; sourceTree = "<group>"; };
-		4A1E601B1E68B96300839CFF /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		4A1E601D1E6A4EAA00839CFF /* Backend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Backend.swift; sourceTree = "<group>"; };
 		4A2172161E63B7160037DF78 /* SecureDat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SecureDat.entitlements; sourceTree = "<group>"; };
 		4AD460CB1E762DCE00FE6813 /* RoommatesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoommatesTableViewCell.swift; sourceTree = "<group>"; };
@@ -88,6 +87,7 @@
 		9BA7BCD71E750E16007E8E4D /* Map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		9BA7BCDA1E75BC57007E8E4D /* SetLocationMarker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetLocationMarker.xib; sourceTree = "<group>"; };
 		9BA7BCDC1E761240007E8E4D /* UsersListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersListCell.swift; sourceTree = "<group>"; };
+		9BA7BCDE1E7711C3007E8E4D /* ApartmentListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApartmentListCell.swift; sourceTree = "<group>"; };
 		C105DB58A6938C1A67BEFA76 /* Pods-SecureDat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SecureDat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SecureDat/Pods-SecureDat.debug.xcconfig"; sourceTree = "<group>"; };
 		EC8C31E707AA39BCA5024A0B /* Pods-SecureDat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SecureDat.release.xcconfig"; path = "Pods/Target Support Files/Pods-SecureDat/Pods-SecureDat.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -149,7 +149,6 @@
 				277251771E63B48B001DE8AE /* Main.storyboard */,
 				277251731E63B48B001DE8AE /* AppDelegate.swift */,
 				277251751E63B48B001DE8AE /* ViewController.swift */,
-				4A1E601B1E68B96300839CFF /* LocationViewController.swift */,
 				2772517A1E63B48B001DE8AE /* Assets.xcassets */,
 				2772517C1E63B48B001DE8AE /* LaunchScreen.storyboard */,
 				2772517F1E63B48B001DE8AE /* Info.plist */,
@@ -203,6 +202,7 @@
 				9BA7BCD71E750E16007E8E4D /* Map.swift */,
 				9BA7BCDC1E761240007E8E4D /* UsersListCell.swift */,
 				4AD460CB1E762DCE00FE6813 /* RoommatesTableViewCell.swift */,
+				9BA7BCDE1E7711C3007E8E4D /* ApartmentListCell.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -428,12 +428,12 @@
 				4AD9D9A91E74C70A001F4F2A /* ApartmentLocationViewController.swift in Sources */,
 				4AD9D9AB1E74C714001F4F2A /* AddRoommatesViewController.swift in Sources */,
 				9BA7BCDD1E761240007E8E4D /* UsersListCell.swift in Sources */,
+				9BA7BCDF1E7711C3007E8E4D /* ApartmentListCell.swift in Sources */,
 				279AE4601E754A7E008CABBA /* VideoTableViewController.swift in Sources */,
 				4AD9D9A31E74C6D8001F4F2A /* SignupViewController.swift in Sources */,
 				279AE45C1E753A10008CABBA /* VideoViewController.swift in Sources */,
 				4AD9D9B41E74CA97001F4F2A /* User.swift in Sources */,
 				4A1E601E1E6A4EAA00839CFF /* Backend.swift in Sources */,
-				4A1E601C1E68B96300839CFF /* LocationViewController.swift in Sources */,
 				277251761E63B48B001DE8AE /* ViewController.swift in Sources */,
 				4AD9D9A11E74C6CD001F4F2A /* LoginViewController.swift in Sources */,
 				4AD9D9A51E74C6EC001F4F2A /* HomeViewController.swift in Sources */,

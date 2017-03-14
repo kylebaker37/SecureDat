@@ -23,11 +23,37 @@ class VideoViewController: UIViewController {
         
         player = AVPlayer(url: url as URL)
         let avPlayerLayer:AVPlayerLayer = AVPlayerLayer(player: player)
-        avPlayerLayer.frame = CGRect(x: 50, y: 50, width: 100, height: 100)
+        
+        let screenSize = UIScreen.main.bounds
+        let screenWidth = screenSize.width
+        
+        avPlayerLayer.frame = CGRect(x: 25, y: 25, width: screenWidth-50, height: screenWidth-50)
         self.view.layer.addSublayer(avPlayerLayer)
         player.play()
+        
+        let pause = UIButton()
+        pause.frame = (frame: CGRect(x: self.view.frame.size.width - 60, y: self.view.frame.size.width - 60, width: 50, height: 50))
+        pause.backgroundColor = UIColor.red
+        pause.setTitle("Pause", for: .normal)
+        pause.addTarget(self, action: #selector(pause_func), for: .touchUpInside)
+        self.view.addSubview(pause)
+        
+        let play = UIButton()
+        play.frame = (frame: CGRect(x: self.view.frame.size.width - 120, y: self.view.frame.size.width - 60, width: 50, height: 50))
+        play.backgroundColor = UIColor.blue
+        play.setTitle("Play", for: .normal)
+        play.addTarget(self, action: #selector(play_func), for: .touchUpInside)
+        self.view.addSubview(play)
 
         // Do any additional setup after loading the view.
+    }
+    
+    func pause_func(sender: UIButton!) {
+        self.player.pause()
+    }
+    
+    func play_func(sender: UIButton!) {
+        self.player.play()
     }
 
     override func didReceiveMemoryWarning() {
