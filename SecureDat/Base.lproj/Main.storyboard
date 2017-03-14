@@ -151,58 +151,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" User" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9GS-Za-8Me">
-                                <rect key="frame" x="16" y="35" width="343" height="21"/>
+                                <rect key="frame" x="16" y="79" width="343" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q1o-xs-1hj">
-                                <rect key="frame" x="0.0" y="66" width="375" height="601"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ATw-Ar-Auh">
-                                        <rect key="frame" x="126" y="74" width="123" height="30"/>
-                                        <state key="normal" title="Create Apartment"/>
-                                        <connections>
-                                            <segue destination="abB-5R-EEx" kind="show" identifier="homeToApartmentDetails" id="90r-j7-4Z5"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You're currently not in an apartment..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qoa-UX-bP2">
-                                        <rect key="frame" x="8" y="38" width="359" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qp3-Ra-fvi">
-                                        <rect key="frame" x="134" y="119" width="106" height="30"/>
-                                        <state key="normal" title="Join Apartment"/>
-                                        <connections>
-                                            <segue destination="nmv-Eg-Xd1" kind="show" identifier="homeToApartmentSearch" id="raX-D5-dpF"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="qoa-UX-bP2" firstAttribute="top" secondItem="q1o-xs-1hj" secondAttribute="topMargin" constant="30" id="2XC-pR-Gq3"/>
-                                    <constraint firstItem="qoa-UX-bP2" firstAttribute="leading" secondItem="q1o-xs-1hj" secondAttribute="leadingMargin" id="2oC-dT-7ai"/>
-                                    <constraint firstItem="ATw-Ar-Auh" firstAttribute="top" secondItem="qoa-UX-bP2" secondAttribute="bottom" constant="15" id="JS1-2s-cCF"/>
-                                    <constraint firstItem="ATw-Ar-Auh" firstAttribute="centerX" secondItem="q1o-xs-1hj" secondAttribute="centerX" id="LtC-uw-xJU"/>
-                                    <constraint firstItem="Qp3-Ra-fvi" firstAttribute="top" secondItem="ATw-Ar-Auh" secondAttribute="bottom" constant="15" id="ZYF-Fd-Ser"/>
-                                    <constraint firstItem="Qp3-Ra-fvi" firstAttribute="top" secondItem="ATw-Ar-Auh" secondAttribute="bottom" constant="15" id="huw-Zl-Xa2"/>
-                                    <constraint firstItem="ATw-Ar-Auh" firstAttribute="top" secondItem="qoa-UX-bP2" secondAttribute="bottom" constant="15" id="sed-rE-cVK"/>
-                                    <constraint firstItem="Qp3-Ra-fvi" firstAttribute="centerX" secondItem="q1o-xs-1hj" secondAttribute="centerX" id="tRn-s5-ik8"/>
-                                    <constraint firstItem="qoa-UX-bP2" firstAttribute="trailing" secondItem="q1o-xs-1hj" secondAttribute="trailingMargin" id="uQ3-25-Gnz"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="85K-qu-uKN">
-                                <rect key="frame" x="16" y="66" width="343" height="601"/>
+                                <rect key="frame" x="16" y="110" width="343" height="557"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZfC-Sb-X8j">
-                                        <rect key="frame" x="94.5" y="521" width="154" height="30"/>
-                                        <state key="normal" title="View Security Footage"/>
-                                        <connections>
-                                            <segue destination="mRx-t2-04f" kind="show" id="caC-iz-HaT"/>
-                                        </connections>
-                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Apartment Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2DK-Zy-Rci">
                                         <rect key="frame" x="106" y="15" width="131" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -266,6 +222,19 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZfC-Sb-X8j">
+                                        <rect key="frame" x="71.5" y="477" width="200" height="30"/>
+                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="200" id="MAf-s2-MTl"/>
+                                        </constraints>
+                                        <state key="normal" title="View Security Footage">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="mRx-t2-04f" kind="show" id="caC-iz-HaT"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -281,6 +250,53 @@
                                     <constraint firstItem="iJ4-tg-NuW" firstAttribute="top" secondItem="yzF-lf-qc4" secondAttribute="bottom" constant="15" id="rmf-Ss-ESD"/>
                                     <constraint firstAttribute="trailing" secondItem="iJ4-tg-NuW" secondAttribute="trailing" id="t7y-09-K7T"/>
                                     <constraint firstItem="iJ4-tg-NuW" firstAttribute="leading" secondItem="85K-qu-uKN" secondAttribute="leading" id="zxO-h4-Dis"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q1o-xs-1hj">
+                                <rect key="frame" x="0.0" y="110" width="375" height="557"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ATw-Ar-Auh">
+                                        <rect key="frame" x="117.5" y="89" width="140" height="30"/>
+                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="140" id="3TB-HV-mD4"/>
+                                        </constraints>
+                                        <state key="normal" title="Create Apartment">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="abB-5R-EEx" kind="show" identifier="homeToApartmentDetails" id="90r-j7-4Z5"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You're currently not in an apartment..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qoa-UX-bP2">
+                                        <rect key="frame" x="8" y="38" width="359" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qp3-Ra-fvi">
+                                        <rect key="frame" x="117" y="139" width="140" height="30"/>
+                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="140" id="Awl-Lb-jCh"/>
+                                        </constraints>
+                                        <state key="normal" title="Join Apartment">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="nmv-Eg-Xd1" kind="show" identifier="homeToApartmentSearch" id="raX-D5-dpF"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="qoa-UX-bP2" firstAttribute="top" secondItem="q1o-xs-1hj" secondAttribute="topMargin" constant="30" id="2XC-pR-Gq3"/>
+                                    <constraint firstItem="qoa-UX-bP2" firstAttribute="leading" secondItem="q1o-xs-1hj" secondAttribute="leadingMargin" id="2oC-dT-7ai"/>
+                                    <constraint firstItem="ATw-Ar-Auh" firstAttribute="top" secondItem="qoa-UX-bP2" secondAttribute="bottom" constant="30" id="JS1-2s-cCF"/>
+                                    <constraint firstItem="ATw-Ar-Auh" firstAttribute="centerX" secondItem="q1o-xs-1hj" secondAttribute="centerX" id="LtC-uw-xJU"/>
+                                    <constraint firstItem="Qp3-Ra-fvi" firstAttribute="top" secondItem="ATw-Ar-Auh" secondAttribute="bottom" constant="20" id="huw-Zl-Xa2"/>
+                                    <constraint firstItem="Qp3-Ra-fvi" firstAttribute="centerX" secondItem="q1o-xs-1hj" secondAttribute="centerX" id="tRn-s5-ik8"/>
+                                    <constraint firstItem="qoa-UX-bP2" firstAttribute="trailing" secondItem="q1o-xs-1hj" secondAttribute="trailingMargin" id="uQ3-25-Gnz"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -313,7 +329,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b9o-xM-gpm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="879" y="1425"/>
+            <point key="canvasLocation" x="877.60000000000002" y="1424.4377811094455"/>
         </scene>
         <!--Apartment Search-->
         <scene sceneID="0QL-0Z-apd">
@@ -328,11 +344,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="ddK-Tt-Xa9">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dSH-4Q-xEJ">
-                                <rect key="frame" x="0.0" y="72" width="375" height="328"/>
+                                <rect key="frame" x="0.0" y="116" width="375" height="284"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="apartmentListCell" rowHeight="200" id="VxJ-Pt-uMm" customClass="ApartmentListCell" customModule="SecureDat" customModuleProvider="target">
@@ -452,7 +468,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JhI-ma-pyZ">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="vidcell" id="b2X-Io-dIc">
@@ -500,17 +516,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SyC-I0-rEM" customClass="PlayerView" customModule="SecureDat" customModuleProvider="target">
-                                <rect key="frame" x="16" y="50" width="343" height="343"/>
+                                <rect key="frame" x="16" y="94" width="343" height="343"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="SyC-I0-rEM" secondAttribute="height" multiplier="1:1" id="Dng-3H-r0f"/>
                                 </constraints>
                             </view>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="mIr-eS-QT8">
-                                <rect key="frame" x="59" y="403" width="252" height="31"/>
+                                <rect key="frame" x="59" y="447" width="252" height="31"/>
                             </slider>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a7N-qC-kWk">
-                                <rect key="frame" x="16" y="403" width="35" height="35"/>
+                                <rect key="frame" x="16" y="447" width="35" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="35" id="Fo2-k9-Ego"/>
                                     <constraint firstAttribute="height" constant="35" id="VAd-69-99x"/>
@@ -521,7 +537,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HUQ-hs-Cpm">
-                                <rect key="frame" x="319" y="408" width="40" height="21"/>
+                                <rect key="frame" x="319" y="452" width="40" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="46D-ze-sjr"/>
                                 </constraints>
@@ -676,7 +692,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fX9-mm-Eum" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="72" width="375" height="301"/>
+                                <rect key="frame" x="0.0" y="116" width="375" height="257"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
