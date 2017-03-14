@@ -7,7 +7,7 @@ from mag import MagListener
 from camera import Camera
 from sonar import SonarListener
 
-VID_PATH = '/home/pi/SecureDat/vids/'
+VID_PATH = '/home/saucinpi/SecureDat/vids/'
 BASE_URL = 'http://localhost:80/'
 MAX_DOOR_OPEN_TIME = 20
 

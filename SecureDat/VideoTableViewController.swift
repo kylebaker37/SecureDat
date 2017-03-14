@@ -31,7 +31,9 @@ class VideoTableViewController: UIViewController, UITableViewDataSource, UITable
     func setFiles(file_list: [String], event_list: [String]) {
         self.files = file_list
         self.events = event_list
-        self.videosTableView.reloadData()
+        DispatchQueue.main.async {
+            self.videosTableView.reloadData()
+        }
     }
     
     func convertToTimestamp(filename: String) -> String {
