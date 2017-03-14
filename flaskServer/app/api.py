@@ -34,11 +34,13 @@ def add_user():
 @app.route('/api/find_user_by_email', methods = ['GET'])
 def find_user_by_email():
   email = request.args.get('email')
-  user = models.User.query.filter_by(email=email).first()
-  if user is not None: 
-    return jsonify({'username':user.username, 'id':user.id, 'at_home': user.at_home, 'email':user.email, 'phone':user.phone, 'aid':user.aid})
-  else:
-     return jsonify({'username':'', 'id':-1, 'at_home':'', 'email':'', 'phone':'', 'aid':-1})
+  users = models.User.query.filter(models.User.email.contains(email))
+  usersList = []
+  if email == "":
+    return jsonify(usersList)
+  for user in users:
+    usersList.append({'username':user.username, 'id':user.id, 'at_home': user.at_home, 'email':user.email, 'phone':user.phone, 'aid':user.aid})
+  return jsonify(usersList)
 
 @app.route('/api/user', methods = ['GET'])
 def user():
@@ -75,11 +77,13 @@ def apartment():
 @app.route('/api/find_apartment', methods= ['GET'])
 def find_apartment():
   aptname = request.args.get('aptname')
-  apt = models.Apartment.query.filter_by(aptname=aptname).first()
-  if apt is not None: 
-    return jsonify({'aptname':apt.aptname, 'latitude':apt.latitude, 'longitude':apt.longitude, 'aid':apt.id})
-  else:
-     return jsonify({'aptname':'', 'latitude':0.0, 'longitude':0.0, 'aid':-1})
+  apts = models.Apartment.query.filter(models.Apartment.aptname.contains(aptname))
+  aptList = []
+  if aptname == "":
+    return jsonify(aptList)
+  for apt in apts:
+    aptList.append({'aptname':apt.aptname, 'latitude':apt.latitude, 'longitude':apt.longitude, 'aid':apt.id})
+  return jsonify(aptList)
 
 @app.route('/api/add_apartment', methods = ['POST'])
 def add_apartment():
@@ -196,8 +200,9 @@ def send_video(aid, filename):
 @app.route('/api/videos', methods = ['GET'])
 def send_video_list():
   videos = models.Video.query.all()
-  to_return = {'videos': []}
+  to_return = {'videos': [], 'events': []}
   for video in videos:
     to_return['videos'].append(video.path.split('/')[-1])
+    to_return['events'].append(video.event)
   return jsonify(to_return)
 

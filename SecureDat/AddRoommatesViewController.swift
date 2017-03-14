@@ -8,22 +8,55 @@
 
 import UIKit
 
-class AddRoommatesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class AddRoommatesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     @IBOutlet var tableView: UITableView!
-    @IBOutlet var searchField: UITextField!
+    @IBOutlet var searchBar: UISearchBar!
+
     
     var aptId: Int!
     var users: [User] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.searchBar.delegate = self
         // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.findUsers(showAlert: true)
+        searchBar.resignFirstResponder()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.findUsers(showAlert: false)
+    }
+    
+    func findUsers(showAlert: Bool) {
+        let email = self.searchBar.text
+        self.users = []
+        Backend.find_user_by_email(email: email!, completionHandler: {
+            resultUsers in
+            DispatchQueue.main.async {
+                if (!resultUsers.isEmpty){
+                    for user in resultUsers {
+                        self.users.append(user)
+                    }
+                    self.tableView.reloadData()
+                }else{
+                    self.tableView.reloadData()
+                    if (showAlert){
+                        Helpers.createAlert(title: "Search Error", message: "Could not find user with that email", vc: self)
+                    }
+                }
+                    
+            }
+        })
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -67,22 +100,4 @@ class AddRoommatesViewController: UIViewController, UITableViewDelegate, UITable
         tableView.deselectRow(at: indexPath, animated: true)
         return
     }
-
-    @IBAction func searchForRoomate(_ sender: Any) {
-        let email = self.searchField.text
-        Backend.find_user_by_email(email: email!, completionHandler: {
-            user in
-            DispatchQueue.main.async {
-                if (user.id != -1){
-                    self.users = [user]
-                    self.tableView.reloadData()
-                }else{
-                    Helpers.createAlert(title: "Search Error", message: "Could not find user with that email", vc: self)
-                }
-                
-            }
-        })
-
-    }
-
 }
