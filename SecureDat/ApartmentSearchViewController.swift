@@ -25,21 +25,32 @@ class ApartmentSearchViewController: UIViewController, UISearchBarDelegate, UITa
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.findApts()
         searchBar.resignFirstResponder()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.findApts()
+    }
+    
+    func findApts() {
+        self.apts = []
         let name = self.searchBar.text
         Backend.find_apartment(aptname: name!, completionHandler: {
-            apt in
+            resultApts in
             DispatchQueue.main.async {
-                if (apt.name != ""){
-                    self.apts = [apt]
+                if (!resultApts.isEmpty){
+                    for apt in resultApts {
+                        self.apts.append(apt)
+                    }
                     self.tableView.reloadData()
                 }else{
+                    self.tableView.reloadData()
                     Helpers.createAlert(title: "Search Error", message: "Could not find apartment with that name", vc: self)
                 }
                 
             }
         })
-
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
