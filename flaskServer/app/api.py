@@ -137,7 +137,11 @@ def door_opened():
           message = "Your door is open!!! :O"
         else:
           message = "Motion detected in your apartment!!! :O"
-        twil.sendMessage(user.phone, message)
+        try:
+            twil.sendMessage(user.phone, message)
+        except:
+            # TODO: Handle invalid phone numbers
+            pass
         print 'sent {} to {}'.format(message, user.phone)
       return jsonify({'success':'apartment alerted!'})
     else:
@@ -150,10 +154,11 @@ def update_vid_path():
   json = request.get_json()
   aid = json['aid']
   path = json['path']
+  event = json['event']
   apartment = models.Apartment.query.get(aid)
   if apartment is None:
     return jsonify({'error':'apartment id does not exist!'})
-  v = models.Video(path=path)
+  v = models.Video(path=path, event=event)
   db.session.add(v)
   apartment.vids.append(v)
   db.session.commit()

@@ -21,7 +21,8 @@ def main():
     while True:
         if check_motion(sonar, avg_distance):
             print "MOTION!!!"
-            handle_motion_detected()
+            if handle_motion_detected():
+                handle_vid_capture(cam, 'motion')
         if mag.is_mag_present():
             cur = True
         else:
@@ -31,6 +32,12 @@ def main():
         time.sleep(0.05)
         prev = cur
 
+def handle_vid_capture(cam, event):
+    mp4file, h264file = record_video(cam)
+    convert_video(mp4file, h264file)
+    notify_video_complete(mp4file, event)
+
+        
 def handle_motion_detected():
     url = BASE_URL + 'api/door_opened'
     payload = {'aid': 1, 'type': 'motion'}
@@ -38,9 +45,12 @@ def handle_motion_detected():
         print "Attempting to notify about motion..."
         r = requests.post(url, json=payload)
         print "Connection complete"
+        if 'success' in r.json():
+            return True
     except requests.exceptions.ConnectionError:
         print "Connection failed"
-        
+    return False
+
 def boot_sonar(sonar):
     print "Doing initial sonar boot..."
     avg = 0
@@ -61,10 +71,9 @@ def check_motion(sonar, average_distance):
     return False
     
 def handle_door_opened(cam):
-    notify_door_opened()
-    mp4file, h264file = record_video(cam)
-    convert_video(mp4file, h264file)
-    notify_video_complete(mp4file)
+    response = notify_door_opened()
+    if response:
+        handle_vid_capture(cam, 'door')
 
 def notify_door_opened():
     print "Door opened"
@@ -74,8 +83,11 @@ def notify_door_opened():
         print "Attempting connection to %s..." % url
         r = requests.post(url, json=payload)
         print "Connection complete"
+        if 'success' in r.json():
+            return True
     except requests.exceptions.ConnectionError:
         print "Connection to %s failed" % url
+    return False
 
 def record_video(cam):
     print "Starting recording..."
@@ -93,11 +105,11 @@ def convert_video(mp4file, h264file):
     p.wait()
     print "Conversion complete"
 
-def notify_video_complete(mp4file):
+def notify_video_complete(mp4file, event):
     try:
         print "Attempting to update video path..."
         url = BASE_URL + 'api/update_vid_path'
-        payload = {'aid': 1, 'path': mp4file}
+        payload = {'aid': 1, 'path': mp4file, 'event': event}
         r = requests.post(url, json=payload)
         print "Update complete"
     except requests.exceptions.ConnectionError:
