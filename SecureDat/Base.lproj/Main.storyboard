@@ -403,7 +403,7 @@
                         <outlet property="searchBar" destination="ddK-Tt-Xa9" id="C8G-Hp-She"/>
                         <outlet property="tableView" destination="dSH-4Q-xEJ" id="5Ol-Fo-udb"/>
                         <segue destination="HVW-Oe-mZe" kind="show" identifier="apartmentSearchToJoinApartment" id="Yw9-s7-394"/>
-                        <segue destination="RbS-LE-mbe" kind="presentation" identifier="apartmentJoinedToHome" id="TH6-N6-fcn"/>
+                        <segue destination="MVg-pG-VoS" kind="presentation" identifier="apartmentJoinedToHome" id="F4t-sM-iyx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4EL-CC-O3h" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -454,7 +454,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JhI-ma-pyZ">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="vidcell" id="b2X-Io-dIc">
@@ -748,7 +748,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Finish"/>
                                 <connections>
-                                    <segue destination="RbS-LE-mbe" kind="presentation" id="HXp-Jl-rIC"/>
+                                    <segue destination="MVg-pG-VoS" kind="presentation" id="kFr-P4-vlv"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -912,7 +912,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UzT-Cn-5eo" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="VlN-Qh-JDx">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="VlN-Qh-JDx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -930,7 +930,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MVg-pG-VoS" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="CE8-9h-gcw">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="CE8-9h-gcw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -945,6 +945,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="TH6-N6-fcn"/>
+        <segue reference="kFr-P4-vlv"/>
     </inferredMetricsTieBreakers>
 </document>
