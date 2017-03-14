@@ -13,7 +13,7 @@ class AddRoommatesViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet var searchField: UITextField!
     
     var aptId: Int!
-    var users = ["Bob", "Joe", "MarkusIsABitch"]
+    var users: [User] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,8 +32,8 @@ class AddRoommatesViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:UsersListCell = self.tableView.dequeueReusableCell(withIdentifier: "usersListCell") as! UsersListCell
-        cell.username.text = self.users[indexPath.row]
-        cell.email.text = self.users[indexPath.row]
+        cell.username.text = self.users[indexPath.row].username
+        cell.email.text = self.users[indexPath.row].email
         return cell
     }
     
@@ -42,12 +42,21 @@ class AddRoommatesViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-        let userName = self.users[indexPath.row]
+        let user = self.users[indexPath.row]
+        let userName = self.users[indexPath.row].username
         let addUserMsg = "Add " + userName + " to this apartment?"
         let confirmAlert = UIAlertController(title: "Confirm", message: addUserMsg, preferredStyle: UIAlertControllerStyle.alert)
         
         confirmAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
-            print("Handle Ok logic here")
+            Backend.add_users_to_apartment(uids: [user.id], aid: self.aptId, completionHandler: {
+                status in
+                DispatchQueue.main.async {
+                    if (status != -1){
+                        Helpers.createAlert(title: "Success!", message: "Successfully added user to the apartment", vc: self)
+                    }
+                    return
+                }
+            })
         }))
         
         confirmAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
@@ -65,11 +74,8 @@ class AddRoommatesViewController: UIViewController, UITableViewDelegate, UITable
             user in
             DispatchQueue.main.async {
                 if (user.id != -1){
-                    Backend.add_users_to_apartment(uids: [user.id], aid: self.aptId, completionHandler: {
-                        status in
-                        return
-                    })
-                    Helpers.createAlert(title: "Success!", message: "Successfully added user to the apartment", vc: self)
+                    self.users = [user]
+                    self.tableView.reloadData()
                 }else{
                     Helpers.createAlert(title: "Search Error", message: "Could not find user with that email", vc: self)
                 }

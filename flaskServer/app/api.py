@@ -38,7 +38,7 @@ def find_user_by_email():
   if user is not None: 
     return jsonify({'username':user.username, 'id':user.id, 'at_home': user.at_home, 'email':user.email, 'phone':user.phone, 'aid':user.aid})
   else:
-     return jsonify({'username':'', 'id':'', 'at_home':'', 'email':'', 'phone':'', 'aid':''})
+     return jsonify({'username':'', 'id':-1, 'at_home':'', 'email':'', 'phone':'', 'aid':-1})
 
 @app.route('/api/user', methods = ['GET'])
 def user():
