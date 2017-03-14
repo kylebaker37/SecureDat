@@ -9,7 +9,7 @@ from sonar import SonarListener
 
 VID_PATH = '/home/pi/SecureDat/vids/'
 BASE_URL = 'http://localhost:80/'
-
+MAX_DOOR_OPEN_TIME = 20
 
 def main():
     cam = Camera()
@@ -18,17 +18,25 @@ def main():
     avg_distance = boot_sonar(sonar)
     cur = True
     prev = False
+    door_open_time = time.time()
     while True:
         if check_motion(sonar, avg_distance):
             print "MOTION!!!"
-            if handle_motion_detected():
+            if handle_event('motion'):
                 handle_vid_capture(cam, 'motion')
         if mag.is_mag_present():
             cur = True
+            door_open_time = time.time()
         else:
             cur = False
+            if time.time() - door_open_time > MAX_DOOR_OPEN_TIME:
+                print 'door open too long'
+                if handle_event('long'):
+                    handle_vid_capture(cam, 'long')
+                door_open_time = time.time()
         if prev == True and cur == False:
             handle_door_opened(cam)
+            door_open_time = time.time()
         time.sleep(0.05)
         prev = cur
 
@@ -36,13 +44,12 @@ def handle_vid_capture(cam, event):
     mp4file, h264file = record_video(cam)
     convert_video(mp4file, h264file)
     notify_video_complete(mp4file, event)
-
         
-def handle_motion_detected():
+def handle_event(event):
     url = BASE_URL + 'api/door_opened'
-    payload = {'aid': 1, 'type': 'motion'}
+    payload = {'aid': 1, 'type': event}
     try:
-        print "Attempting to notify about motion..."
+        print "Attempting to notify about %s..." % event
         r = requests.post(url, json=payload)
         print "Connection complete"
         if 'success' in r.json():
@@ -78,7 +85,7 @@ def handle_door_opened(cam):
 def notify_door_opened():
     print "Door opened"
     url = BASE_URL + 'api/door_opened'
-    payload = {'aid': 1}
+    payload = {'aid': 1, 'type': 'door'}
     try:
         print "Attempting connection to %s..." % url
         r = requests.post(url, json=payload)

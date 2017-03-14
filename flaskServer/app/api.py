@@ -135,10 +135,7 @@ def user_location_status():
 def door_opened():
   json = request.get_json()
   aid = json['aid']
-  if 'type' in json:
-    tpe = json['type']
-  else:
-    tpe = 'door'
+  tpe = json['type']
   apartment = models.Apartment.query.get(aid)
   if apartment is None:
     return jsonify({'error':'apartment id does not exist!'})
@@ -153,8 +150,12 @@ def door_opened():
       for user in users:
         if tpe == 'door':
           message = "Your door is open!!! :O"
-        else:
+        elif tpe == 'long':
+            message = "Your door has been open for a while!!! :O"
+        elif tpe == 'motion':
           message = "Motion detected in your apartment!!! :O"
+        else:
+            message = "Someone is trying to telll you something, not sure what tho!!! :O"
         try:
             twil.sendMessage(user.phone, message)
         except:
