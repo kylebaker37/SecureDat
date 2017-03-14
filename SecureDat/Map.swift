@@ -74,6 +74,8 @@ class Map: NSObject, CLLocationManagerDelegate, GMSMapViewDelegate {
         self.marker.map = self.mapView
         self.mapView.delegate = self
         self.mapView.selectedMarker = self.marker
+        self.lat = marker.position.latitude
+        self.long = marker.position.longitude
         self.updateCameraAnimation(coord: coordinate)
     }
     
