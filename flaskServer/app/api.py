@@ -196,8 +196,9 @@ def send_video(aid, filename):
 @app.route('/api/videos', methods = ['GET'])
 def send_video_list():
   videos = models.Video.query.all()
-  to_return = {'videos': []}
+  to_return = {'videos': [], 'events': []}
   for video in videos:
     to_return['videos'].append(video.path.split('/')[-1])
+    to_return['events'].append(video.event)
   return jsonify(to_return)
 

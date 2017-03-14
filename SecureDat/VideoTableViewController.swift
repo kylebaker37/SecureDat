@@ -12,6 +12,7 @@ class VideoTableViewController: UIViewController, UITableViewDataSource, UITable
 
     var selectedFile : String!
     var files: [String] = []
+    var events: [String] = []
     @IBOutlet weak var videosTableView: UITableView!
     
     override func viewDidLoad() {
@@ -27,8 +28,9 @@ class VideoTableViewController: UIViewController, UITableViewDataSource, UITable
         // Dispose of any resources that can be recreated.
     }
     
-    func setFiles(file_list: [String]) {
+    func setFiles(file_list: [String], event_list: [String]) {
         self.files = file_list
+        self.events = event_list
         self.videosTableView.reloadData()
     }
     
@@ -64,7 +66,7 @@ class VideoTableViewController: UIViewController, UITableViewDataSource, UITable
         let secondRange = startSecond..<endSecond
         let second = filename.substring(with: secondRange)
         
-        let firstHalf = month + "-" + day + "-" + year + ", "
+        let firstHalf = month + "/" + day + "/" + year + ", "
         let secondHalf = hour + ":" + minute + ":" + second
         let final = firstHalf + secondHalf
         return final
@@ -77,9 +79,9 @@ class VideoTableViewController: UIViewController, UITableViewDataSource, UITable
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "vidcell", for: indexPath)
-//        let txt = convertToTimestamp(filename: self.files[indexPath.row])
-        let txt = convertToTimestamp(filename: "20170314T064525.mp4")
-        cell.textLabel?.text = txt
+        let txt = convertToTimestamp(filename: self.files[indexPath.row])
+//        let txt = convertToTimestamp(filename: "20170314T064525.mp4")
+        cell.textLabel?.text = txt + " - Event: " + self.events[indexPath.row]
         return cell
     }
     

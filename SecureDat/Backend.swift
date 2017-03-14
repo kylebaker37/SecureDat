@@ -351,7 +351,7 @@ class Backend{
     }
     
     //MARK: - Video API
-    static func get_videos(completionHandler: @escaping ([String]) -> ()) {
+    static func get_videos(completionHandler: @escaping ([String], [String]) -> ()) {
         let url = NSURL(string: HOST + ":" + PORT + "/api/videos")!
         let request = NSMutableURLRequest(url: url as URL)
         request.httpMethod = "GET"
@@ -364,7 +364,8 @@ class Backend{
             do {
                 let result = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String:AnyObject]
                 let videos = result!["videos"] as! [String]
-                completionHandler(videos)
+                let events = result!["events"] as! [String]
+                completionHandler(videos, events)
                 print("Result -> \(result)")
                 
             } catch {
