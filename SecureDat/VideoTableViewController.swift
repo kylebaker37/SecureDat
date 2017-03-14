@@ -43,6 +43,7 @@ class VideoTableViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         self.selectedFile = self.files[indexPath.row]
         performSegue(withIdentifier: "videoListToVideo", sender: self)
     }
