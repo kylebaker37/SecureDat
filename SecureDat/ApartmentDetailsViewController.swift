@@ -8,11 +8,10 @@
 
 import UIKit
 
-class ApartmentDetailsViewController: UIViewController {
+class ApartmentDetailsViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var aptNameField: UITextField!
     @IBOutlet var passwordField: UITextField!
     @IBOutlet var passwordConfirmationField: UITextField!
-    
 
     var aptName: String!
     var password: String!
@@ -20,6 +19,8 @@ class ApartmentDetailsViewController: UIViewController {
     var apt: Apartment!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        passwordConfirmationField.delegate = self
 
         // Do any additional setup after loading the view.
     }
@@ -27,6 +28,11 @@ class ApartmentDetailsViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     @IBAction func next(_ sender: Any) {

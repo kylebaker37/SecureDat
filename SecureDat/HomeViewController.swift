@@ -174,7 +174,7 @@ extension HomeViewController: CLLocationManagerDelegate {
         let uid = UserDefaults.standard.value(forKey: "uid")! as! Int
         print("old at_home: \(old_at_home)")
         print("distance: \(distance)")
-        if (distance > 1){
+        if (distance > 0.05){
             //TODO...
             if (old_at_home){
                 print("updating user location status to AWAY")

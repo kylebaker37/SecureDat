@@ -9,7 +9,7 @@
 import Foundation
 
 class Backend{
-    static let HOST = "http://192.168.0.77"
+    static let HOST = "http://172.91.91.149"
     static let PORT = "80"
     
     

@@ -85,6 +85,7 @@ class Map: NSObject, CLLocationManagerDelegate, GMSMapViewDelegate {
     }
     
     func locationMarker(lat: Double, long: Double) {
+        self.mapView.clear()
         self.marker = GMSMarker()
         self.marker.position = CLLocationCoordinate2D(latitude: lat, longitude: long)
         self.marker.title = "Your Location"
